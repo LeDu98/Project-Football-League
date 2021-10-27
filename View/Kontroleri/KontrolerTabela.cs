@@ -29,6 +29,7 @@ namespace View.Kontroleri
             timovi = new BindingList<Tim>();
             foreach(object o in lista)
             {
+                //asafasf
                 timovi.Add((Tim)o);
             }
         }
