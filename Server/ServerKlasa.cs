@@ -32,7 +32,7 @@ namespace Server
             {
 
                 serverskiSoket.Listen(5);
-
+                bool kraj = false;
                 while (true)
                 {
                     Socket klijent = serverskiSoket.Accept();
@@ -43,10 +43,17 @@ namespace Server
                     nit.Start();
                 }
             }
-            catch (Exception ex)
+            catch (SocketException ex)
             {
                 Console.WriteLine(ex);
-                System.Windows.Forms.MessageBox.Show("Greska na serverskoj strani.");
+                System.Windows.Forms.MessageBox.Show("Kraj rada.");
+
+                //OVDE TREBA UBITI SVE KLIJENTE
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                System.Windows.Forms.MessageBox.Show("Greska na serverskoj strani");
             }
         }
         public void ZaustaviServer()

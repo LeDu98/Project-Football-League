@@ -10,6 +10,9 @@ namespace Zajednicki
    public enum Operacije
     {
         Prijavljivanje,
-        VratiTabelu
+        VratiTabelu,
+        VratiListuTimova,
+        KreirajTim,
+        ObrisiTim
     }
 }

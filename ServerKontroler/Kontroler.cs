@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemOperations;
+using SystemOperations.TabelaSO;
+using SystemOperations.TimoviSO;
 
 namespace ServerKontroler
 {
@@ -37,9 +40,37 @@ namespace ServerKontroler
             return repositoryAdministratorLige.Prijavljivanje(administrator);
         }
 
-      /*  public List<object> VratiTabelu()
+        public List<object> VratiTabelu()
         {
-            SystemOperationBase
-        }*/
+            SystemOperationsBase systemOperation = new VratiTabeluSO();
+            systemOperation.ExecuteTemplate(new Tabela());
+            return systemOperation.ResultList;
+        }
+
+        public List<object> VratiTimove()
+        {
+            SystemOperationsBase systemOperation = new VratiTimoveSO();
+            systemOperation.ExecuteTemplate(new Tim());
+            return systemOperation.ResultList;
+        }
+
+        public object KreirajTim(Tim tim)
+        {
+            SystemOperationsBase systemOperation = new KreirajTimSO();
+            systemOperation.ExecuteTemplate(tim);
+            return systemOperation.Result;
+        }
+
+        public bool ObrisiTim(Tim tim)
+        {
+            SystemOperationsBase systemOperation = new ObrisiTimSO();
+            systemOperation.ExecuteTemplate(tim);
+            return systemOperation.Uspelo;
+        }
+
+        /*  public List<object> VratiTabelu()
+          {
+              SystemOperationBase
+          }*/
     }
 }

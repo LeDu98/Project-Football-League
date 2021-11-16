@@ -43,8 +43,16 @@
   <ItemGroup>
     <Compile Include="SystemOperationsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabelaSO\VratiTabeluSO.cs" />
+    <Compile Include="TimoviSO\KreirajTimSO.cs" />
+    <Compile Include="TimoviSO\ObrisiTimSO.cs" />
+    <Compile Include="TimoviSO\VratiTimoveSO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domen\Domen.csproj">
+      <Project>{EB9C67D7-CE13-4E9A-9AAC-F250D7AC7409}</Project>
+      <Name>Domen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repositories\Repositories.csproj">
       <Project>{87623688-6D76-401D-A009-6117FD4118D1}</Project>
       <Name>Repositories</Name>

@@ -9,6 +9,7 @@ namespace Domen
 {
     public interface IEntity
     {
+        string IdName { get; }
         string Tabela { get; }
 
         string InsertVrednosti { get; }
@@ -18,6 +19,7 @@ namespace Domen
         object UpdateVrednosti { get; }
 
         object Uslov { get; }
+        object OrderBy { get; }
 
         List<IEntity> VratiListu(SqlDataReader citac);
         IEntity VratiEntity(SqlDataReader citac);

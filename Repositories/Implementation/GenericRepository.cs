@@ -41,7 +41,7 @@ namespace Repositories.Implementation
             return broker.Sacuvaj(entity);
         }
 
-        public List<IEntity> VratListu(IEntity entity)
+        public List<IEntity> VratiListu(IEntity entity)
         {
             return broker.vratiListu(entity);
         }
@@ -61,9 +61,9 @@ namespace Repositories.Implementation
             return broker.Obrisi(entity);
         }
 
-        public List<IEntity> VratiListu(IEntity entity)
+        public int VratiID(IEntity entity)
         {
-            throw new NotImplementedException();
+            return broker.VratiID(entity);
         }
     }
 }

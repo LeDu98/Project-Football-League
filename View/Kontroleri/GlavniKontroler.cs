@@ -13,5 +13,10 @@ namespace View.Kontroleri
         {
             frmGlavna.SetPanel(new UCTabela(new KontrolerTabela()));
         }
+
+        internal void OtvoriUCTimovi(FrmGlavna frmGlavna)
+        {
+            frmGlavna.SetPanel(new UCTimovi(new KontrolerTimovi()));
+        }
     }
 }

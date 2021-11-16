@@ -19,7 +19,7 @@ namespace View
         {
             InitializeComponent();
             this.glavniKontroler = glavniKontroler;
-            this.glavniKontroler.OtvoriUCTabela(this);
+            
         }
 
         internal void SetPanel(UserControl userControl)
@@ -27,6 +27,16 @@ namespace View
             panelGlavni.Controls.Clear();
             userControl.Parent = panelGlavni;
             userControl.Dock = DockStyle.Fill;
+        }
+
+        private void timoviToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            glavniKontroler.OtvoriUCTimovi(this);
+        }
+
+        private void tabelaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            glavniKontroler.OtvoriUCTabela(this);
         }
     }
 }

@@ -13,24 +13,24 @@ namespace View.Kontroleri
     public class KontrolerTabela
     {
         private UCTabela uCTabela;
-        private BindingList<Tim> timovi;
-        private Tim selektovanTim;
+        private BindingList<Tabela> tabelaTimovi;
+        private Tabela selektovanTim;
 
         internal void InicijalizujUCTabela(UCTabela uCTabela)
         {
             this.uCTabela = uCTabela;
             UcitajTabelu();
-            this.uCTabela.DataGridTabela.DataSource = timovi;
+            this.uCTabela.DataGridTabela.DataSource = tabelaTimovi;
         }
 
         private void UcitajTabelu()
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Operacije.VratiTabelu);
-            timovi = new BindingList<Tim>();
+            tabelaTimovi = new BindingList<Tabela>();
             foreach(object o in lista)
             {
                 //asafasf
-                timovi.Add((Tim)o);
+                tabelaTimovi.Add((Tabela)o);
             }
         }
     }

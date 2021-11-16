@@ -1,4 +1,5 @@
-﻿using Repositories;
+﻿using Domen;
+using Repositories;
 using Repositories.Implementation;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,28 @@ namespace SystemOperations
         {
             repository = new GenericRepository();
         }
+        public void ExecuteTemplate(IEntity entity)
+        {
+            try
+            {
+                repository.OtvoriKonekciju();
+                repository.ZapocniTransakciju();
+                ExecuteOperation(entity);
+                repository.Commit();
+            }
+            catch (Exception e)
+            {
+                repository.Rollback();
+                throw;
+            }
+            finally
+            {
+                repository.ZatvoriKonekciju();
+            }
+        }
+
+        protected abstract void ExecuteOperation(IEntity entity);
 
     }
 }
+

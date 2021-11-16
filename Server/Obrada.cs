@@ -29,11 +29,11 @@ namespace Server
                 BinaryFormatter formater = new BinaryFormatter();
                 while (true)
                 {
-                    Zahtev z = (Zahtev)formater.Deserialize(tok);
+                    Zahtev zahtev = (Zahtev)formater.Deserialize(tok);
                     Odgovor odgovor;
                     try
                     {
-                        odgovor = ObradiZahtev(z);
+                        odgovor = ObradiZahtev(zahtev);
                     }
                     catch (Exception ex)
                     {
@@ -52,24 +52,37 @@ namespace Server
             }
         }
 
-        private Odgovor ObradiZahtev(Zahtev z)
+        private Odgovor ObradiZahtev(Zahtev zahtev)
         {
             Odgovor odgovor = new Odgovor();
             odgovor.Uspesno = true;
             List<object> lista;
-            switch (z.Operacija)
+            switch (zahtev.Operacija)
             {
                 case Operacije.Prijavljivanje:
                     odgovor.Rezultat = new List<object>();
-                    odgovor.Rezultat.Add(Kontroler.Instance.Prijavljivanje((AdministratorLige)z.Objekat));
+                    odgovor.Rezultat.Add(Kontroler.Instance.Prijavljivanje((AdministratorLige)zahtev.Objekat));
                     odgovor.Uspesno = true;
                     break;
 
-               /* case Operacije.VratiTabelu:
+                case Operacije.VratiTabelu:
                     odgovor.Rezultat = Kontroler.Instance.VratiTabelu();
                     odgovor.Uspesno = true;
                     break;
-               */
+
+                case Operacije.VratiListuTimova:
+                    odgovor.Rezultat = Kontroler.Instance.VratiTimove();
+                    odgovor.Uspesno = true;
+                    break;
+                case Operacije.KreirajTim:
+                    lista = new List<object>();
+                    lista.Add(Kontroler.Instance.KreirajTim((Tim)zahtev.Objekat));
+                    odgovor.Rezultat = lista;
+                    break;
+                case Operacije.ObrisiTim:
+                    odgovor.Uspesno = Kontroler.Instance.ObrisiTim((Tim)zahtev.Objekat);
+                    break;
+              
 
 
 
