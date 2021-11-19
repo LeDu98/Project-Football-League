@@ -14,9 +14,11 @@ namespace View.Kontroleri
     public class KontrolerTimovi
     {
         private UCTimovi uCTimovi;
+        
         private BindingList<Tim> timovi;
         private Tim selektovanTim;
         private DialogKreirajTim dialogKreirajTim;
+        private DialogDetaljiOTimu dialogDetaljiOTimu;
         internal void InicijalizujUCTimovi(UCTimovi uCTimovi)
         {
             this.uCTimovi = uCTimovi;
@@ -42,7 +44,7 @@ namespace View.Kontroleri
                 return;
             }
             Tim tim = new Tim();
-            tim.Naziv = dialogKreirajTim.TxtNaziv.Text;
+            tim.NazivTima = dialogKreirajTim.TxtNaziv.Text;
             tim.Grad = dialogKreirajTim.TxtGrad.Text;
             tim.BojaKluba = dialogKreirajTim.TxtBojaKluba.Text;
             try
@@ -70,6 +72,44 @@ namespace View.Kontroleri
             {
                 System.Windows.Forms.MessageBox.Show("Sistem ne može da zapamti uneti tim!");
             }
+        }
+
+        internal BindingList<Tim> VratiTimove()
+        {
+            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
+            timovi = new BindingList<Tim>();
+            foreach (object o in lista)
+            {
+                timovi.Add((Tim)o);
+            }
+            return timovi;
+        }
+
+        internal void PromeniPodatkeTima(Tim tim)
+        {
+            var result = System.Windows.Forms.MessageBox.Show("Da li ste sigurni da želite da sačuvate promenjene podatke o timu?", "Sačuvaj", System.Windows.Forms.MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+
+            try
+            {
+                Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim);
+                System.Windows.Forms.MessageBox.Show("Sistem je izmenio podatke o timu!");
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e + "EXCEPTION KOD Izmene TIMA");
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da izmeni podatke o timu");
+            }
+        }
+
+        internal void OtvoriDialogDetaljiOTimu(Tim tim, BindingList<Igrac> listaIgraca)
+        {
+            this.dialogDetaljiOTimu = new DialogDetaljiOTimu(this,tim,listaIgraca);
+            this.dialogDetaljiOTimu.ShowDialog();
         }
 
         internal void ObrisiTim()
@@ -112,7 +152,7 @@ namespace View.Kontroleri
             BindingList<Tim> filtriraniTimovi = new BindingList<Tim>();
             foreach(Tim t in timovi)
             {
-                string stringTimovi = t.Naziv;
+                string stringTimovi = t.NazivTima;
                 stringTimovi = stringTimovi.ToLower();
                 if (stringTimovi.Contains(tekstPretrage))
                 {

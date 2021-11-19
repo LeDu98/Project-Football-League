@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +15,15 @@ namespace View.UserControls
     public partial class UCTimovi : UserControl
     {
         private KontrolerTimovi kontrolerTimovi;
+        private KontrolerIgrac kontrolerIgrac;
         public DataGridView DataGridTimovi { get => dgTimovi; }
         public TextBox TxtPretraga { get => txtPretraga; }
         
-        public UCTimovi(Kontroleri.KontrolerTimovi kontrolerTimovi)
+        public UCTimovi(Kontroleri.KontrolerTimovi kontrolerTimovi, KontrolerIgrac kontrolerIgrac)
         {
             InitializeComponent();
             this.kontrolerTimovi = kontrolerTimovi;
+            this.kontrolerIgrac = kontrolerIgrac;
         }
 
         private void UCTimovi_Load(object sender, EventArgs e)
@@ -41,6 +44,13 @@ namespace View.UserControls
         private void btnObrisi_Click(object sender, EventArgs e)
         {
             kontrolerTimovi.ObrisiTim();
+        }
+
+        private void btnDetalji_Click(object sender, EventArgs e)
+        {
+            Tim t = dgTimovi.CurrentRow.DataBoundItem as Tim;
+            BindingList<Igrac> listaIgraca = kontrolerIgrac.VratiListuIgracaTima(t);
+            kontrolerTimovi.OtvoriDialogDetaljiOTimu(dgTimovi.CurrentRow.DataBoundItem as Tim,listaIgraca);
         }
     }
 }

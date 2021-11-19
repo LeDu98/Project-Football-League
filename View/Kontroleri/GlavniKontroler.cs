@@ -16,7 +16,17 @@ namespace View.Kontroleri
 
         internal void OtvoriUCTimovi(FrmGlavna frmGlavna)
         {
-            frmGlavna.SetPanel(new UCTimovi(new KontrolerTimovi()));
+            frmGlavna.SetPanel(new UCTimovi(new KontrolerTimovi(), new KontrolerIgrac()));
+        }
+
+        internal void OtvoriUCIgraci(FrmGlavna frmGlavna)
+        {
+            frmGlavna.SetPanel(new UCIgraci(new KontrolerIgrac()));
+        }
+
+        internal void OtvoriUCUtakmice(FrmGlavna frmGlavna)
+        {
+            frmGlavna.SetPanel(new UCUtakmice(new KontrolerUtakmice(),new KontrolerIgrac(),new KontrolerTimovi()));
         }
     }
 }

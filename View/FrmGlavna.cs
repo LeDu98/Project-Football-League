@@ -38,5 +38,15 @@ namespace View
         {
             glavniKontroler.OtvoriUCTabela(this);
         }
+
+        private void igraciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            glavniKontroler.OtvoriUCIgraci(this);
+        }
+
+        private void utakmiceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            glavniKontroler.OtvoriUCUtakmice(this);
+        }
     }
 }

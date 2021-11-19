@@ -7,8 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SystemOperations;
+using SystemOperations.DrzavaSO;
+using SystemOperations.IgracSO;
 using SystemOperations.TabelaSO;
 using SystemOperations.TimoviSO;
+using SystemOperations.UtakmicaSO;
 
 namespace ServerKontroler
 {
@@ -66,6 +69,56 @@ namespace ServerKontroler
             SystemOperationsBase systemOperation = new ObrisiTimSO();
             systemOperation.ExecuteTemplate(tim);
             return systemOperation.Uspelo;
+        }
+
+        public List<object> VratiIgrace()
+        {
+            SystemOperationsBase systemOperation = new VratiIgraceSO();
+            systemOperation.ExecuteTemplate(new Igrac());
+            return systemOperation.ResultList;
+        }
+
+        public List<object> VratiDrzave()
+        {
+            SystemOperationsBase systemOperation = new VratiDrzaveSO();
+            systemOperation.ExecuteTemplate(new Drzava());
+            return systemOperation.ResultList;
+        }
+
+        public object KreirajIgraca(Igrac igrac)
+        {
+            SystemOperationsBase systemOperation = new KreirajIgracaSO();
+            systemOperation.ExecuteTemplate(igrac);
+            return systemOperation.Result;
+        }
+
+        public bool ObrisiIgraca(Igrac igrac)
+        {
+            SystemOperationsBase systemOperation = new ObrisiIgracaSO();
+            systemOperation.ExecuteTemplate(igrac);
+            return systemOperation.Uspelo;
+        }
+
+        public bool UpdateTima(Tim tim)
+        {
+            SystemOperationsBase systemOperation = new IzmeniTimSO();
+            systemOperation.ExecuteTemplate(tim);
+            return systemOperation.Uspelo;
+        }
+
+        public List<object> VratiUtakmice()
+        {
+            SystemOperationsBase systemOperation = new VratiUtakmiceSO();
+            systemOperation.ExecuteTemplate(new Utakmica());
+            return systemOperation.ResultList;
+
+        }
+
+        public object KreirajUtakmicu(Utakmica utakmica)
+        {
+            SystemOperationsBase systemOperation = new KreirajUtakmicuSO();
+            systemOperation.ExecuteTemplate(utakmica);
+            return systemOperation.Result;
         }
 
         /*  public List<object> VratiTabelu()

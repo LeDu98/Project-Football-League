@@ -57,7 +57,7 @@ namespace Broker
             List<IEntity> result;
             SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
-            command.CommandText = $"SELECT * from {entity.Tabela} {entity.JoinTabele} order by {entity.OrderBy}";
+            command.CommandText = $"SELECT * from {entity.Tabela} {entity.JoinTabele} {entity.OrderBy}";
             SqlDataReader reader = command.ExecuteReader();
             result = entity.VratiListu(reader);
             reader.Close();
@@ -84,7 +84,16 @@ namespace Broker
 
         public bool Izmeni(IEntity entity)
         {
-            throw new NotImplementedException();
+            SqlCommand command = connection.CreateCommand();
+            command.Transaction = transaction;
+            command.CommandText = $"UPDATE {entity.Tabela} SET {entity.UpdateVrednosti}" +
+                $"WHERE {entity.Uslov}";
+            Console.WriteLine(command.CommandText);
+            if (command.ExecuteNonQuery() != 1)
+            {
+                return false;
+            }
+            return true;
         }
 
         public bool Obrisi(IEntity entity)

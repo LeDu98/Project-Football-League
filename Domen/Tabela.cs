@@ -37,12 +37,12 @@ namespace Domen
         [Browsable(false)]
         public object JoinTabele => "";
         [Browsable(false)]
-        public object UpdateVrednosti => $"Naziv = '{Naziv}', Grad = '{Grad}', BojaKluba = '{BojaKluba}', Pobede = {Pobede}, Neresene = {Neresene}, Porazi = {Porazi}, Bodovi={Bodovi}";
+        public object UpdateVrednosti => $"NazivTima = '{Naziv}', Grad = '{Grad}', BojaKluba = '{BojaKluba}', Pobede = {Pobede}, Neresene = {Neresene}, Porazi = {Porazi}, Bodovi={Bodovi}";
         [Browsable(false)]
         public object Uslov => $"TimID = {TimID}";
         [Browsable(false)]
-        public object OrderBy => $"Bodovi DESC";
-
+        public object OrderBy => $"order by Bodovi DESC";
+        [Browsable(false)]
         public string IdName => "TimID";
 
         [Browsable(false)]
@@ -63,7 +63,7 @@ namespace Domen
                 {
                     TimID = (int)citac["TimID"],
                     Pozicija = x++,
-                    Naziv = (string)citac["Naziv"],
+                    Naziv = (string)citac["NazivTima"],
                     Grad = (string)citac["Grad"],
                     BojaKluba = (string)citac["BojaKluba"],
                     Pobede = (int)citac["Pobede"],

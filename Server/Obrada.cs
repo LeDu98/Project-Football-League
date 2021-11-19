@@ -82,7 +82,34 @@ namespace Server
                 case Operacije.ObrisiTim:
                     odgovor.Uspesno = Kontroler.Instance.ObrisiTim((Tim)zahtev.Objekat);
                     break;
-              
+                case Operacije.VratiListuIgraca:
+                    odgovor.Rezultat = Kontroler.Instance.VratiIgrace();
+                    odgovor.Uspesno = true;
+                    break;
+                case Operacije.VratiListuDrzava:
+                    odgovor.Rezultat = Kontroler.Instance.VratiDrzave();
+                    odgovor.Uspesno = true;
+                    break;
+                case Operacije.KreirajIgraca:
+                    lista = new List<object>();
+                    lista.Add(Kontroler.Instance.KreirajIgraca((Igrac)zahtev.Objekat));
+                    odgovor.Rezultat = lista;
+                    break;
+                case Operacije.ObrisiIgraca:
+                    odgovor.Uspesno = Kontroler.Instance.ObrisiIgraca((Igrac)zahtev.Objekat);
+                    break;
+                case Operacije.IzmeniTim:
+                    odgovor.Uspesno = Kontroler.Instance.UpdateTima((Tim)zahtev.Objekat);
+                    break;
+                case Operacije.VratiListuUtakmica:
+                    odgovor.Rezultat = Kontroler.Instance.VratiUtakmice();
+                    odgovor.Uspesno = true;
+                    break;
+                case Operacije.KreirajUtakmicu:
+                    lista = new List<object>();
+                    lista.Add(Kontroler.Instance.KreirajUtakmicu((Utakmica)zahtev.Objekat));
+                    odgovor.Rezultat = lista;
+                    break;
 
 
 

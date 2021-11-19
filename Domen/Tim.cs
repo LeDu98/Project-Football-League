@@ -14,7 +14,7 @@ namespace Domen
         public int TimID { get; set; }
         [Browsable(false)]
         public int Pozicija { get; set; }
-        public string Naziv { get; set; }
+        public string NazivTima { get; set; }
         public string Grad { get; set; }
         public string BojaKluba { get; set; }
         [Browsable(false)]
@@ -29,18 +29,23 @@ namespace Domen
         public int Bodovi { get; set; }
         [Browsable(false)]
         public List<Igrac> ListaIgraca { get; set; }
+
+        public override string ToString()
+        {
+            return NazivTima;
+        }
         [Browsable(false)]
         public string Tabela => "Tim";
         [Browsable(false)]
-        public string InsertVrednosti => $"{TimID},'{Naziv}','{Grad}','{BojaKluba}',{Pobede},{Neresene},{Porazi},{Bodovi}";
+        public string InsertVrednosti => $"{TimID},'{NazivTima}','{Grad}','{BojaKluba}',{Pobede},{Neresene},{Porazi},{Bodovi}";
         [Browsable(false)]
         public object JoinTabele => "";
         [Browsable(false)]
-        public object UpdateVrednosti => $"Naziv = '{Naziv}', Grad = '{Grad}', BojaKluba = '{BojaKluba}', Pobede = {Pobede}, Neresene = {Neresene}, Porazi = {Porazi}, Bodovi={Bodovi}";
+        public object UpdateVrednosti => $"NazivTima = '{NazivTima}', Grad = '{Grad}', BojaKluba = '{BojaKluba}'";
         [Browsable(false)]
         public object Uslov => $"TimID = {TimID}";
         [Browsable(false)]
-        public object OrderBy => $"Naziv";
+        public object OrderBy => $"order by NazivTima";
         [Browsable(false)]
         public string IdName => "TimID";
 
@@ -59,13 +64,13 @@ namespace Domen
                 {
                     TimID = (int)citac["TimID"],
                     Pozicija=x++,
-                    Naziv = (string)citac["Naziv"],
+                    NazivTima = (string)citac["NazivTima"],
                     Grad = (string)citac["Grad"],
                     BojaKluba = (string)citac["BojaKluba"],
                     Pobede = (int)citac["Pobede"],
                     Neresene = (int)citac["neresene"],
                     Porazi = (int)citac["porazi"],
-                    OdigraneUtakmice=Pobede+Neresene+Porazi,
+                    OdigraneUtakmice= (int)citac["Pobede"]+ (int)citac["neresene"]+ (int)citac["porazi"],
                     Bodovi=(int)citac["bodovi"],
 
                     

@@ -65,6 +65,7 @@ namespace View
             this.utakmiceToolStripMenuItem.Name = "utakmiceToolStripMenuItem";
             this.utakmiceToolStripMenuItem.Size = new System.Drawing.Size(101, 29);
             this.utakmiceToolStripMenuItem.Text = "Utakmice";
+            this.utakmiceToolStripMenuItem.Click += new System.EventHandler(this.utakmiceToolStripMenuItem_Click);
             // 
             // timoviToolStripMenuItem
             // 
@@ -78,6 +79,7 @@ namespace View
             this.igraciToolStripMenuItem.Name = "igraciToolStripMenuItem";
             this.igraciToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
             this.igraciToolStripMenuItem.Text = "Igraci";
+            this.igraciToolStripMenuItem.Click += new System.EventHandler(this.igraciToolStripMenuItem_Click);
             // 
             // panelGlavni
             // 

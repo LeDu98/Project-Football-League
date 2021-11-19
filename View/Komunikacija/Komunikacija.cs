@@ -89,5 +89,16 @@ namespace View.Komunikacija
             klijent.PosaljiZahtev(zahtev);
             return klijent.PrimiOdgovor().Uspesno;
         }
+
+        internal bool Update(Operacije operacije, Object obj)
+        {
+            Zahtev zahtev = new Zahtev()
+            {
+                Operacija = operacije,
+                Objekat = obj
+            };
+            klijent.PosaljiZahtev(zahtev);
+            return klijent.PrimiOdgovor().Uspesno;
+        }
     }
 }

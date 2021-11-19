@@ -13,6 +13,13 @@ namespace Zajednicki
         VratiTabelu,
         VratiListuTimova,
         KreirajTim,
-        ObrisiTim
+        ObrisiTim,
+        VratiListuIgraca,
+        VratiListuDrzava,
+        KreirajIgraca,
+        ObrisiIgraca,
+        IzmeniTim,
+        VratiListuUtakmica,
+        KreirajUtakmicu
     }
 }

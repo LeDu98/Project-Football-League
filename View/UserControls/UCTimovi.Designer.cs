@@ -36,14 +36,18 @@ namespace View.UserControls
             this.btnKreiraj = new System.Windows.Forms.Button();
             this.btnObrisi = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnDetalji = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTimovi)).BeginInit();
             this.SuspendLayout();
             // 
             // dgTimovi
             // 
+            this.dgTimovi.AllowUserToAddRows = false;
+            this.dgTimovi.AllowUserToDeleteRows = false;
             this.dgTimovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTimovi.Location = new System.Drawing.Point(18, 95);
             this.dgTimovi.Name = "dgTimovi";
+            this.dgTimovi.ReadOnly = true;
             this.dgTimovi.RowHeadersWidth = 62;
             this.dgTimovi.RowTemplate.Height = 28;
             this.dgTimovi.Size = new System.Drawing.Size(935, 511);
@@ -104,10 +108,21 @@ namespace View.UserControls
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // btnDetalji
+            // 
+            this.btnDetalji.Location = new System.Drawing.Point(606, 639);
+            this.btnDetalji.Name = "btnDetalji";
+            this.btnDetalji.Size = new System.Drawing.Size(190, 50);
+            this.btnDetalji.TabIndex = 7;
+            this.btnDetalji.Text = "Detalji o timu";
+            this.btnDetalji.UseVisualStyleBackColor = true;
+            this.btnDetalji.Click += new System.EventHandler(this.btnDetalji_Click);
+            // 
             // UCTimovi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDetalji);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.btnKreiraj);
@@ -133,5 +148,6 @@ namespace View.UserControls
         private System.Windows.Forms.Button btnKreiraj;
         private System.Windows.Forms.Button btnObrisi;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnDetalji;
     }
 }
