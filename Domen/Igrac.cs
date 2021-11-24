@@ -36,7 +36,7 @@ namespace Domen
         public object UslovIzmeni => $"IgracId={IgracID}";
         [Browsable(false)]
         public object OrderBy => "";
-
+        [Browsable(false)]
         public object UslovVratiListu => "";
 
         public IEntity VratiEntity(SqlDataReader citac)

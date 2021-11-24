@@ -32,6 +32,7 @@ namespace View.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgTimovi = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,9 +49,16 @@ namespace View.UserControls
             this.dgTimovi.AllowUserToDeleteRows = false;
             this.dgTimovi.AllowUserToResizeColumns = false;
             this.dgTimovi.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgTimovi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgTimovi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgTimovi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgTimovi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTimovi.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
@@ -70,8 +78,8 @@ namespace View.UserControls
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Rockwell", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgTimovi.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgTimovi.GridColor = System.Drawing.Color.DarkGreen;
@@ -79,6 +87,14 @@ namespace View.UserControls
             this.dgTimovi.MultiSelect = false;
             this.dgTimovi.Name = "dgTimovi";
             this.dgTimovi.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgTimovi.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgTimovi.RowHeadersVisible = false;
             this.dgTimovi.RowHeadersWidth = 80;
             this.dgTimovi.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -86,6 +102,7 @@ namespace View.UserControls
             this.dgTimovi.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgTimovi.Size = new System.Drawing.Size(962, 760);
             this.dgTimovi.TabIndex = 0;
+            this.dgTimovi.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTimovi_CellDoubleClick);
             // 
             // label1
             // 
@@ -126,34 +143,43 @@ namespace View.UserControls
             // btnKreiraj
             // 
             this.btnKreiraj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnKreiraj.Location = new System.Drawing.Point(1059, 181);
+            this.btnKreiraj.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnKreiraj.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKreiraj.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnKreiraj.Location = new System.Drawing.Point(993, 181);
             this.btnKreiraj.Name = "btnKreiraj";
-            this.btnKreiraj.Size = new System.Drawing.Size(154, 50);
+            this.btnKreiraj.Size = new System.Drawing.Size(203, 148);
             this.btnKreiraj.TabIndex = 4;
             this.btnKreiraj.Text = "Kreiraj novi tim";
-            this.btnKreiraj.UseVisualStyleBackColor = true;
+            this.btnKreiraj.UseVisualStyleBackColor = false;
             this.btnKreiraj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // btnObrisi
             // 
             this.btnObrisi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnObrisi.Location = new System.Drawing.Point(1059, 293);
+            this.btnObrisi.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnObrisi.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnObrisi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnObrisi.Location = new System.Drawing.Point(993, 489);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(154, 50);
+            this.btnObrisi.Size = new System.Drawing.Size(203, 148);
             this.btnObrisi.TabIndex = 5;
             this.btnObrisi.Text = "Obriši tim";
-            this.btnObrisi.UseVisualStyleBackColor = true;
+            this.btnObrisi.UseVisualStyleBackColor = false;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // btnDetalji
             // 
             this.btnDetalji.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDetalji.Location = new System.Drawing.Point(1059, 237);
+            this.btnDetalji.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnDetalji.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalji.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDetalji.Location = new System.Drawing.Point(993, 335);
             this.btnDetalji.Name = "btnDetalji";
-            this.btnDetalji.Size = new System.Drawing.Size(154, 50);
+            this.btnDetalji.Size = new System.Drawing.Size(203, 148);
             this.btnDetalji.TabIndex = 7;
             this.btnDetalji.Text = "Detalji o timu";
-            this.btnDetalji.UseVisualStyleBackColor = true;
+            this.btnDetalji.UseVisualStyleBackColor = false;
             this.btnDetalji.Click += new System.EventHandler(this.btnDetalji_Click);
             // 
             // UCTimovi

@@ -29,6 +29,7 @@ namespace View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGlavna));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tabelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,25 +106,26 @@ namespace View
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelGlavni.BackColor = System.Drawing.Color.Transparent;
-            this.panelGlavni.Location = new System.Drawing.Point(72, 103);
+            this.panelGlavni.Location = new System.Drawing.Point(0, 38);
             this.panelGlavni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelGlavni.Name = "panelGlavni";
-            this.panelGlavni.Size = new System.Drawing.Size(1303, 938);
+            this.panelGlavni.Size = new System.Drawing.Size(1452, 1003);
             this.panelGlavni.TabIndex = 1;
             // 
             // FrmGlavna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Beige;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1452, 1099);
             this.Controls.Add(this.panelGlavni);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmGlavna";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmGlavna";
+            this.Text = "Fudbalska liga";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

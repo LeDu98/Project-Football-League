@@ -48,8 +48,13 @@ namespace View.UserControls
 
         private void btnDetalji_Click(object sender, EventArgs e)
         {
-            Tim t = dgTimovi.CurrentRow.DataBoundItem as Tim;
-            kontrolerTimovi.OtvoriDialogDetaljiOTimu(dgTimovi.CurrentRow.DataBoundItem as Tim);
+            
+            kontrolerTimovi.OtvoriDialogDetaljiOTimu();
+        }
+
+        private void dgTimovi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            kontrolerTimovi.OtvoriDialogDetaljiOTimu();
         }
     }
 }

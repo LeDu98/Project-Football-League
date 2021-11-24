@@ -26,6 +26,9 @@ namespace View.Kontroleri
 
             UcitajUtakmice();
             this.uCRaspored.DataGridUtakmice.DataSource = raspored;
+            uCRaspored.DataGridUtakmice.Columns[0].HeaderText = "Termin utakmice";
+            uCRaspored.DataGridUtakmice.Columns[1].HeaderText = "Domaći tim";
+            uCRaspored.DataGridUtakmice.Columns[2].HeaderText = "Gostujući tim";
 
         }
 
@@ -111,8 +114,9 @@ namespace View.Kontroleri
             return timovi;
         }
 
-        internal void OtvoriDialogUpdateUtakmicu(Raspored raspored)
+        internal void OtvoriDialogUpdateUtakmicu()
         {
+            Raspored raspored = uCRaspored.DataGridUtakmice.CurrentRow.DataBoundItem as Raspored;
             dialogUpdateUtakmicu = new DialogUpdateUtakmicu(this,raspored);
             dialogUpdateUtakmicu.ShowDialog();
         }

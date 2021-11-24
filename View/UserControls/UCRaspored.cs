@@ -39,8 +39,14 @@ namespace View.UserControls
 
         private void btnUnesi_Click(object sender, EventArgs e)
         {
-            Raspored raspored = (Raspored)dgUtakmice.CurrentRow.DataBoundItem as Raspored;
-            kontrolerRezultati.OtvoriDialogUpdateUtakmicu(raspored);
+            
+            kontrolerRezultati.OtvoriDialogUpdateUtakmicu();
+        }
+
+        private void dgUtakmice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            kontrolerRezultati.OtvoriDialogUpdateUtakmicu();
+
         }
     }
 }

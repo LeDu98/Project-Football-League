@@ -175,8 +175,9 @@ namespace View.Kontroleri
             this.uCTimovi.DataGridTimovi.DataSource = timovi;
         }
 
-        internal void OtvoriDialogDetaljiOTimu(Tim tim)
+        internal void OtvoriDialogDetaljiOTimu()
         {
+            Tim tim = uCTimovi.DataGridTimovi.CurrentRow.DataBoundItem as Tim;
             this.dialogDetaljiOTimu = new DialogDetaljiOTimu(this,tim);
             this.dialogDetaljiOTimu.ShowDialog();
         }

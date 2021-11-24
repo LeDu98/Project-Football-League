@@ -23,6 +23,8 @@ namespace View.Kontroleri
             this.uCIgraci = uCIgraci;
             UcitajIgrace();
             this.uCIgraci.DataGridIgraci.DataSource = igraci;
+            uCIgraci.DataGridIgraci.Columns[4].HeaderText = "Država";
+            uCIgraci.DataGridIgraci.Columns[5].HeaderText = "Tim";
         }
 
         internal void InicijalizujDialogKreirajIgraca(DialogKreirajIgraca dialogKreirajIgraca)

@@ -23,6 +23,12 @@ namespace View.Kontroleri
             this.uCRezultati = uCRezultati;
             UcitajUtakmice();
             this.uCRezultati.DataGridRezultati.DataSource = rezultati;
+            uCRezultati.DataGridRezultati.Columns[0].HeaderText = "Termin utakmice";
+            uCRezultati.DataGridRezultati.Columns[1].HeaderText = "Domaći tim";
+            uCRezultati.DataGridRezultati.Columns[2].HeaderText = "Golovi";
+            uCRezultati.DataGridRezultati.Columns[3].HeaderText = "Golovi";
+            uCRezultati.DataGridRezultati.Columns[4].HeaderText = "Gostujući tim";
+            
         }
 
         private void UcitajUtakmice()
