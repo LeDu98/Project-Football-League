@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\Igraci\DialogDetaljiOIgracu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Igraci\DialogDetaljiOIgracu.Designer.cs">
+      <DependentUpon>DialogDetaljiOIgracu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Igraci\DialogKreirajIgraca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,11 +70,23 @@
     <Compile Include="Dialogs\Timovi\DialogKreirajTim.Designer.cs">
       <DependentUpon>DialogKreirajTim.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\Utakmice\DialogDetaljiOUtakmici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Utakmice\DialogDetaljiOUtakmici.Designer.cs">
+      <DependentUpon>DialogDetaljiOUtakmici.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Utakmice\DialogKreirajUtakmicu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\Utakmice\DialogKreirajUtakmicu.Designer.cs">
       <DependentUpon>DialogKreirajUtakmicu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Utakmice\DialogUpdateUtakmicu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\Utakmice\DialogUpdateUtakmicu.Designer.cs">
+      <DependentUpon>DialogUpdateUtakmicu.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGlavna.cs">
       <SubType>Form</SubType>
@@ -89,9 +107,10 @@
     <Compile Include="Kontroleri\GlavniKontroler.cs" />
     <Compile Include="Kontroleri\KontrolerIgrac.cs" />
     <Compile Include="Kontroleri\KontrolerPrijavljivanje.cs" />
+    <Compile Include="Kontroleri\KontrolerRezultati.cs" />
     <Compile Include="Kontroleri\KontrolerTabela.cs" />
     <Compile Include="Kontroleri\KontrolerTimovi.cs" />
-    <Compile Include="Kontroleri\KontrolerUtakmice.cs" />
+    <Compile Include="Kontroleri\KontrolerRaspored.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\UCIgraci.cs">
@@ -99,6 +118,12 @@
     </Compile>
     <Compile Include="UserControls\UCIgraci.Designer.cs">
       <DependentUpon>UCIgraci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCRezultati.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCRezultati.Designer.cs">
+      <DependentUpon>UCRezultati.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCTabela.cs">
       <SubType>UserControl</SubType>
@@ -112,12 +137,15 @@
     <Compile Include="UserControls\UCTimovi.Designer.cs">
       <DependentUpon>UCTimovi.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCUtakmice.cs">
+    <Compile Include="UserControls\UCRaspored.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCUtakmice.Designer.cs">
-      <DependentUpon>UCUtakmice.cs</DependentUpon>
+    <Compile Include="UserControls\UCRaspored.Designer.cs">
+      <DependentUpon>UCRaspored.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialogs\Igraci\DialogDetaljiOIgracu.resx">
+      <DependentUpon>DialogDetaljiOIgracu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Igraci\DialogKreirajIgraca.resx">
       <DependentUpon>DialogKreirajIgraca.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,8 +155,14 @@
     <EmbeddedResource Include="Dialogs\Timovi\DialogKreirajTim.resx">
       <DependentUpon>DialogKreirajTim.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Utakmice\DialogDetaljiOUtakmici.resx">
+      <DependentUpon>DialogDetaljiOUtakmici.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Utakmice\DialogKreirajUtakmicu.resx">
       <DependentUpon>DialogKreirajUtakmicu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Utakmice\DialogUpdateUtakmicu.resx">
+      <DependentUpon>DialogUpdateUtakmicu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGlavna.resx">
       <DependentUpon>FrmGlavna.cs</DependentUpon>
@@ -144,9 +178,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControls\UCIgraci.resx">
       <DependentUpon>UCIgraci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCRezultati.resx">
+      <DependentUpon>UCRezultati.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCTabela.resx">
       <DependentUpon>UCTabela.cs</DependentUpon>
@@ -154,9 +192,10 @@
     <EmbeddedResource Include="UserControls\UCTimovi.resx">
       <DependentUpon>UCTimovi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCUtakmice.resx">
-      <DependentUpon>UCUtakmice.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UCRaspored.resx">
+      <DependentUpon>UCRaspored.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Domen.StatistikaIgraca.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -179,6 +218,30 @@
       <Project>{706AC7AD-2B05-4A7E-8E4E-13D4839441AB}</Project>
       <Name>Zajednicki</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Goal_icon-icons.com_62267 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Goal_icon-icons.com_62267.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soccer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sport_football_1517.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Goal_icon-icons.com_62267 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85386-vardy-england-national-football-player-team-clothing_400x400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85386-vardy-england-national-football-player-team-clothing-thumb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85386-vardy-england-national-football-player-team-clothing.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

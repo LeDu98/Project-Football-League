@@ -28,7 +28,7 @@ namespace Domen
         [Browsable(false)]
         public int Bodovi { get; set; }
         [Browsable(false)]
-        public List<Igrac> ListaIgraca { get; set; }
+        
 
         public override string ToString()
         {
@@ -41,13 +41,15 @@ namespace Domen
         [Browsable(false)]
         public object JoinTabele => "";
         [Browsable(false)]
-        public object UpdateVrednosti => $"NazivTima = '{NazivTima}', Grad = '{Grad}', BojaKluba = '{BojaKluba}'";
+        public object UpdateVrednosti => $"NazivTima = '{NazivTima}', Grad = '{Grad}', BojaKluba = '{BojaKluba}', Pobede={Pobede}, Neresene={Neresene}, Porazi={Porazi}, Bodovi={Bodovi} ";
         [Browsable(false)]
-        public object Uslov => $"TimID = {TimID}";
+        public object UslovIzmeni => $"TimID = {TimID}";
         [Browsable(false)]
         public object OrderBy => $"order by NazivTima";
         [Browsable(false)]
         public string IdName => "TimID";
+        [Browsable(false)]
+        public object UslovVratiListu => "";
 
         public IEntity VratiEntity(SqlDataReader citac)
         {

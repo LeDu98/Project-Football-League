@@ -22,9 +22,11 @@ namespace Domen
 
         public object UpdateVrednosti => $"NazivDrzave='{NazivDrzave}'";
 
-        public object Uslov => "";
+        public object UslovIzmeni => "";
 
         public object OrderBy => "";
+
+        public object UslovVratiListu => "";
 
         public override string ToString()
         {

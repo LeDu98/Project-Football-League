@@ -86,6 +86,7 @@ namespace View.Dialogs.Utakmice
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(200, 197);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(435, 26);
@@ -93,7 +94,7 @@ namespace View.Dialogs.Utakmice
             // 
             // btnKreiraj
             // 
-            this.btnKreiraj.Location = new System.Drawing.Point(202, 264);
+            this.btnKreiraj.Location = new System.Drawing.Point(202, 250);
             this.btnKreiraj.Name = "btnKreiraj";
             this.btnKreiraj.Size = new System.Drawing.Size(435, 59);
             this.btnKreiraj.TabIndex = 6;
@@ -105,7 +106,7 @@ namespace View.Dialogs.Utakmice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 376);
+            this.ClientSize = new System.Drawing.Size(851, 436);
             this.Controls.Add(this.btnKreiraj);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label3);

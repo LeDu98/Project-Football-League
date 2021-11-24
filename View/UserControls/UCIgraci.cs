@@ -35,5 +35,15 @@ namespace View.UserControls
         {
             kontrolerIgrac.ObrisiIgraca();
         }
+
+        private void dgIgraci_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            kontrolerIgrac.OtvoriDialogDetaljiOIgracu();
+        }
+
+        private void btnIzmeni_Click(object sender, EventArgs e)
+        {
+            kontrolerIgrac.OtvoriDialogDetaljiOIgracu();
+        }
     }
 }

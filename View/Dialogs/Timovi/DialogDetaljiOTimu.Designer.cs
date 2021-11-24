@@ -50,6 +50,7 @@ namespace View.Dialogs.Timovi
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.btnPromeni = new System.Windows.Forms.Button();
+            this.checkPromeni = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgIgraci)).BeginInit();
             this.SuspendLayout();
             // 
@@ -234,19 +235,31 @@ namespace View.Dialogs.Timovi
             // 
             // btnPromeni
             // 
-            this.btnPromeni.Location = new System.Drawing.Point(542, 125);
+            this.btnPromeni.Location = new System.Drawing.Point(542, 138);
             this.btnPromeni.Name = "btnPromeni";
             this.btnPromeni.Size = new System.Drawing.Size(232, 44);
             this.btnPromeni.TabIndex = 33;
-            this.btnPromeni.Text = "Promeni podatke o timu";
+            this.btnPromeni.Text = "Sacuvaj podatke";
             this.btnPromeni.UseVisualStyleBackColor = true;
             this.btnPromeni.Click += new System.EventHandler(this.btnPromeni_Click);
+            // 
+            // checkPromeni
+            // 
+            this.checkPromeni.AutoSize = true;
+            this.checkPromeni.Location = new System.Drawing.Point(542, 107);
+            this.checkPromeni.Name = "checkPromeni";
+            this.checkPromeni.Size = new System.Drawing.Size(202, 24);
+            this.checkPromeni.TabIndex = 34;
+            this.checkPromeni.Text = "Promeni podatke o timu";
+            this.checkPromeni.UseVisualStyleBackColor = true;
+            this.checkPromeni.CheckedChanged += new System.EventHandler(this.checkPromeni_CheckedChanged);
             // 
             // DialogDetaljiOTimu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 710);
+            this.Controls.Add(this.checkPromeni);
             this.Controls.Add(this.btnPromeni);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -299,5 +312,6 @@ namespace View.Dialogs.Timovi
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnPromeni;
+        private System.Windows.Forms.CheckBox checkPromeni;
     }
 }

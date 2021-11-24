@@ -32,12 +32,10 @@ namespace View.Dialogs.Igraci
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtIme = new System.Windows.Forms.TextBox();
             this.txtPrezime = new System.Windows.Forms.TextBox();
-            this.txtGolovi = new System.Windows.Forms.TextBox();
             this.cmbPozicija = new System.Windows.Forms.ComboBox();
             this.cmbDrzava = new System.Windows.Forms.ComboBox();
             this.cmbTim = new System.Windows.Forms.ComboBox();
@@ -56,7 +54,7 @@ namespace View.Dialogs.Igraci
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 311);
+            this.label2.Location = new System.Drawing.Point(51, 269);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 20);
             this.label2.TabIndex = 1;
@@ -65,20 +63,11 @@ namespace View.Dialogs.Igraci
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 263);
+            this.label3.Location = new System.Drawing.Point(51, 221);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Drzava";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 220);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Golovi";
             // 
             // label5
             // 
@@ -112,13 +101,6 @@ namespace View.Dialogs.Igraci
             this.txtPrezime.Size = new System.Drawing.Size(406, 26);
             this.txtPrezime.TabIndex = 7;
             // 
-            // txtGolovi
-            // 
-            this.txtGolovi.Location = new System.Drawing.Point(180, 217);
-            this.txtGolovi.Name = "txtGolovi";
-            this.txtGolovi.Size = new System.Drawing.Size(406, 26);
-            this.txtGolovi.TabIndex = 8;
-            // 
             // cmbPozicija
             // 
             this.cmbPozicija.FormattingEnabled = true;
@@ -130,7 +112,7 @@ namespace View.Dialogs.Igraci
             // cmbDrzava
             // 
             this.cmbDrzava.FormattingEnabled = true;
-            this.cmbDrzava.Location = new System.Drawing.Point(180, 260);
+            this.cmbDrzava.Location = new System.Drawing.Point(180, 218);
             this.cmbDrzava.Name = "cmbDrzava";
             this.cmbDrzava.Size = new System.Drawing.Size(406, 28);
             this.cmbDrzava.TabIndex = 10;
@@ -138,14 +120,14 @@ namespace View.Dialogs.Igraci
             // cmbTim
             // 
             this.cmbTim.FormattingEnabled = true;
-            this.cmbTim.Location = new System.Drawing.Point(180, 308);
+            this.cmbTim.Location = new System.Drawing.Point(180, 266);
             this.cmbTim.Name = "cmbTim";
             this.cmbTim.Size = new System.Drawing.Size(406, 28);
             this.cmbTim.TabIndex = 11;
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(55, 342);
+            this.btnSacuvaj.Location = new System.Drawing.Point(55, 300);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(531, 55);
             this.btnSacuvaj.TabIndex = 12;
@@ -157,17 +139,15 @@ namespace View.Dialogs.Igraci
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 714);
+            this.ClientSize = new System.Drawing.Size(610, 396);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.cmbTim);
             this.Controls.Add(this.cmbDrzava);
             this.Controls.Add(this.cmbPozicija);
-            this.Controls.Add(this.txtGolovi);
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.txtIme);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -183,12 +163,10 @@ namespace View.Dialogs.Igraci
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtIme;
         private System.Windows.Forms.TextBox txtPrezime;
-        private System.Windows.Forms.TextBox txtGolovi;
         private System.Windows.Forms.ComboBox cmbPozicija;
         private System.Windows.Forms.ComboBox cmbDrzava;
         private System.Windows.Forms.ComboBox cmbTim;

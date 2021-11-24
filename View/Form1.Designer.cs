@@ -29,62 +29,100 @@ namespace View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
             this.txtLozinka = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(136, 67);
-            this.txtKorisnickoIme.Margin = new System.Windows.Forms.Padding(2);
+            this.txtKorisnickoIme.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKorisnickoIme.ForeColor = System.Drawing.Color.DarkGreen;
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(351, 140);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
-            this.txtKorisnickoIme.Size = new System.Drawing.Size(164, 20);
+            this.txtKorisnickoIme.Size = new System.Drawing.Size(366, 54);
             this.txtKorisnickoIme.TabIndex = 0;
+            this.txtKorisnickoIme.Text = "admin";
             // 
             // txtLozinka
             // 
-            this.txtLozinka.Location = new System.Drawing.Point(136, 96);
-            this.txtLozinka.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLozinka.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLozinka.ForeColor = System.Drawing.Color.DarkGreen;
+            this.txtLozinka.Location = new System.Drawing.Point(351, 208);
             this.txtLozinka.Name = "txtLozinka";
-            this.txtLozinka.Size = new System.Drawing.Size(164, 20);
+            this.txtLozinka.PasswordChar = '*';
+            this.txtLozinka.Size = new System.Drawing.Size(366, 54);
             this.txtLozinka.TabIndex = 1;
+            this.txtLozinka.Text = "admin123";
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(136, 135);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogin.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnLogin.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLogin.Location = new System.Drawing.Point(351, 287);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(163, 32);
+            this.btnLogin.Size = new System.Drawing.Size(366, 70);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Prijavi se";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.BackColor = System.Drawing.Color.DarkGreen;
+            this.label1.Font = new System.Drawing.Font("Rockwell", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(-1, -5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(401, 44);
+            this.label1.Size = new System.Drawing.Size(907, 96);
             this.label1.TabIndex = 3;
             this.label1.Text = "Forma za prijavljivanje";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(5, 144);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(340, 50);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Korisničko ime:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(5, 211);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(194, 50);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Lozinka:";
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 237);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(908, 465);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtLozinka);
             this.Controls.Add(this.txtKorisnickoIme);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmLogin";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Fudbalska liga";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -97,6 +135,8 @@ namespace View
         private System.Windows.Forms.TextBox txtLozinka;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

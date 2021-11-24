@@ -20,6 +20,11 @@ namespace Zajednicki
         ObrisiIgraca,
         IzmeniTim,
         VratiListuUtakmica,
-        KreirajUtakmicu
+        KreirajUtakmicu,
+        IzmeniUtakmicu,
+        KreirajStatistikeIgraca,
+        IzmeniIgraca,
+        VratiListuRezultata,
+        VratiListuStatistikaIgraca
     }
 }

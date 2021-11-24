@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using SystemOperations;
 using SystemOperations.DrzavaSO;
 using SystemOperations.IgracSO;
+using SystemOperations.StatistikaIgracaSO;
 using SystemOperations.TabelaSO;
 using SystemOperations.TimoviSO;
 using SystemOperations.UtakmicaSO;
@@ -109,21 +110,53 @@ namespace ServerKontroler
         public List<object> VratiUtakmice()
         {
             SystemOperationsBase systemOperation = new VratiUtakmiceSO();
-            systemOperation.ExecuteTemplate(new Utakmica());
+            systemOperation.ExecuteTemplate(new Raspored());
             return systemOperation.ResultList;
 
         }
 
-        public object KreirajUtakmicu(Utakmica utakmica)
+        public object KreirajUtakmicu(Raspored utakmica)
         {
             SystemOperationsBase systemOperation = new KreirajUtakmicuSO();
             systemOperation.ExecuteTemplate(utakmica);
             return systemOperation.Result;
         }
 
-        /*  public List<object> VratiTabelu()
-          {
-              SystemOperationBase
-          }*/
+        public bool UpdateUtakmice(Raspored utakmica)
+        {
+            SystemOperationsBase systemOperation = new IzmeniUtakmicuSO();
+            systemOperation.ExecuteTemplate(utakmica);
+            return systemOperation.Uspelo;
+        }
+
+        public List<object> VratiRezultate()
+        {
+            SystemOperationsBase systemOperation = new VratiRezultateSO();
+            systemOperation.ExecuteTemplate(new Rezultati());
+            return systemOperation.ResultList;
+        }
+
+        public object KreirajStatistiku(StatistikaIgraca statistikaIgraca)
+        {
+            SystemOperationsBase systemOperation = new KreirajStatistikuIgracaSO();
+            systemOperation.ExecuteTemplate(statistikaIgraca);
+            return systemOperation.Result;
+        }
+
+        public bool UpdateIgraca(Igrac igrac)
+        {
+            SystemOperationsBase systemOperation = new IzmeniIgracaSO();
+            systemOperation.ExecuteTemplate(igrac);
+            return systemOperation.Uspelo;
+        }
+
+        public List<object> VratiStatistikeIgraca()
+        {
+            SystemOperationsBase systemOperation = new VratiStatistikeIgracaSO();
+            systemOperation.ExecuteTemplate(new StatistikaIgraca());
+            return systemOperation.ResultList;
+        }
+
+       
     }
 }

@@ -43,13 +43,14 @@
   <ItemGroup>
     <Compile Include="AdministratorLige.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="Rezultati.cs" />
     <Compile Include="StatistikaIgraca.cs" />
     <Compile Include="Drzava.cs" />
     <Compile Include="Igrac.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tabela.cs" />
     <Compile Include="Tim.cs" />
-    <Compile Include="Utakmica.cs" />
+    <Compile Include="Raspored.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

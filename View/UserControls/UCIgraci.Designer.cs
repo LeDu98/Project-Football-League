@@ -47,6 +47,7 @@ namespace View.UserControls
             this.dgIgraci.RowTemplate.Height = 28;
             this.dgIgraci.Size = new System.Drawing.Size(973, 349);
             this.dgIgraci.TabIndex = 0;
+            this.dgIgraci.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgIgraci_CellDoubleClick);
             // 
             // label1
             // 
@@ -92,6 +93,7 @@ namespace View.UserControls
             this.btnIzmeni.TabIndex = 5;
             this.btnIzmeni.Text = "Izmeni igrača";
             this.btnIzmeni.UseVisualStyleBackColor = true;
+            this.btnIzmeni.Click += new System.EventHandler(this.btnIzmeni_Click);
             // 
             // UCIgraci
             // 

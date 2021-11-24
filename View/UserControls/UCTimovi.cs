@@ -15,15 +15,15 @@ namespace View.UserControls
     public partial class UCTimovi : UserControl
     {
         private KontrolerTimovi kontrolerTimovi;
-        private KontrolerIgrac kontrolerIgrac;
+       
         public DataGridView DataGridTimovi { get => dgTimovi; }
         public TextBox TxtPretraga { get => txtPretraga; }
         
-        public UCTimovi(Kontroleri.KontrolerTimovi kontrolerTimovi, KontrolerIgrac kontrolerIgrac)
+        public UCTimovi(Kontroleri.KontrolerTimovi kontrolerTimovi)
         {
             InitializeComponent();
             this.kontrolerTimovi = kontrolerTimovi;
-            this.kontrolerIgrac = kontrolerIgrac;
+           
         }
 
         private void UCTimovi_Load(object sender, EventArgs e)
@@ -49,8 +49,7 @@ namespace View.UserControls
         private void btnDetalji_Click(object sender, EventArgs e)
         {
             Tim t = dgTimovi.CurrentRow.DataBoundItem as Tim;
-            BindingList<Igrac> listaIgraca = kontrolerIgrac.VratiListuIgracaTima(t);
-            kontrolerTimovi.OtvoriDialogDetaljiOTimu(dgTimovi.CurrentRow.DataBoundItem as Tim,listaIgraca);
+            kontrolerTimovi.OtvoriDialogDetaljiOTimu(dgTimovi.CurrentRow.DataBoundItem as Tim);
         }
     }
 }

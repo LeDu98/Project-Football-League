@@ -21,6 +21,9 @@ namespace View.Kontroleri
             this.uCTabela = uCTabela;
             UcitajTabelu();
             this.uCTabela.DataGridTabela.DataSource = tabelaTimovi;
+            uCTabela.DataGridTabela.Columns[1].HeaderText = "Tim";
+            uCTabela.DataGridTabela.Columns[2].HeaderText = "Utakmice";
+            uCTabela.DataGridTabela.Columns[4].HeaderText = "Nerešene";
         }
 
         private void UcitajTabelu()

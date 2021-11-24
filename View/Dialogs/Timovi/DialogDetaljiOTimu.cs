@@ -17,45 +17,38 @@ namespace View.Dialogs.Timovi
     {
         private KontrolerTimovi kontrolerTimovi;
         private Tim tim;
-       
+        public TextBox TBNazivTima { get => txtTim; }
+        public TextBox TBGrad { get => txtGrad; }
+        public TextBox TBBojaKluba { get => txtBojaKluba; }
+        public Label LabelPozicija { get => lblPozicija; }
+        public Label LabelOdigrane { get => lblOdigraneUtakmice; }
+        public Label LabelPobede { get => lblPobede; }
+        public Label LabelNeresene { get => lblNeresene; }
+        public Label LabelPorazi { get => lblPorazi; }
+        public Label LabelBodovi { get => lblBodovi; }
+        public DataGridView DataGridIgraci { get => dgIgraci; }
+        public CheckBox CheckPromeni { get => checkPromeni; }
+        public Button BtnPromeni { get => btnPromeni; }
 
-        public DialogDetaljiOTimu(Kontroleri.KontrolerTimovi kontrolerTimovi, Domen.Tim tim, BindingList<Domen.Igrac> listaIgraca)
+
+        public DialogDetaljiOTimu(Kontroleri.KontrolerTimovi kontrolerTimovi, Domen.Tim tim)
         {
             InitializeComponent();
             this.kontrolerTimovi = kontrolerTimovi;
             this.tim = tim;
-            txtTim.Text = tim.NazivTima;
-            txtGrad.Text = tim.Grad;
-            txtBojaKluba.Text = tim.BojaKluba;
-            lblPozicija.Text = tim.Pozicija.ToString();
-            lblOdigraneUtakmice.Text = tim.OdigraneUtakmice.ToString();
-            lblPobede.Text = tim.Pobede.ToString();
-            lblNeresene.Text = tim.Neresene.ToString();
-            lblPorazi.Text = tim.Porazi.ToString();
-            lblBodovi.Text = tim.Bodovi.ToString();
-            dgIgraci.DataSource = listaIgraca;
+            kontrolerTimovi.InicijalizujDialogDetaljiOTimu(this, tim);
+            
         }
 
         private void btnPromeni_Click(object sender, EventArgs e)
         {
-            if(txtBojaKluba.Text==tim.BojaKluba && txtGrad.Text==tim.Grad && txtTim.Text == tim.NazivTima)
-            {
-                MessageBox.Show("Podaci su ostali nepromenjeni!");
-                return;
-            }
-            if (string.IsNullOrEmpty(txtTim.Text) || string.IsNullOrEmpty(txtGrad.Text) || string.IsNullOrEmpty(txtBojaKluba.Text))
-            {
-                MessageBox.Show("Sva polja su obavezna");
-                return;
-            }
-                tim.NazivTima = txtTim.Text;
-            tim.BojaKluba = txtBojaKluba.Text;
-            tim.Grad = txtGrad.Text;
-            
             kontrolerTimovi.PromeniPodatkeTima(tim);
-            this.Dispose();
             
-            
+        }
+
+        private void checkPromeni_CheckedChanged(object sender, EventArgs e)
+        {
+            kontrolerTimovi.PromeniStanjeDialogaDetaljiOTimu();
         }
     }
 }

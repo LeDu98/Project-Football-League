@@ -29,13 +29,15 @@ namespace View.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgTimovi = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.btnKreiraj = new System.Windows.Forms.Button();
             this.btnObrisi = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnDetalji = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTimovi)).BeginInit();
             this.SuspendLayout();
@@ -44,46 +46,89 @@ namespace View.UserControls
             // 
             this.dgTimovi.AllowUserToAddRows = false;
             this.dgTimovi.AllowUserToDeleteRows = false;
-            this.dgTimovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTimovi.Location = new System.Drawing.Point(18, 95);
+            this.dgTimovi.AllowUserToResizeColumns = false;
+            this.dgTimovi.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgTimovi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgTimovi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgTimovi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgTimovi.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgTimovi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgTimovi.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Rockwell", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgTimovi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgTimovi.ColumnHeadersHeight = 34;
+            this.dgTimovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Rockwell", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgTimovi.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgTimovi.GridColor = System.Drawing.Color.DarkGreen;
+            this.dgTimovi.Location = new System.Drawing.Point(0, 181);
+            this.dgTimovi.MultiSelect = false;
             this.dgTimovi.Name = "dgTimovi";
             this.dgTimovi.ReadOnly = true;
-            this.dgTimovi.RowHeadersWidth = 62;
-            this.dgTimovi.RowTemplate.Height = 28;
-            this.dgTimovi.Size = new System.Drawing.Size(935, 511);
+            this.dgTimovi.RowHeadersVisible = false;
+            this.dgTimovi.RowHeadersWidth = 80;
+            this.dgTimovi.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgTimovi.RowTemplate.Height = 38;
+            this.dgTimovi.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgTimovi.Size = new System.Drawing.Size(962, 760);
             this.dgTimovi.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 38);
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.BackColor = System.Drawing.Color.DarkGreen;
+            this.label1.Font = new System.Drawing.Font("Rockwell", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 20);
+            this.label1.Size = new System.Drawing.Size(1225, 98);
             this.label1.TabIndex = 1;
             this.label1.Text = "TIMOVI";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(465, 38);
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.Color.DarkGreen;
+            this.label2.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(0, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 20);
+            this.label2.Size = new System.Drawing.Size(1639, 69);
             this.label2.TabIndex = 2;
             this.label2.Text = "Pretraga:";
             // 
             // txtPretraga
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(545, 32);
+            this.txtPretraga.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold);
+            this.txtPretraga.Location = new System.Drawing.Point(202, 101);
             this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(272, 26);
+            this.txtPretraga.Size = new System.Drawing.Size(310, 54);
             this.txtPretraga.TabIndex = 3;
             this.txtPretraga.TextChanged += new System.EventHandler(this.txtPretraga_TextChanged);
             // 
             // btnKreiraj
             // 
-            this.btnKreiraj.Location = new System.Drawing.Point(18, 639);
+            this.btnKreiraj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKreiraj.Location = new System.Drawing.Point(1059, 181);
             this.btnKreiraj.Name = "btnKreiraj";
-            this.btnKreiraj.Size = new System.Drawing.Size(190, 50);
+            this.btnKreiraj.Size = new System.Drawing.Size(154, 50);
             this.btnKreiraj.TabIndex = 4;
             this.btnKreiraj.Text = "Kreiraj novi tim";
             this.btnKreiraj.UseVisualStyleBackColor = true;
@@ -91,28 +136,21 @@ namespace View.UserControls
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(214, 639);
+            this.btnObrisi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnObrisi.Location = new System.Drawing.Point(1059, 293);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(190, 50);
+            this.btnObrisi.Size = new System.Drawing.Size(154, 50);
             this.btnObrisi.TabIndex = 5;
             this.btnObrisi.Text = "Obriši tim";
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(410, 639);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(190, 50);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // btnDetalji
             // 
-            this.btnDetalji.Location = new System.Drawing.Point(606, 639);
+            this.btnDetalji.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDetalji.Location = new System.Drawing.Point(1059, 237);
             this.btnDetalji.Name = "btnDetalji";
-            this.btnDetalji.Size = new System.Drawing.Size(190, 50);
+            this.btnDetalji.Size = new System.Drawing.Size(154, 50);
             this.btnDetalji.TabIndex = 7;
             this.btnDetalji.Text = "Detalji o timu";
             this.btnDetalji.UseVisualStyleBackColor = true;
@@ -123,7 +161,6 @@ namespace View.UserControls
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnDetalji);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.btnKreiraj);
             this.Controls.Add(this.txtPretraga);
@@ -131,7 +168,7 @@ namespace View.UserControls
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgTimovi);
             this.Name = "UCTimovi";
-            this.Size = new System.Drawing.Size(1054, 786);
+            this.Size = new System.Drawing.Size(1225, 944);
             this.Load += new System.EventHandler(this.UCTimovi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgTimovi)).EndInit();
             this.ResumeLayout(false);
@@ -147,7 +184,6 @@ namespace View.UserControls
         private System.Windows.Forms.TextBox txtPretraga;
         private System.Windows.Forms.Button btnKreiraj;
         private System.Windows.Forms.Button btnObrisi;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnDetalji;
     }
 }

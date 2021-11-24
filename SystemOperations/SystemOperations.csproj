@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrzavaSO\VratiDrzaveSO.cs" />
+    <Compile Include="IgracSO\IzmeniIgracaSO.cs" />
     <Compile Include="IgracSO\KreirajIgracaSO.cs" />
     <Compile Include="IgracSO\ObrisiIgracaSO.cs" />
     <Compile Include="IgracSO\VratiIgraceSO.cs" />
+    <Compile Include="StatistikaIgracaSO\KreirajStatistikuIgracaSO.cs" />
+    <Compile Include="StatistikaIgracaSO\VratiStatistikeIgracaSO.cs" />
     <Compile Include="SystemOperationsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabelaSO\VratiTabeluSO.cs" />
@@ -52,7 +55,9 @@
     <Compile Include="TimoviSO\KreirajTimSO.cs" />
     <Compile Include="TimoviSO\ObrisiTimSO.cs" />
     <Compile Include="TimoviSO\VratiTimoveSO.cs" />
+    <Compile Include="UtakmicaSO\IzmeniUtakmicuSO.cs" />
     <Compile Include="UtakmicaSO\KreirajUtakmicuSO.cs" />
+    <Compile Include="UtakmicaSO\VratiRezultateSO.cs" />
     <Compile Include="UtakmicaSO\VratiUtakmiceSO.cs" />
   </ItemGroup>
   <ItemGroup>

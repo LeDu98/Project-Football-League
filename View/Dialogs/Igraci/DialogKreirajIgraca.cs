@@ -19,7 +19,7 @@ namespace View.Dialogs.Igraci
         public ComboBox CbTim { get => cmbTim; }
         public TextBox TxtIme { get => txtIme; }
         public TextBox TxtPrezime { get => txtPrezime; }
-        public TextBox TxtGolovi { get => txtGolovi; }
+       
        
         public DialogKreirajIgraca(Kontroleri.KontrolerIgrac kontrolerIgrac)
         {

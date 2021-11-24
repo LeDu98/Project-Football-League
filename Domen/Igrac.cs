@@ -31,11 +31,13 @@ namespace Domen
         [Browsable(false)]
         public object JoinTabele => " i join Drzava d on (i.DrzavaId = d.DrzavaId) join Tim t on (i.TimId = t.TimId)";
         [Browsable(false)]
-        public object UpdateVrednosti => $"Ime='{Ime}',Prezime='{Prezime}',Pozicija='{Pozicija}',Golovi={Golovi},DrzavaId={DrzavaID},TimId={TimID}";
+        public object UpdateVrednosti => $"Ime='{Ime}',Prezime='{Prezime}',Pozicija='{Pozicija}', Golovi={Golovi}, DrzavaId={DrzavaID.DrzavaID}, TimId={TimID.TimID} ";
         [Browsable(false)]
-        public object Uslov => $"IgracId={IgracID}";
+        public object UslovIzmeni => $"IgracId={IgracID}";
         [Browsable(false)]
         public object OrderBy => "";
+
+        public object UslovVratiListu => "";
 
         public IEntity VratiEntity(SqlDataReader citac)
         {

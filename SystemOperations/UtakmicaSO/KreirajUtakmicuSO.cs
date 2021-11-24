@@ -11,7 +11,7 @@ namespace SystemOperations.UtakmicaSO
     {
         protected override void ExecuteOperation(IEntity entity)
         {
-            Utakmica utakmica = (Utakmica)entity;
+            Raspored utakmica = (Raspored)entity;
             utakmica.UtakmicaID = repository.VratiID(utakmica);
             Result = repository.Sacuvaj(utakmica);
         }

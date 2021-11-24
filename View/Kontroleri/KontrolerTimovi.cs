@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using View.Dialogs.Timovi;
 using View.UserControls;
 using Zajednicki;
@@ -16,7 +17,8 @@ namespace View.Kontroleri
         private UCTimovi uCTimovi;
         
         private BindingList<Tim> timovi;
-        private Tim selektovanTim;
+        private BindingList<Igrac> igraci;
+       
         private DialogKreirajTim dialogKreirajTim;
         private DialogDetaljiOTimu dialogDetaljiOTimu;
         internal void InicijalizujUCTimovi(UCTimovi uCTimovi)
@@ -24,6 +26,51 @@ namespace View.Kontroleri
             this.uCTimovi = uCTimovi;
             UcitajTimove();
             this.uCTimovi.DataGridTimovi.DataSource = timovi;
+            uCTimovi.DataGridTimovi.Columns[0].HeaderText = "Naziv tima";
+            uCTimovi.DataGridTimovi.Columns[1].HeaderText = "Grad";
+            uCTimovi.DataGridTimovi.Columns[2].HeaderText = "Boje tima";
+        }
+
+        internal void InicijalizujDialogDetaljiOTimu(DialogDetaljiOTimu dialogDetaljiOTimu, Tim tim)
+        {
+            dialogDetaljiOTimu.TBNazivTima.Text = tim.NazivTima;
+            dialogDetaljiOTimu.TBGrad.Text = tim.Grad;
+            dialogDetaljiOTimu.TBBojaKluba.Text = tim.BojaKluba;
+            dialogDetaljiOTimu.LabelPozicija.Text = tim.Pozicija.ToString();
+            dialogDetaljiOTimu.LabelOdigrane.Text = tim.OdigraneUtakmice.ToString();
+            dialogDetaljiOTimu.LabelPobede.Text = tim.Pobede.ToString();
+            dialogDetaljiOTimu.LabelNeresene.Text = tim.Neresene.ToString();
+            dialogDetaljiOTimu.LabelPorazi.Text = tim.Porazi.ToString();
+            dialogDetaljiOTimu.LabelBodovi.Text = tim.Bodovi.ToString();
+
+            dialogDetaljiOTimu.TBNazivTima.Enabled = false;
+            dialogDetaljiOTimu.TBGrad.Enabled = false;
+            dialogDetaljiOTimu.TBBojaKluba.Enabled = false;
+
+            dialogDetaljiOTimu.BtnPromeni.Enabled = false;
+
+            igraci = VratiListuIgracaTima(tim);
+            dialogDetaljiOTimu.DataGridIgraci.DataSource = igraci;
+        }
+
+        internal void PromeniStanjeDialogaDetaljiOTimu()
+        {
+            if (dialogDetaljiOTimu.CheckPromeni.Checked)
+            {
+                dialogDetaljiOTimu.TBNazivTima.Enabled = true;
+                dialogDetaljiOTimu.TBGrad.Enabled = true;
+                dialogDetaljiOTimu.TBBojaKluba.Enabled = true;
+                
+                dialogDetaljiOTimu.BtnPromeni.Enabled = true;
+            }
+            else
+            {
+                dialogDetaljiOTimu.TBNazivTima.Enabled = false;
+                dialogDetaljiOTimu.TBGrad.Enabled = false;
+                dialogDetaljiOTimu.TBBojaKluba.Enabled = false;
+
+                dialogDetaljiOTimu.BtnPromeni.Enabled = false;
+            }
         }
 
         private void UcitajTimove()
@@ -74,19 +121,38 @@ namespace View.Kontroleri
             }
         }
 
-        internal BindingList<Tim> VratiTimove()
+        internal BindingList<Igrac> VratiListuIgracaTima(Tim t)
         {
-            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
-            timovi = new BindingList<Tim>();
-            foreach (object o in lista)
+            List<Object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuIgraca);
+            igraci = new BindingList<Igrac>();
+            foreach (Igrac i in lista)
             {
-                timovi.Add((Tim)o);
+                if (i.TimID.TimID == t.TimID)
+                {
+                    igraci.Add((Igrac)i);
+
+                }
             }
-            return timovi;
+            return igraci;
         }
 
+        
         internal void PromeniPodatkeTima(Tim tim)
         {
+            if (dialogDetaljiOTimu.TBBojaKluba.Text == tim.BojaKluba && dialogDetaljiOTimu.TBGrad.Text == tim.Grad && dialogDetaljiOTimu.TBNazivTima.Text == tim.NazivTima)
+            {
+                MessageBox.Show("Podaci su ostali nepromenjeni!");
+                return;
+            }
+            if (string.IsNullOrEmpty(dialogDetaljiOTimu.TBNazivTima.Text) || string.IsNullOrEmpty(dialogDetaljiOTimu.TBGrad.Text) || string.IsNullOrEmpty(dialogDetaljiOTimu.TBBojaKluba.Text))
+            {
+                MessageBox.Show("Sva polja su obavezna");
+                return;
+            }
+            tim.NazivTima = dialogDetaljiOTimu.TBNazivTima.Text;
+            tim.BojaKluba = dialogDetaljiOTimu.TBBojaKluba.Text;
+            tim.Grad = dialogDetaljiOTimu.TBGrad.Text;
+
             var result = System.Windows.Forms.MessageBox.Show("Da li ste sigurni da želite da sačuvate promenjene podatke o timu?", "Sačuvaj", System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.No)
             {
@@ -104,11 +170,14 @@ namespace View.Kontroleri
                 Console.WriteLine(e + "EXCEPTION KOD Izmene TIMA");
                 System.Windows.Forms.MessageBox.Show("Sistem ne moze da izmeni podatke o timu");
             }
+            dialogDetaljiOTimu.Dispose();
+            UcitajTimove();
+            this.uCTimovi.DataGridTimovi.DataSource = timovi;
         }
 
-        internal void OtvoriDialogDetaljiOTimu(Tim tim, BindingList<Igrac> listaIgraca)
+        internal void OtvoriDialogDetaljiOTimu(Tim tim)
         {
-            this.dialogDetaljiOTimu = new DialogDetaljiOTimu(this,tim,listaIgraca);
+            this.dialogDetaljiOTimu = new DialogDetaljiOTimu(this,tim);
             this.dialogDetaljiOTimu.ShowDialog();
         }
 

@@ -13,7 +13,7 @@ namespace SystemOperations.UtakmicaSO
         {
             try
             {
-                ResultList = repository.VratiListu(new Utakmica()).Cast<object>().ToList();
+                ResultList = repository.VratiListu(new Raspored()).Cast<object>().ToList();
             }
             catch (Exception ex)
             {

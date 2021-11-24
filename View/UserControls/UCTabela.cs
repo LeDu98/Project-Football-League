@@ -16,7 +16,7 @@ namespace View.UserControls
     {
         private KontrolerTabela kontrolerTabela;
         public DataGridView DataGridTabela { get => dgTabela; }
-        private bool zavrseno = false;
+        
         public UCTabela(Kontroleri.KontrolerTabela kontrolerTabela)
         {
             InitializeComponent();

@@ -39,11 +39,13 @@ namespace Domen
         [Browsable(false)]
         public object UpdateVrednosti => $"NazivTima = '{Naziv}', Grad = '{Grad}', BojaKluba = '{BojaKluba}', Pobede = {Pobede}, Neresene = {Neresene}, Porazi = {Porazi}, Bodovi={Bodovi}";
         [Browsable(false)]
-        public object Uslov => $"TimID = {TimID}";
+        public object UslovIzmeni => $"TimID = {TimID}";
         [Browsable(false)]
         public object OrderBy => $"order by Bodovi DESC";
         [Browsable(false)]
         public string IdName => "TimID";
+        [Browsable(false)]
+        public object UslovVratiListu => "";
 
         [Browsable(false)]
         string IEntity.Tabela => "Tim";

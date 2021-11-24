@@ -57,7 +57,7 @@ namespace Broker
             List<IEntity> result;
             SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
-            command.CommandText = $"SELECT * from {entity.Tabela} {entity.JoinTabele} {entity.OrderBy}";
+            command.CommandText = $"SELECT * from {entity.Tabela} {entity.JoinTabele} {entity.UslovVratiListu} {entity.OrderBy}";
             SqlDataReader reader = command.ExecuteReader();
             result = entity.VratiListu(reader);
             reader.Close();
@@ -87,7 +87,7 @@ namespace Broker
             SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
             command.CommandText = $"UPDATE {entity.Tabela} SET {entity.UpdateVrednosti}" +
-                $"WHERE {entity.Uslov}";
+                $"WHERE {entity.UslovIzmeni}";
             Console.WriteLine(command.CommandText);
             if (command.ExecuteNonQuery() != 1)
             {
@@ -100,7 +100,7 @@ namespace Broker
         {
             SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
-            command.CommandText = $"DELETE from {entity.Tabela} Where {entity.Uslov}";
+            command.CommandText = $"DELETE from {entity.Tabela} Where {entity.UslovIzmeni}";
             Console.WriteLine(command.CommandText);
             if (command.ExecuteNonQuery() != 1)
             {

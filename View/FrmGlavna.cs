@@ -44,7 +44,14 @@ namespace View
             glavniKontroler.OtvoriUCIgraci(this);
         }
 
-        private void utakmiceToolStripMenuItem_Click(object sender, EventArgs e)
+        
+
+        private void rezultatiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            glavniKontroler.OtvoriUCRezultati(this);
+        }
+
+        private void rasporedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             glavniKontroler.OtvoriUCUtakmice(this);
         }
