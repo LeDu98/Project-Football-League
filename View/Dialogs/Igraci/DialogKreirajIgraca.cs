@@ -25,12 +25,17 @@ namespace View.Dialogs.Igraci
         {
             InitializeComponent();
             this.kontrolerIgrac = kontrolerIgrac;
-            kontrolerIgrac.InicijalizujDialogKreirajIgraca(this);
+            
         }
 
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             kontrolerIgrac.DodajIgraca();
+        }
+
+        private void DialogKreirajIgraca_Load(object sender, EventArgs e)
+        {
+            kontrolerIgrac.InicijalizujDialogKreirajIgraca(this);
         }
     }
 }

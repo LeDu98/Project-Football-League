@@ -16,6 +16,8 @@ namespace View.Dialogs.Utakmice
     {
        
         private KontrolerRezultati kontrolerRezultati;
+        private Rezultati rezultat;
+
         public Label LabelDomacin { get => lblDomacin; }
         public Label LabelGost { get => lblGost; }
         public Label LabelDomacinGolovi { get => lblDomacinGolovi; }
@@ -23,16 +25,19 @@ namespace View.Dialogs.Utakmice
         public Label LabelDatum { get => lblDatum; }
         public Label LabelDomaciStrelci { get => lblDomaciStrelci; }
         public Label LabelGostStrelci { get => lblGostStrelci; }
-        public ListBox LBDomaci { get => listBoxDomaci; }
-        public ListBox LBGosti { get => listBoxGosti; }
-        public DialogDetaljiOUtakmici(Kontroleri.KontrolerRezultati kontrolerRezultati)
+        
+        public DialogDetaljiOUtakmici(Kontroleri.KontrolerRezultati kontrolerRezultati, Rezultati rezultat)
         {
             InitializeComponent();
             
             this.kontrolerRezultati = kontrolerRezultati;
+            this.rezultat = rezultat;
             
         }
 
-       
+        private void DialogDetaljiOUtakmici_Load(object sender, EventArgs e)
+        {
+            kontrolerRezultati.InicijalizujDialogDetaljiOUtakmici(rezultat);
+        }
     }
 }

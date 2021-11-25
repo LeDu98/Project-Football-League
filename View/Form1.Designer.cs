@@ -40,22 +40,22 @@ namespace View
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKorisnickoIme.Font = new System.Drawing.Font("Verdana", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKorisnickoIme.ForeColor = System.Drawing.Color.DarkGreen;
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(351, 140);
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(385, 145);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
-            this.txtKorisnickoIme.Size = new System.Drawing.Size(366, 54);
+            this.txtKorisnickoIme.Size = new System.Drawing.Size(490, 56);
             this.txtKorisnickoIme.TabIndex = 0;
             this.txtKorisnickoIme.Text = "admin";
             // 
             // txtLozinka
             // 
-            this.txtLozinka.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLozinka.Font = new System.Drawing.Font("Verdana", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLozinka.ForeColor = System.Drawing.Color.DarkGreen;
-            this.txtLozinka.Location = new System.Drawing.Point(351, 208);
+            this.txtLozinka.Location = new System.Drawing.Point(385, 232);
             this.txtLozinka.Name = "txtLozinka";
             this.txtLozinka.PasswordChar = '*';
-            this.txtLozinka.Size = new System.Drawing.Size(366, 54);
+            this.txtLozinka.Size = new System.Drawing.Size(490, 56);
             this.txtLozinka.TabIndex = 1;
             this.txtLozinka.Text = "admin123";
             // 
@@ -64,9 +64,9 @@ namespace View
             this.btnLogin.BackColor = System.Drawing.Color.DarkGreen;
             this.btnLogin.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLogin.Location = new System.Drawing.Point(351, 287);
+            this.btnLogin.Location = new System.Drawing.Point(385, 319);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(366, 70);
+            this.btnLogin.Size = new System.Drawing.Size(490, 70);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Prijavi se";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -75,7 +75,7 @@ namespace View
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.DarkGreen;
-            this.label1.Font = new System.Drawing.Font("Rockwell", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Verdana", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(-1, -5);
             this.label1.Name = "label1";
@@ -87,20 +87,20 @@ namespace View
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 144);
+            this.label2.Font = new System.Drawing.Font("Verdana", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(5, 148);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(340, 50);
+            this.label2.Size = new System.Drawing.Size(370, 48);
             this.label2.TabIndex = 4;
             this.label2.Text = "Korisničko ime:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 211);
+            this.label3.Font = new System.Drawing.Font("Verdana", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(5, 235);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(194, 50);
+            this.label3.Size = new System.Drawing.Size(209, 48);
             this.label3.TabIndex = 5;
             this.label3.Text = "Lozinka:";
             // 
@@ -117,6 +117,7 @@ namespace View
             this.Controls.Add(this.txtLozinka);
             this.Controls.Add(this.txtKorisnickoIme);
             this.ForeColor = System.Drawing.Color.DarkGreen;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;

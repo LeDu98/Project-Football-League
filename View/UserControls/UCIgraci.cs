@@ -15,6 +15,7 @@ namespace View.UserControls
     {
         private KontrolerIgrac kontrolerIgrac;
         public DataGridView DataGridIgraci { get => dgIgraci; }
+        public TextBox TxtPretraga { get => txtPretraga; }
         public UCIgraci(KontrolerIgrac kontrolerIgrac)
         {
             InitializeComponent();
@@ -44,6 +45,11 @@ namespace View.UserControls
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
             kontrolerIgrac.OtvoriDialogDetaljiOIgracu();
+        }
+
+        private void txtPretraga_TextChanged(object sender, EventArgs e)
+        {
+            kontrolerIgrac.Filtriraj();
         }
     }
 }

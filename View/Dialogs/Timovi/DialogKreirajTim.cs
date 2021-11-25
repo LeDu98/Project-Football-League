@@ -17,9 +17,6 @@ namespace View.Dialogs.Timovi
         public TextBox TxtNaziv { get => txtNaziv; }
         public TextBox TxtGrad { get => txtGrad; }
         public TextBox TxtBojaKluba { get => txtBojaKluba; }
-        public TextBox TxtPobede { get => txtPobede; }
-        public TextBox TxtNeresene { get => txtNeresene; }
-        public TextBox TxtPorazi { get => txtPorazi; }
         public DialogKreirajTim(Kontroleri.KontrolerTimovi kontrolerTimovi)
         {
             InitializeComponent();
@@ -29,6 +26,11 @@ namespace View.Dialogs.Timovi
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             kontrolerTimovi.DodajTim();
+        }
+
+        private void DialogKreirajTim_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

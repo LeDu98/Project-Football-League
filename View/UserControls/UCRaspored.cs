@@ -17,6 +17,7 @@ namespace View.UserControls
         private KontrolerRaspored kontrolerRezultati;
         
         public DataGridView DataGridUtakmice { get => dgUtakmice; }
+        public TextBox TxtPretraga { get => txtPretraga; }
         public UCRaspored(Kontroleri.KontrolerRaspored kontrolerUtakmice)
         {
             InitializeComponent();
@@ -47,6 +48,11 @@ namespace View.UserControls
         {
             kontrolerRezultati.OtvoriDialogUpdateUtakmicu();
 
+        }
+
+        private void txtPretraga_TextChanged(object sender, EventArgs e)
+        {
+            kontrolerRezultati.Filtriraj();
         }
     }
 }

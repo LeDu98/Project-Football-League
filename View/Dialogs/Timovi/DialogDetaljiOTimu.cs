@@ -36,7 +36,7 @@ namespace View.Dialogs.Timovi
             InitializeComponent();
             this.kontrolerTimovi = kontrolerTimovi;
             this.tim = tim;
-            kontrolerTimovi.InicijalizujDialogDetaljiOTimu(this, tim);
+            
             
         }
 
@@ -49,6 +49,11 @@ namespace View.Dialogs.Timovi
         private void checkPromeni_CheckedChanged(object sender, EventArgs e)
         {
             kontrolerTimovi.PromeniStanjeDialogaDetaljiOTimu();
+        }
+
+        private void DialogDetaljiOTimu_Load(object sender, EventArgs e)
+        {
+            kontrolerTimovi.InicijalizujDialogDetaljiOTimu(this, tim);
         }
     }
 }

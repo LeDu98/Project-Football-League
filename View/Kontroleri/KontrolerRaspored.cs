@@ -20,6 +20,13 @@ namespace View.Kontroleri
         private DialogUpdateUtakmicu dialogUpdateUtakmicu;
         private BindingList<Tim> timovi;
         private BindingList<Igrac> igraci;
+        private BindingList<Igrac> domaciIgraci;
+        private BindingList<Igrac> gostujuciIgraci;
+        private BindingList<StatistikaIgraca> listaStatistikaIgraca;
+        private int domacinGolovi;
+        private int gostGolovi;
+        private int strelacDomaci = 1;
+        private int strelacGost = 1;
         internal void InicijalizujUCRaspored(UCRaspored uCRaspored)
         {
             this.uCRaspored = uCRaspored;
@@ -57,7 +64,174 @@ namespace View.Kontroleri
             
         }
 
-        
+        internal void Filtriraj()
+        {
+            uCRaspored.DataGridUtakmice.DataSource = FiltrirajPretragu(uCRaspored.TxtPretraga.Text.ToLower());
+            uCRaspored.DataGridUtakmice.Refresh();
+        }
+
+        private BindingList<Raspored> FiltrirajPretragu(string tekstPretrage)
+        {
+            BindingList<Raspored> filtriranRaspored = new BindingList<Raspored>();
+            foreach (Raspored r in raspored)
+            {
+                string domacin = r.DomacinID.NazivTima;
+                string gost = r.GostID.NazivTima;
+                domacin = domacin.ToLower();
+                gost = gost.ToLower();
+                if (domacin.Contains(tekstPretrage) || gost.Contains(tekstPretrage))
+                {
+                    filtriranRaspored.Add(r);
+
+                }
+            }
+            if (filtriranRaspored.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Sistem ne može da nađe utakmice po zadatoj vrednosti!");
+            }
+            return filtriranRaspored;
+        }
+
+        internal void ObradaSignalaGostStrelac(Raspored raspored)
+        {
+            Raspored u = raspored;
+            Igrac i = dialogUpdateUtakmicu.DataGridGost.CurrentRow.DataBoundItem as Igrac;
+
+            foreach (StatistikaIgraca s in listaStatistikaIgraca)
+            {
+                if (s.IgracID == i && s.UtakmicaID == u)
+                {
+                    s.Golovi += 1;
+
+                    gostGolovi--;
+                    dialogUpdateUtakmicu.LabelGostStrelac.Text = $"Strelac {strelacGost}. gola gostujuce ekipe je {i.Ime} {i.Prezime}";
+                    dialogUpdateUtakmicu.LabelGostStrelac.Visible = true;
+                    strelacGost++;
+                    if (gostGolovi == 0)
+                    {
+                        dialogUpdateUtakmicu.BtnGostStrelac.Enabled = false;
+
+                    }
+                    return;
+                }
+
+
+            }
+            StatistikaIgraca si = new StatistikaIgraca();
+            si.IgracID = i;
+            si.UtakmicaID = u;
+            si.Golovi = 1;
+            listaStatistikaIgraca.Add(si);
+            gostGolovi--;
+            dialogUpdateUtakmicu.LabelGostStrelac.Text = $"Strelac {strelacGost}. gola gostujuce ekipe je {i.Ime} {i.Prezime}";
+            dialogUpdateUtakmicu.LabelGostStrelac.Visible = true;
+            strelacGost++;
+            if (gostGolovi == 0)
+            {
+                dialogUpdateUtakmicu.BtnGostStrelac.Enabled = false;
+
+            }
+        }
+
+        internal void ObradaSignalaDomacinStrelac(Raspored raspored)
+        {
+            Raspored u = raspored;
+            Igrac i = dialogUpdateUtakmicu.DataGridDomaci.CurrentRow.DataBoundItem as Igrac;
+
+            foreach (StatistikaIgraca s in listaStatistikaIgraca)
+            {
+                if (s.IgracID == i && s.UtakmicaID == u)
+                {
+                    s.Golovi += 1;
+
+                    domacinGolovi--;
+                    dialogUpdateUtakmicu.LabelDomacinStrelac.Text = $"Strelac {strelacDomaci}. gola domace ekipe je {i.Ime} {i.Prezime}";
+                    dialogUpdateUtakmicu.LabelDomacinStrelac.Visible = true;
+                    strelacDomaci++;
+                    if (domacinGolovi == 0)
+                    {
+                        dialogUpdateUtakmicu.BtnDomacinStrelac.Enabled = false;
+
+                    }
+                    return;
+                }
+
+
+            }
+            StatistikaIgraca si = new StatistikaIgraca();
+            si.IgracID = i;
+            si.UtakmicaID = u;
+            si.Golovi = 1;
+            listaStatistikaIgraca.Add(si);
+            domacinGolovi--;
+            dialogUpdateUtakmicu.LabelDomacinStrelac.Text = $"Strelac {strelacDomaci}. gola domaće ekipe je {i.Ime} {i.Prezime}";
+            dialogUpdateUtakmicu.LabelDomacinStrelac.Visible = true;
+            strelacDomaci++;
+            if (domacinGolovi == 0)
+            {
+                dialogUpdateUtakmicu.BtnDomacinStrelac.Enabled = false;
+
+            }
+        }
+
+        internal Raspored GenerisiDialogUpdateUtakmicuNakonPotvrdeRezultata(Raspored raspored)
+        {
+            domacinGolovi = (int)dialogUpdateUtakmicu.NumericDomacin.Value;
+            gostGolovi = (int)dialogUpdateUtakmicu.NumericGost.Value;
+            raspored.DomacinGolovi = (int)dialogUpdateUtakmicu.NumericDomacin.Value;
+            raspored.GostGolovi = (int)dialogUpdateUtakmicu.NumericGost.Value;
+
+            dialogUpdateUtakmicu.BtnDomacinStrelac.Enabled = true;
+            dialogUpdateUtakmicu.BtnGostStrelac.Enabled = true;
+
+            dialogUpdateUtakmicu.BtnUnesiRezultat.Enabled = false;
+            if (domacinGolovi == 0 && gostGolovi == 0)
+            {
+                SacuvajRezultatUtakmice(raspored);
+                dialogUpdateUtakmicu.Dispose();
+            }
+            if (domacinGolovi == 0)
+            {
+                dialogUpdateUtakmicu.BtnDomacinStrelac.Enabled = false;
+            }
+            if (gostGolovi == 0)
+            {
+                dialogUpdateUtakmicu.BtnGostStrelac.Enabled = false;
+            }
+            return raspored;
+        }
+
+        internal void InicijalizujDialogUpdateUtakmicu(Raspored raspored)
+        {
+            dialogUpdateUtakmicu.LabelDatum.Text = raspored.DatumIVremeOdigravanja.ToString("dd-MM-yyyy HH:mm");
+            dialogUpdateUtakmicu.LabelDomacin.Text = raspored.DomacinID.NazivTima;
+            dialogUpdateUtakmicu.LabelGost.Text = raspored.GostID.NazivTima;
+
+            domaciIgraci = vratiIgraceTima(raspored.DomacinID);
+            gostujuciIgraci = vratiIgraceTima(raspored.GostID);
+            dialogUpdateUtakmicu.DataGridDomaci.DataSource = domaciIgraci;
+            dialogUpdateUtakmicu.DataGridGost.DataSource = gostujuciIgraci;
+            listaStatistikaIgraca = new BindingList<StatistikaIgraca>();
+
+
+            dialogUpdateUtakmicu.LabelDomacinStrelac.Visible = false;
+            dialogUpdateUtakmicu.LabelGostStrelac.Visible = false;
+            dialogUpdateUtakmicu.BtnDomacinStrelac.Enabled = false;
+            dialogUpdateUtakmicu.BtnGostStrelac.Enabled = false;
+
+            dialogUpdateUtakmicu.DataGridDomaci.Columns[2].Visible = false;
+            dialogUpdateUtakmicu.DataGridDomaci.Columns[3].Visible = false;
+            dialogUpdateUtakmicu.DataGridDomaci.Columns[4].Visible = false;
+            dialogUpdateUtakmicu.DataGridDomaci.Columns[5].Visible = false;
+
+            dialogUpdateUtakmicu.DataGridGost.Columns[2].Visible = false;
+            dialogUpdateUtakmicu.DataGridGost.Columns[3].Visible = false;
+            dialogUpdateUtakmicu.DataGridGost.Columns[4].Visible = false;
+            dialogUpdateUtakmicu.DataGridGost.Columns[5].Visible = false;
+
+            strelacDomaci = 1;
+            strelacGost = 1;
+        }
 
         private void UcitajUtakmice()
         {
@@ -246,7 +420,7 @@ namespace View.Kontroleri
             }
         }
 
-        internal void SacuvajRezultatUtakmice(BindingList<StatistikaIgraca> listaStatistikaIgraca, Raspored utakmica)
+        internal void SacuvajRezultatUtakmice(Raspored utakmica)
         {
             var result = MessageBox.Show("Da li ste sigurni da želite da sačuvate ovaj rezultat?", "Sačuvaj", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)

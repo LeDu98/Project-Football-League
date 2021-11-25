@@ -118,8 +118,9 @@ namespace View.UserControls
             this.txtPretraga.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold);
             this.txtPretraga.Location = new System.Drawing.Point(228, 101);
             this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(310, 54);
+            this.txtPretraga.Size = new System.Drawing.Size(643, 54);
             this.txtPretraga.TabIndex = 11;
+            this.txtPretraga.TextChanged += new System.EventHandler(this.txtPretraga_TextChanged);
             // 
             // label2
             // 

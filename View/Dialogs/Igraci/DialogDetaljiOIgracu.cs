@@ -30,7 +30,7 @@ namespace View.Dialogs.Igraci
             InitializeComponent();
             this.kontrolerIgrac = kontrolerIgrac;
             this.igrac = i;
-            kontrolerIgrac.InicijalizujDialogDetaljiOIgracu(this,i);
+            
         }
 
         private void checkIzmeni_CheckedChanged(object sender, EventArgs e)
@@ -41,6 +41,11 @@ namespace View.Dialogs.Igraci
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
             kontrolerIgrac.PromeniPodatkeIgraca(igrac);
+        }
+
+        private void DialogDetaljiOIgracu_Load(object sender, EventArgs e)
+        {
+            kontrolerIgrac.InicijalizujDialogDetaljiOIgracu(this, igrac);
         }
     }
 }

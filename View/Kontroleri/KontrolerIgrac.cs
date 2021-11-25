@@ -33,6 +33,7 @@ namespace View.Kontroleri
             NapuniCbPozicije(dialogKreirajIgraca.CbPozicija);
             NapuniCbTimovi(dialogKreirajIgraca.CbTim);
             NapuniCbDrzave(dialogKreirajIgraca.CbDrzava);
+            
         }
 
         internal void InicijalizujDialogDetaljiOIgracu(DialogDetaljiOIgracu dialogDetaljiOIgracu, Igrac i)
@@ -58,6 +59,32 @@ namespace View.Kontroleri
             dialogDetaljiOIgracu.TBIme.Enabled = false;
             dialogDetaljiOIgracu.TBPrezime.Enabled = false;
             dialogDetaljiOIgracu.BtnIzmeni.Enabled = false;
+        }
+
+        internal void Filtriraj()
+        {
+            uCIgraci.DataGridIgraci.DataSource = FiltrirajPretragu(uCIgraci.TxtPretraga.Text.ToLower());
+            uCIgraci.DataGridIgraci.Refresh();
+        }
+
+        private BindingList<Igrac> FiltrirajPretragu(string tekstPretrage)
+        {
+            BindingList<Igrac> filtriraniIgraci = new BindingList<Igrac>();
+            foreach (Igrac i in igraci)
+            {
+                string stringIgraci = i.Ime + " " + i.Prezime;
+                stringIgraci = stringIgraci.ToLower();
+                if (stringIgraci.Contains(tekstPretrage))
+                {
+                    filtriraniIgraci.Add(i);
+
+                }
+            }
+            if (filtriraniIgraci.Count == 0)
+            {
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da nađe igrače po zadatoj vrednosti!");
+            }
+            return filtriraniIgraci;
         }
 
         internal void PromeniPodatkeIgraca(Igrac igrac)

@@ -24,14 +24,14 @@ namespace View.Dialogs.Utakmice
         {
             InitializeComponent();
             this.kontrolerRaspored = kontrolerRaspored;
-            kontrolerRaspored.InicijalizujDialogKreirajUtakmicu(this);
+            
         }
 
        
 
         private void DialogKreirajUtakmicu_Load(object sender, EventArgs e)
         {
-            
+            kontrolerRaspored.InicijalizujDialogKreirajUtakmicu(this);
         }
 
         private void btnKreiraj_Click(object sender, EventArgs e)

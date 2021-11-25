@@ -16,6 +16,7 @@ namespace View.UserControls
     {
         private KontrolerRezultati kontrolerRezultati;
         public DataGridView DataGridRezultati { get => dgRezultati; }
+        public TextBox TxtPretraga { get => txtPretraga; }
         public UCRezultati(Kontroleri.KontrolerRezultati kontrolerRezultati)
         {
             InitializeComponent();
@@ -29,8 +30,13 @@ namespace View.UserControls
 
         private void btnDetalji_Click(object sender, EventArgs e)
         {
-            Rezultati rez = dgRezultati.CurrentRow.DataBoundItem as Rezultati;
-            kontrolerRezultati.OtvoriDialogDetaljiOUtakmici(rez);
+            
+            kontrolerRezultati.OtvoriDialogDetaljiOUtakmici();
+        }
+
+        private void txtPretraga_TextChanged(object sender, EventArgs e)
+        {
+            kontrolerRezultati.Filtriraj();
         }
     }
 }

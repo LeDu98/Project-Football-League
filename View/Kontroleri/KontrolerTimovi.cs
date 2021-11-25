@@ -51,6 +51,9 @@ namespace View.Kontroleri
 
             igraci = VratiListuIgracaTima(tim);
             dialogDetaljiOTimu.DataGridIgraci.DataSource = igraci;
+
+            dialogDetaljiOTimu.DataGridIgraci.Columns[4].HeaderText = "Država";
+            dialogDetaljiOTimu.DataGridIgraci.Columns[5].Visible = false;
         }
 
         internal void PromeniStanjeDialogaDetaljiOTimu()
@@ -85,39 +88,26 @@ namespace View.Kontroleri
 
         internal void DodajTim()
         {
-           if(string.IsNullOrEmpty(dialogKreirajTim.TxtNaziv.Text) || string.IsNullOrEmpty(dialogKreirajTim.TxtGrad.Text) || string.IsNullOrEmpty(dialogKreirajTim.TxtBojaKluba.Text) || string.IsNullOrEmpty(dialogKreirajTim.TxtPobede.Text) || string.IsNullOrEmpty(dialogKreirajTim.TxtNeresene.Text) || string.IsNullOrEmpty(dialogKreirajTim.TxtPorazi.Text))
+           if(string.IsNullOrEmpty(dialogKreirajTim.TxtNaziv.Text) || string.IsNullOrEmpty(dialogKreirajTim.TxtGrad.Text) || string.IsNullOrEmpty(dialogKreirajTim.TxtBojaKluba.Text))
             {
-                System.Windows.Forms.MessageBox.Show("Niste uneli vrednosti u sva polja!");
+                MessageBox.Show("Niste uneli vrednosti u sva polja!");
                 return;
             }
             Tim tim = new Tim();
             tim.NazivTima = dialogKreirajTim.TxtNaziv.Text;
             tim.Grad = dialogKreirajTim.TxtGrad.Text;
             tim.BojaKluba = dialogKreirajTim.TxtBojaKluba.Text;
-            try
-            {
-                tim.Pobede = int.Parse(dialogKreirajTim.TxtPobede.Text);
-                tim.Neresene = int.Parse(dialogKreirajTim.TxtNeresene.Text);
-                tim.Porazi = int.Parse(dialogKreirajTim.TxtPorazi.Text);
-            }
-            catch (Exception)
-            {
-
-                System.Windows.Forms.MessageBox.Show("U polja namenjena za unos pobeda, poraza i nerešenih utakmica morate uneti numeričku vrednost!");
-                return;
-            }
-            tim.OdigraneUtakmice = tim.Pobede + tim.Neresene + tim.Porazi;
-            tim.Bodovi = tim.Pobede * 3 + tim.Neresene;
+           
 
             Tim pomocni = (Tim)Komunikacija.Komunikacija.Instance.Kreiraj(Operacije.KreirajTim, tim);
             if (pomocni != null)
             {
-                System.Windows.Forms.MessageBox.Show("Uspesno ste kreirali novi tim!");
+               MessageBox.Show("Uspesno ste kreirali novi tim!");
                 timovi.Add(pomocni);
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Sistem ne može da zapamti uneti tim!");
+               MessageBox.Show("Sistem ne može da zapamti uneti tim!");
             }
         }
 
