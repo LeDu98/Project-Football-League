@@ -84,7 +84,8 @@ namespace Broker
 
         public bool Izmeni(IEntity entity)
         {
-            SqlCommand command = connection.CreateCommand();
+            
+           SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
             command.CommandText = $"UPDATE {entity.Tabela} SET {entity.UpdateVrednosti}" +
                 $"WHERE {entity.UslovIzmeni}";
@@ -102,14 +103,16 @@ namespace Broker
             command.Transaction = transaction;
             command.CommandText = $"DELETE from {entity.Tabela} Where {entity.UslovIzmeni}";
             Console.WriteLine(command.CommandText);
-            if (command.ExecuteNonQuery() != 1)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+           
+                if (command.ExecuteNonQuery() != 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+           
         }
 
         public IEntity VratiEntity(IEntity entity)

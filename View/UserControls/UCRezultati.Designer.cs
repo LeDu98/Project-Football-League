@@ -34,10 +34,10 @@ namespace View.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgRezultati = new System.Windows.Forms.DataGridView();
-            this.btnDetalji = new System.Windows.Forms.Button();
             this.txtPretraga = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnObrisi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgRezultati)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,22 +96,10 @@ namespace View.UserControls
             this.dgRezultati.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgRezultati.RowTemplate.Height = 38;
             this.dgRezultati.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgRezultati.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgRezultati.Size = new System.Drawing.Size(923, 755);
             this.dgRezultati.TabIndex = 0;
-            // 
-            // btnDetalji
-            // 
-            this.btnDetalji.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDetalji.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnDetalji.Font = new System.Drawing.Font("Verdana", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalji.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDetalji.Location = new System.Drawing.Point(955, 188);
-            this.btnDetalji.Name = "btnDetalji";
-            this.btnDetalji.Size = new System.Drawing.Size(232, 152);
-            this.btnDetalji.TabIndex = 2;
-            this.btnDetalji.Text = "Detalji o utakmici";
-            this.btnDetalji.UseVisualStyleBackColor = false;
-            this.btnDetalji.Click += new System.EventHandler(this.btnDetalji_Click);
+            this.dgRezultati.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRezultati_CellDoubleClick);
             // 
             // txtPretraga
             // 
@@ -149,14 +137,28 @@ namespace View.UserControls
             this.label3.Text = "REZULTATI";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btnObrisi
+            // 
+            this.btnObrisi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnObrisi.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnObrisi.Font = new System.Drawing.Font("Verdana", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnObrisi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnObrisi.Location = new System.Drawing.Point(929, 188);
+            this.btnObrisi.Name = "btnObrisi";
+            this.btnObrisi.Size = new System.Drawing.Size(255, 167);
+            this.btnObrisi.TabIndex = 16;
+            this.btnObrisi.Text = "Obriši utakmicu";
+            this.btnObrisi.UseVisualStyleBackColor = false;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            // 
             // UCRezultati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.txtPretraga);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnDetalji);
             this.Controls.Add(this.dgRezultati);
             this.Name = "UCRezultati";
             this.Size = new System.Drawing.Size(1218, 943);
@@ -170,9 +172,9 @@ namespace View.UserControls
         #endregion
 
         private System.Windows.Forms.DataGridView dgRezultati;
-        private System.Windows.Forms.Button btnDetalji;
         private System.Windows.Forms.TextBox txtPretraga;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnObrisi;
     }
 }

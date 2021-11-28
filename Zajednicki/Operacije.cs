@@ -25,6 +25,8 @@ namespace Zajednicki
         KreirajStatistikeIgraca,
         IzmeniIgraca,
         VratiListuRezultata,
-        VratiListuStatistikaIgraca
+        VratiListuStatistikaIgraca,
+        ObrisiStatistikuIgraca,
+        ObrisiUtakmicu
     }
 }

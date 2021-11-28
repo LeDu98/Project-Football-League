@@ -42,7 +42,7 @@ namespace Domen
         [Browsable(false)]
         public object OrderBy => "order by datumIVremeOdigravanja DESC";
         [Browsable(false)]
-        public object UslovVratiListu => "where domacinGolovi > -1 and gostGolovi > -1";
+        public object UslovVratiListu => "";
 
         public IEntity VratiEntity(SqlDataReader citac)
         {

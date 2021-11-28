@@ -53,7 +53,7 @@ namespace View.UserControls
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGreen;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgTimovi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -78,7 +78,7 @@ namespace View.UserControls
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgTimovi.DefaultCellStyle = dataGridViewCellStyle3;
@@ -100,6 +100,7 @@ namespace View.UserControls
             this.dgTimovi.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgTimovi.RowTemplate.Height = 38;
             this.dgTimovi.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgTimovi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTimovi.Size = new System.Drawing.Size(962, 760);
             this.dgTimovi.TabIndex = 0;
             this.dgTimovi.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTimovi_CellDoubleClick);

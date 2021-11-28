@@ -158,6 +158,7 @@ namespace View.Dialogs.Utakmice
             this.dgDomacin.RowHeadersWidth = 62;
             this.dgDomacin.RowTemplate.Height = 38;
             this.dgDomacin.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgDomacin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgDomacin.Size = new System.Drawing.Size(234, 557);
             this.dgDomacin.TabIndex = 4;
             // 
@@ -217,6 +218,7 @@ namespace View.Dialogs.Utakmice
             this.dgGost.RowHeadersWidth = 62;
             this.dgGost.RowTemplate.Height = 38;
             this.dgGost.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgGost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgGost.Size = new System.Drawing.Size(234, 557);
             this.dgGost.TabIndex = 6;
             // 

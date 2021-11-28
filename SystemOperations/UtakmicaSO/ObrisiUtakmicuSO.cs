@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace SystemOperations.UtakmicaSO
 {
-    public class KreirajUtakmicuSO : SystemOperationsBase
+    public class ObrisiUtakmicuSO : SystemOperationsBase
     {
         protected override void ExecuteOperation(IEntity entity)
         {
-            Utakmica utakmica = (Utakmica)entity;
-            utakmica.UtakmicaID = repository.VratiID(utakmica);
-            Result = repository.Sacuvaj(utakmica);
+            Uspelo = repository.Obrisi(entity);
         }
     }
 }

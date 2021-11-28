@@ -10,7 +10,7 @@ namespace Domen
     public class StatistikaIgraca:IEntity
     {
      
-        public Raspored UtakmicaID { get; set; }
+        public Utakmica UtakmicaID { get; set; }
         public Igrac IgracID { get; set; }
         public int Golovi { get; set; }
         public string Prikaz => $"{IgracID.Ime} {IgracID.Prezime} : {Golovi}";
@@ -25,7 +25,7 @@ namespace Domen
 
         public object UpdateVrednosti => $"Golovi={Golovi}";
 
-        public object UslovIzmeni => "";
+        public object UslovIzmeni => $"IgracID={IgracID.IgracID} and UtakmicaId={UtakmicaID.UtakmicaID}";
 
         public object UslovVratiListu => "";
 
@@ -49,7 +49,7 @@ namespace Domen
             {
                 result.Add(new StatistikaIgraca()
                 {
-                   UtakmicaID= new Raspored()
+                   UtakmicaID= new Utakmica()
                    {
                        UtakmicaID = (int)citac["utakmicaID"],
                        DatumIVremeOdigravanja=(DateTime)citac["DatumIVremeOdigravanja"],
@@ -71,6 +71,8 @@ namespace Domen
                        IgracID=(int)citac["igracID"],
                        Ime = (string)citac["Ime"],
                        Prezime = (string)citac["Prezime"],
+                       Pozicija=(string)citac["Pozicija"],
+                       Golovi=citac.GetInt32(13),
                        DrzavaID = new Drzava
                        {
                            DrzavaID = citac.GetInt32(14),
@@ -79,6 +81,7 @@ namespace Domen
                        {
                            TimID=citac.GetInt32(15),
                        },
+                       
                        
                        
                    },

@@ -14,7 +14,7 @@ namespace View.Kontroleri
     {
         private UCTabela uCTabela;
         private BindingList<Tabela> tabelaTimovi;
-        private Tabela selektovanTim;
+        
 
         internal void InicijalizujUCTabela(UCTabela uCTabela)
         {

@@ -51,5 +51,7 @@ namespace View.UserControls
         {
             kontrolerIgrac.Filtriraj();
         }
+
+        
     }
 }

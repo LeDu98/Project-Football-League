@@ -15,7 +15,7 @@ namespace View.Dialogs.Utakmice
     public partial class DialogUpdateUtakmicu : Form
     {
         private KontrolerRaspored kontrolerRaspored;
-        private Raspored raspored;
+        private Utakmica raspored;
 
         public Label LabelDatum { get => lblDatum; }
         public Label LabelDomacin { get => lblDomacin; }
@@ -31,7 +31,7 @@ namespace View.Dialogs.Utakmice
         public NumericUpDown NumericDomacin { get => numericDomacinGolovi; }
         public NumericUpDown NumericGost { get => numericGostGolovi; }
 
-        public DialogUpdateUtakmicu(Kontroleri.KontrolerRaspored kontrolerRaspored, Domen.Raspored raspored)
+        public DialogUpdateUtakmicu(Kontroleri.KontrolerRaspored kontrolerRaspored, Domen.Utakmica raspored)
         {
             InitializeComponent();
             this.kontrolerRaspored = kontrolerRaspored;

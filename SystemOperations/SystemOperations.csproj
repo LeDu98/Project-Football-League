@@ -47,6 +47,7 @@
     <Compile Include="IgracSO\ObrisiIgracaSO.cs" />
     <Compile Include="IgracSO\VratiIgraceSO.cs" />
     <Compile Include="StatistikaIgracaSO\KreirajStatistikuIgracaSO.cs" />
+    <Compile Include="StatistikaIgracaSO\ObrisiStatistikuIgracaSO.cs" />
     <Compile Include="StatistikaIgracaSO\VratiStatistikeIgracaSO.cs" />
     <Compile Include="SystemOperationsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="TimoviSO\VratiTimoveSO.cs" />
     <Compile Include="UtakmicaSO\IzmeniUtakmicuSO.cs" />
     <Compile Include="UtakmicaSO\KreirajUtakmicuSO.cs" />
+    <Compile Include="UtakmicaSO\ObrisiUtakmicuSO.cs" />
     <Compile Include="UtakmicaSO\VratiRezultateSO.cs" />
     <Compile Include="UtakmicaSO\VratiUtakmiceSO.cs" />
   </ItemGroup>

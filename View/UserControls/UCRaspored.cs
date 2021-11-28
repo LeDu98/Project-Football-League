@@ -14,7 +14,7 @@ namespace View.UserControls
 {
     public partial class UCRaspored : UserControl
     {
-        private KontrolerRaspored kontrolerRezultati;
+        private KontrolerRaspored kontrolerRaspored;
         
         public DataGridView DataGridUtakmice { get => dgUtakmice; }
         public TextBox TxtPretraga { get => txtPretraga; }
@@ -22,37 +22,38 @@ namespace View.UserControls
         {
             InitializeComponent();
            
-            this.kontrolerRezultati = kontrolerUtakmice;
+            this.kontrolerRaspored = kontrolerUtakmice;
         }
 
         private void UCUtakmice_Load(object sender, EventArgs e)
         {
-            kontrolerRezultati.InicijalizujUCRaspored(this);
+            kontrolerRaspored.InicijalizujUCRaspored(this);
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             
-            kontrolerRezultati.OtvoriDialogKreirajUtakmicu();
-            kontrolerRezultati.InicijalizujUCRaspored(this);
+            kontrolerRaspored.OtvoriDialogKreirajUtakmicu();
+            kontrolerRaspored.InicijalizujUCRaspored(this);
 
         }
 
-        private void btnUnesi_Click(object sender, EventArgs e)
-        {
-            
-            kontrolerRezultati.OtvoriDialogUpdateUtakmicu();
-        }
+        
 
         private void dgUtakmice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            kontrolerRezultati.OtvoriDialogUpdateUtakmicu();
+            kontrolerRaspored.OtvoriDialogUpdateUtakmicu();
 
         }
 
         private void txtPretraga_TextChanged(object sender, EventArgs e)
         {
-            kontrolerRezultati.Filtriraj();
+            kontrolerRaspored.Filtriraj();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            kontrolerRaspored.ObrisiUtakmicu();
         }
     }
 }

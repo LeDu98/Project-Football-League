@@ -18,6 +18,7 @@ namespace View.Kontroleri
         private BindingList<Igrac> igraci;
         private DialogKreirajIgraca dialogKreirajIgraca;
         private DialogDetaljiOIgracu dialogDetaljiOIgracu;
+        private BindingList<StatistikaIgraca> listaStatistikaIgraca;
         internal void InicijalizujUCIgrac(UCIgraci uCIgraci)
         {
             this.uCIgraci = uCIgraci;
@@ -163,7 +164,7 @@ namespace View.Kontroleri
 
         internal void ObrisiIgraca()
         {
-            var result = MessageBox.Show("Da li ste sigurni da želite da obrišete igrača?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
+            var result = MessageBox.Show("Ukoliko potvrdite to znači da će se svi podaci o igraču obrisati, kao i svi podaci o statistikama obrisanog igrača. Da li ste sigurni da želite da obrišete igrača?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 return;
@@ -171,6 +172,15 @@ namespace View.Kontroleri
             try
             {
                 Igrac igrac = uCIgraci.DataGridIgraci.CurrentRow.DataBoundItem as Igrac;
+                List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
+                listaStatistikaIgraca = new BindingList<StatistikaIgraca>();
+                foreach (StatistikaIgraca o in listaStatistika)
+                {
+                    if (o.IgracID.IgracID == igrac.IgracID)
+                    {
+                        Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, o);
+                    }
+                }
                 Komunikacija.Komunikacija.Instance.Obrisi(Zajednicki.Operacije.ObrisiIgraca, igrac);
                 igraci.Remove(igrac);
                 MessageBox.Show("Sistem je obrisao igrača!");

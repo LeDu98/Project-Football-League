@@ -28,15 +28,21 @@ namespace View.UserControls
             kontrolerRezultati.InicijalizujUCRezultate(this);
         }
 
-        private void btnDetalji_Click(object sender, EventArgs e)
-        {
-            
-            kontrolerRezultati.OtvoriDialogDetaljiOUtakmici();
-        }
+        
 
         private void txtPretraga_TextChanged(object sender, EventArgs e)
         {
             kontrolerRezultati.Filtriraj();
+        }
+
+        private void dgRezultati_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            kontrolerRezultati.OtvoriDialogDetaljiOUtakmici();
+        }
+
+        private void btnObrisi_Click(object sender, EventArgs e)
+        {
+            kontrolerRezultati.ObrisiUtakmicu();
         }
     }
 }

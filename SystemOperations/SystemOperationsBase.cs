@@ -28,7 +28,7 @@ namespace SystemOperations
                 ExecuteOperation(entity);
                 repository.Commit();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 repository.Rollback();
                 throw;

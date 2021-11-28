@@ -107,11 +107,11 @@ namespace Server
                     break;
                 case Operacije.KreirajUtakmicu:
                     lista = new List<object>();
-                    lista.Add(Kontroler.Instance.KreirajUtakmicu((Raspored)zahtev.Objekat));
+                    lista.Add(Kontroler.Instance.KreirajUtakmicu((Utakmica)zahtev.Objekat));
                     odgovor.Rezultat = lista;
                     break;
                 case Operacije.IzmeniUtakmicu:
-                    odgovor.Uspesno = Kontroler.Instance.UpdateUtakmice((Raspored)zahtev.Objekat);
+                    odgovor.Uspesno = Kontroler.Instance.UpdateUtakmice((Utakmica)zahtev.Objekat);
                     break;
                 case Operacije.KreirajStatistikeIgraca:
                     lista = new List<object>();
@@ -128,6 +128,12 @@ namespace Server
                 case Operacije.VratiListuStatistikaIgraca:
                     odgovor.Rezultat = Kontroler.Instance.VratiStatistikeIgraca();
                     odgovor.Uspesno = true;
+                    break;
+                case Operacije.ObrisiStatistikuIgraca:
+                    odgovor.Uspesno = Kontroler.Instance.ObrisiStatistikuIgraca((StatistikaIgraca)zahtev.Objekat);
+                    break;
+                case Operacije.ObrisiUtakmicu:
+                    odgovor.Uspesno = Kontroler.Instance.ObrisiUtakmicu((Utakmica)zahtev.Objekat);
                     break;
 
 

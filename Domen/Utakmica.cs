@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domen
 {   [Serializable]
-    public class Raspored:IEntity
+    public class Utakmica:IEntity
     {   [Browsable(false)]
         public int UtakmicaID { get; set; }
         public DateTime DatumIVremeOdigravanja { get; set; }
@@ -18,12 +18,8 @@ namespace Domen
         [Browsable(false)]
         public int GostGolovi { get; set; }
         public Tim GostID { get; set; }
-        
-        
-       
-      
-        [Browsable(false)]
-        public bool OdigranaUtakmica { get; set; }
+
+    
         [Browsable(false)]
         public string IdName => "UtakmicaID";
         [Browsable(false)]
@@ -39,7 +35,11 @@ namespace Domen
         [Browsable(false)]
         public object OrderBy => "order by datumIVremeOdigravanja ASC";
         [Browsable(false)]
-        public object UslovVratiListu => "where domacinGolovi = -1 and gostGolovi = -1";
+        public object UslovVratiListu => "";
+        public override string ToString()
+        {
+            return DomacinID.NazivTima + ":" + GostID.NazivTima + "REz: " + DomacinGolovi+":"+ GostGolovi ;
+        }
 
         public IEntity VratiEntity(SqlDataReader citac)
         {
@@ -52,7 +52,7 @@ namespace Domen
             
             while (citac.Read())
             {
-                result.Add(new Raspored()
+                result.Add(new Utakmica()
                 {
                     UtakmicaID=(int)citac["utakmicaID"],
                     DatumIVremeOdigravanja=(DateTime)citac["DatumIVremeOdigravanja"],
@@ -89,7 +89,7 @@ namespace Domen
             return result;
         }
 
-        public static implicit operator Raspored(Rezultati v)
+        public static implicit operator Utakmica(Rezultati v)
         {
             throw new NotImplementedException();
         }

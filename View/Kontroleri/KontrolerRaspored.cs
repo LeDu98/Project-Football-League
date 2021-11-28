@@ -15,7 +15,7 @@ namespace View.Kontroleri
    public class KontrolerRaspored
     {
         private UCRaspored uCRaspored;
-        private BindingList<Raspored> raspored;
+        private BindingList<Utakmica> raspored;
         private DialogKreirajUtakmicu dialogKreirajUtakmicu;
         private DialogUpdateUtakmicu dialogUpdateUtakmicu;
         private BindingList<Tim> timovi;
@@ -64,16 +64,48 @@ namespace View.Kontroleri
             
         }
 
+        internal void ObrisiUtakmicu()
+        {
+            var result = System.Windows.Forms.MessageBox.Show("Ukoliko potvrdite, pored obrisane utakmice će se obrisati i sve statistike igrača na utakmici. Da li ste sigurni da želite da obrišete utakmicu?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+            try
+            {
+                Utakmica utakmica = uCRaspored.DataGridUtakmice.CurrentRow.DataBoundItem as Utakmica;
+
+                List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
+       
+                foreach (StatistikaIgraca si in listaStatistika)
+                   {
+                        if (si.UtakmicaID.UtakmicaID == utakmica.UtakmicaID)
+                            {
+                              Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, si);
+                            }
+                   }
+                Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiUtakmicu, utakmica);
+                raspored.Remove(utakmica);
+                System.Windows.Forms.MessageBox.Show("Sistem je obrisao utakmicu");
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e + "EXCEPTION KOD BRISANJA UTAKMICE");
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da obrise utakmicu");
+            }
+        }
+
         internal void Filtriraj()
         {
             uCRaspored.DataGridUtakmice.DataSource = FiltrirajPretragu(uCRaspored.TxtPretraga.Text.ToLower());
             uCRaspored.DataGridUtakmice.Refresh();
         }
 
-        private BindingList<Raspored> FiltrirajPretragu(string tekstPretrage)
+        private BindingList<Utakmica> FiltrirajPretragu(string tekstPretrage)
         {
-            BindingList<Raspored> filtriranRaspored = new BindingList<Raspored>();
-            foreach (Raspored r in raspored)
+            BindingList<Utakmica> filtriranRaspored = new BindingList<Utakmica>();
+            foreach (Utakmica r in raspored)
             {
                 string domacin = r.DomacinID.NazivTima;
                 string gost = r.GostID.NazivTima;
@@ -92,9 +124,9 @@ namespace View.Kontroleri
             return filtriranRaspored;
         }
 
-        internal void ObradaSignalaGostStrelac(Raspored raspored)
+        internal void ObradaSignalaGostStrelac(Utakmica raspored)
         {
-            Raspored u = raspored;
+            Utakmica u = raspored;
             Igrac i = dialogUpdateUtakmicu.DataGridGost.CurrentRow.DataBoundItem as Igrac;
 
             foreach (StatistikaIgraca s in listaStatistikaIgraca)
@@ -133,9 +165,9 @@ namespace View.Kontroleri
             }
         }
 
-        internal void ObradaSignalaDomacinStrelac(Raspored raspored)
+        internal void ObradaSignalaDomacinStrelac(Utakmica raspored)
         {
-            Raspored u = raspored;
+            Utakmica u = raspored;
             Igrac i = dialogUpdateUtakmicu.DataGridDomaci.CurrentRow.DataBoundItem as Igrac;
 
             foreach (StatistikaIgraca s in listaStatistikaIgraca)
@@ -174,7 +206,7 @@ namespace View.Kontroleri
             }
         }
 
-        internal Raspored GenerisiDialogUpdateUtakmicuNakonPotvrdeRezultata(Raspored raspored)
+        internal Utakmica GenerisiDialogUpdateUtakmicuNakonPotvrdeRezultata(Utakmica raspored)
         {
             domacinGolovi = (int)dialogUpdateUtakmicu.NumericDomacin.Value;
             gostGolovi = (int)dialogUpdateUtakmicu.NumericGost.Value;
@@ -201,7 +233,7 @@ namespace View.Kontroleri
             return raspored;
         }
 
-        internal void InicijalizujDialogUpdateUtakmicu(Raspored raspored)
+        internal void InicijalizujDialogUpdateUtakmicu(Utakmica raspored)
         {
             dialogUpdateUtakmicu.LabelDatum.Text = raspored.DatumIVremeOdigravanja.ToString("dd-MM-yyyy HH:mm");
             dialogUpdateUtakmicu.LabelDomacin.Text = raspored.DomacinID.NazivTima;
@@ -236,10 +268,14 @@ namespace View.Kontroleri
         private void UcitajUtakmice()
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuUtakmica);
-            raspored = new BindingList<Raspored>();
-            foreach (object o in lista)
+            raspored = new BindingList<Utakmica>();
+            foreach (Utakmica o in lista)
             {
-                raspored.Add((Raspored)o);
+                if(o.DomacinGolovi==-1 && o.GostGolovi == -1)
+                {
+                raspored.Add(o);
+
+                }
             }
         }
 
@@ -257,7 +293,7 @@ namespace View.Kontroleri
             return igraci;
         }
 
-        internal void UpdateUtakmicu(Raspored utakmica)
+        internal void UpdateUtakmicu(Utakmica utakmica)
         {
             var result = MessageBox.Show("Da li ste sigurni da želite da sačuvate ovaj rezultat?", "Sačuvaj", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
@@ -290,7 +326,7 @@ namespace View.Kontroleri
 
         internal void OtvoriDialogUpdateUtakmicu()
         {
-            Raspored raspored = uCRaspored.DataGridUtakmice.CurrentRow.DataBoundItem as Raspored;
+            Utakmica raspored = uCRaspored.DataGridUtakmice.CurrentRow.DataBoundItem as Utakmica;
             dialogUpdateUtakmicu = new DialogUpdateUtakmicu(this,raspored);
             dialogUpdateUtakmicu.ShowDialog();
         }
@@ -317,14 +353,14 @@ namespace View.Kontroleri
             }
 
             
-            Raspored u = new Raspored()
+            Utakmica u = new Utakmica()
             {
                 DomacinID = domacin,
                 GostID = gost,
                 DatumIVremeOdigravanja = dialogKreirajUtakmicu.DatumIVreme.Value
                 
             };
-            Raspored pomocna = (Raspored)Komunikacija.Komunikacija.Instance.Kreiraj(Zajednicki.Operacije.KreirajUtakmicu, u);
+            Utakmica pomocna = (Utakmica)Komunikacija.Komunikacija.Instance.Kreiraj(Zajednicki.Operacije.KreirajUtakmicu, u);
             if (pomocna != null)
             {
                 MessageBox.Show("Sistem je zapamtio novu utakmicu!");
@@ -370,7 +406,7 @@ namespace View.Kontroleri
             }
         }
 
-        internal void UpdateTim(Raspored utakmica)
+        internal void UpdateTim(Utakmica utakmica)
         {
             try
             {
@@ -420,7 +456,7 @@ namespace View.Kontroleri
             }
         }
 
-        internal void SacuvajRezultatUtakmice(Raspored utakmica)
+        internal void SacuvajRezultatUtakmice(Utakmica utakmica)
         {
             var result = MessageBox.Show("Da li ste sigurni da želite da sačuvate ovaj rezultat?", "Sačuvaj", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)

@@ -38,6 +38,10 @@ namespace Domen
         public object OrderBy => "";
         [Browsable(false)]
         public object UslovVratiListu => "";
+        public override string ToString()
+        {
+            return IgracID + "_" + Ime + " " + Prezime + "_";
+        }
 
         public IEntity VratiEntity(SqlDataReader citac)
         {

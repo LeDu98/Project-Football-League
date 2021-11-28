@@ -18,6 +18,10 @@ namespace View.Kontroleri
         
         private BindingList<Tim> timovi;
         private BindingList<Igrac> igraci;
+        private BindingList<Igrac> igraciBrisanje;
+        
+        
+        
        
         private DialogKreirajTim dialogKreirajTim;
         private DialogDetaljiOTimu dialogDetaljiOTimu;
@@ -174,7 +178,7 @@ namespace View.Kontroleri
 
         internal void ObrisiTim()
         {
-            var result = System.Windows.Forms.MessageBox.Show("Da li ste sigurni da želite da obrišete tim?","Obriši",System.Windows.Forms.MessageBoxButtons.YesNo);
+            var result = System.Windows.Forms.MessageBox.Show("Ukoliko potvrdite pored obrisanog tima će se obrisati i svi igrači tima, statistike igrača tima, kao i sve utakmice koje je tim odigrao ili treba odigrati. Da li ste sigurni da želite da obrišete tim?","Obriši",System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.No)
             {
                 return;
@@ -182,6 +186,94 @@ namespace View.Kontroleri
             try
             {
                 Tim tim = uCTimovi.DataGridTimovi.CurrentRow.DataBoundItem as Tim;
+                List<object> listaUtakmica = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuUtakmica);
+                List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
+                List<object> listaTimova = Komunikacija.Komunikacija.Instance.VratiListu(Operacije.VratiListuTimova);
+
+                
+                foreach(Tim tim1 in listaTimova)
+                {
+                    foreach (Utakmica u in listaUtakmica)
+                    {
+
+                        if ((u.DomacinID.TimID == tim.TimID || u.GostID.TimID == tim.TimID) && (tim1.TimID==u.DomacinID.TimID || tim1.TimID==u.GostID.TimID))
+                        {
+                            foreach (StatistikaIgraca si in listaStatistika)
+                            {
+                                if (si.UtakmicaID.UtakmicaID == u.UtakmicaID)
+                                {
+                                    Igrac i = new Igrac();
+                                    i = si.IgracID;
+                                    i.Golovi -= si.Golovi;
+                                    Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, si);
+                                    Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniIgraca, i);
+
+
+                                }
+                            }
+                            if (tim1.TimID == u.DomacinID.TimID)
+                            {
+                                if (u.DomacinGolovi != -1 && u.GostGolovi != -1)
+                                {
+                                    if (u.DomacinGolovi == u.GostGolovi)
+                                    {
+                                        tim1.Neresene -= 1;
+                                        tim1.Bodovi -= 1;
+                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
+                                    }
+                                    if (u.DomacinGolovi > u.GostGolovi)
+                                    {
+                                        tim1.Pobede -= 1;
+                                        tim1.Bodovi -= 3;
+                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
+                                    }
+                                    if (u.DomacinGolovi < u.GostGolovi)
+                                    {
+                                        tim1.Porazi -= 1;
+                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
+                                    }
+   
+                                }
+                            }
+                            if (tim1.TimID == u.GostID.TimID)
+                            {
+                                if (u.DomacinGolovi != -1 && u.GostGolovi != -1)
+                                {
+                                    if (u.DomacinGolovi == u.GostGolovi)
+                                    {
+                                        tim1.Neresene -= 1;
+                                        tim1.Bodovi -= 1;
+                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim,tim1);
+                                    }
+                                    if (u.DomacinGolovi < u.GostGolovi)
+                                    {
+                                        tim1.Pobede -= 1;
+                                        tim1.Bodovi -= 3;
+                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
+                                    }
+                                    if (u.DomacinGolovi > u.GostGolovi)
+                                    {
+                                        tim1.Porazi -= 1;
+                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
+                                    }
+                                   
+                                }
+                            }
+                            Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiUtakmicu, u);
+                        }
+                    }
+                }
+                
+
+                
+                igraciBrisanje = new BindingList<Igrac>();
+                igraciBrisanje = VratiListuIgracaTima(tim);
+                    
+               foreach(Igrac i in igraci)
+                {
+                  Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiIgraca, i);
+                }
+                
                 Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiTim, tim);
                 timovi.Remove(tim);
                 System.Windows.Forms.MessageBox.Show("Sistem je obrisao tim");
@@ -193,6 +285,8 @@ namespace View.Kontroleri
                 System.Windows.Forms.MessageBox.Show("Sistem ne moze da obrise tim");
             }
         }
+
+       
 
         internal void Filtriraj()
         {

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Dialogs.Utakmice;
 using View.UserControls;
+using Zajednicki;
 
 namespace View.Kontroleri
 {
@@ -35,9 +36,45 @@ namespace View.Kontroleri
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuRezultata);
             rezultati = new BindingList<Rezultati>();
-            foreach (object o in lista)
+            foreach (Rezultati o in lista)
             {
-                rezultati.Add((Rezultati)o);
+                if(o.DomacinGolovi!=-1 && o.GostGolovi  != -1)
+                {
+                rezultati.Add(o);
+
+                }
+            }
+        }
+
+        internal void ObrisiUtakmicu()
+        {
+            var result = System.Windows.Forms.MessageBox.Show("Ukoliko potvrdite, pored obrisane utakmice će se obrisati i sve statistike igrača na utakmici. Da li ste sigurni da želite da obrišete utakmicu?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+            try
+            {
+                Rezultati utakmica = uCRezultati.DataGridRezultati.CurrentRow.DataBoundItem as Rezultati;
+
+                List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
+
+                foreach (StatistikaIgraca si in listaStatistika)
+                {
+                    if (si.UtakmicaID.UtakmicaID == utakmica.UtakmicaID)
+                    {
+                        Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, si);
+                    }
+                }
+                Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiUtakmicu, utakmica);
+                rezultati.Remove(utakmica);
+                System.Windows.Forms.MessageBox.Show("Sistem je obrisao utakmicu");
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e + "EXCEPTION KOD BRISANJA UTAKMICE");
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da obrise utakmicu");
             }
         }
 

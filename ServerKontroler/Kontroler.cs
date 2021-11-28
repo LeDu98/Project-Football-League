@@ -110,19 +110,19 @@ namespace ServerKontroler
         public List<object> VratiUtakmice()
         {
             SystemOperationsBase systemOperation = new VratiUtakmiceSO();
-            systemOperation.ExecuteTemplate(new Raspored());
+            systemOperation.ExecuteTemplate(new Utakmica());
             return systemOperation.ResultList;
 
         }
 
-        public object KreirajUtakmicu(Raspored utakmica)
+        public object KreirajUtakmicu(Utakmica utakmica)
         {
             SystemOperationsBase systemOperation = new KreirajUtakmicuSO();
             systemOperation.ExecuteTemplate(utakmica);
             return systemOperation.Result;
         }
 
-        public bool UpdateUtakmice(Raspored utakmica)
+        public bool UpdateUtakmice(Utakmica utakmica)
         {
             SystemOperationsBase systemOperation = new IzmeniUtakmicuSO();
             systemOperation.ExecuteTemplate(utakmica);
@@ -157,6 +157,18 @@ namespace ServerKontroler
             return systemOperation.ResultList;
         }
 
-       
+        public bool ObrisiStatistikuIgraca(StatistikaIgraca si)
+        {
+            SystemOperationsBase systemOperation = new ObrisiStatistikuIgracaSO();
+            systemOperation.ExecuteTemplate(si);
+            return systemOperation.Uspelo;
+        }
+
+        public bool ObrisiUtakmicu(Utakmica utakmica)
+        {
+            SystemOperationsBase systemOperation = new ObrisiUtakmicuSO();
+            systemOperation.ExecuteTemplate(utakmica);
+            return systemOperation.Uspelo;
+        }
     }
 }
