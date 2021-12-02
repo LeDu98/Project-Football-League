@@ -16,14 +16,27 @@ namespace View.Kontroleri
     {
         private UCRezultati uCRezultati;
         private DialogDetaljiOUtakmici dialogDetaljiOUtakmici;
-        private BindingList<Rezultati> rezultati;
+        private BindingList<Utakmica> utakmice;
         private BindingList<StatistikaIgraca> listaStatistikaIgraca;
+        private BindingList<Tim> timovi;
+
+      
 
         internal void InicijalizujUCRezultate(UCRezultati uCRezultati)
         {
             this.uCRezultati = uCRezultati;
             UcitajUtakmice();
-            this.uCRezultati.DataGridRezultati.DataSource = rezultati;
+            this.uCRezultati.DataGridRezultati.DataSource = utakmice;
+            timovi = VratiTimove();
+            uCRezultati.CBTim.Items.Add("Sve utakmice");
+            foreach (Tim t in timovi)
+            {
+                uCRezultati.CBTim.Items.Add(t);
+
+            }
+            uCRezultati.CBTim.SelectedIndex = 0;
+
+            uCRezultati.CBTim.DropDownStyle = ComboBoxStyle.DropDownList;
             uCRezultati.DataGridRezultati.Columns[0].HeaderText = "Termin utakmice";
             uCRezultati.DataGridRezultati.Columns[1].HeaderText = "Domaći tim";
             uCRezultati.DataGridRezultati.Columns[2].HeaderText = "Golovi";
@@ -32,15 +45,26 @@ namespace View.Kontroleri
             
         }
 
+        private BindingList<Tim> VratiTimove()
+        {
+            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
+            timovi = new BindingList<Tim>();
+            foreach (object o in lista)
+            {
+                timovi.Add((Tim)o);
+            }
+            return timovi;
+        }
+
         private void UcitajUtakmice()
         {
-            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuRezultata);
-            rezultati = new BindingList<Rezultati>();
-            foreach (Rezultati o in lista)
+            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuUtakmica);
+            utakmice = new BindingList<Utakmica>();
+            foreach (Utakmica o in lista)
             {
                 if(o.DomacinGolovi!=-1 && o.GostGolovi  != -1)
                 {
-                rezultati.Add(o);
+                utakmice.Add(o);
 
                 }
             }
@@ -55,7 +79,7 @@ namespace View.Kontroleri
             }
             try
             {
-                Rezultati utakmica = uCRezultati.DataGridRezultati.CurrentRow.DataBoundItem as Rezultati;
+                Utakmica utakmica = uCRezultati.DataGridRezultati.CurrentRow.DataBoundItem as Utakmica;
 
                 List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
 
@@ -67,7 +91,7 @@ namespace View.Kontroleri
                     }
                 }
                 Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiUtakmicu, utakmica);
-                rezultati.Remove(utakmica);
+                utakmice.Remove(utakmica);
                 System.Windows.Forms.MessageBox.Show("Sistem je obrisao utakmicu");
             }
             catch (Exception e)
@@ -80,23 +104,28 @@ namespace View.Kontroleri
 
         internal void Filtriraj()
         {
-            uCRezultati.DataGridRezultati.DataSource = FiltrirajPretragu(uCRezultati.TxtPretraga.Text.ToLower());
+            if (uCRezultati.CBTim.Text == "Sve utakmice")
+            {
+                this.uCRezultati.DataGridRezultati.DataSource = utakmice;
+                return;
+            }
+            uCRezultati.DataGridRezultati.DataSource = FiltrirajPretragu(uCRezultati.CBTim.Text.ToLower());
             uCRezultati.DataGridRezultati.Refresh();
         }
 
-        private BindingList<Rezultati> FiltrirajPretragu(string tekstPretrage)
+        private BindingList<Utakmica> FiltrirajPretragu(string tekstPretrage)
         {
 
-            BindingList<Rezultati> FiltriraniRezultati = new BindingList<Rezultati>();
-            foreach (Rezultati r in rezultati)
+            BindingList<Utakmica> FiltriraniRezultati = new BindingList<Utakmica>();
+            foreach (Utakmica u in utakmice)
             {
-                string domacin = r.DomacinID.NazivTima;
-                string gost = r.GostID.NazivTima;
+                string domacin = u.DomacinID.NazivTima;
+                string gost = u.GostID.NazivTima;
                 domacin = domacin.ToLower();
                 gost = gost.ToLower();
                 if (domacin.Contains(tekstPretrage) || gost.Contains(tekstPretrage))
                 {
-                    FiltriraniRezultati.Add(r);
+                    FiltriraniRezultati.Add(u);
 
                 }
             }
@@ -107,7 +136,7 @@ namespace View.Kontroleri
             return FiltriraniRezultati;
         }
 
-        internal void InicijalizujDialogDetaljiOUtakmici(Rezultati rezultat)
+        internal void InicijalizujDialogDetaljiOUtakmici(Utakmica rezultat)
         {
             dialogDetaljiOUtakmici.LabelDomacin.Text = rezultat.DomacinID.NazivTima;
             dialogDetaljiOUtakmici.LabelGost.Text = rezultat.GostID.NazivTima;
@@ -120,12 +149,12 @@ namespace View.Kontroleri
 
         internal void OtvoriDialogDetaljiOUtakmici()
         {
-            Rezultati rezultat = uCRezultati.DataGridRezultati.CurrentRow.DataBoundItem as Rezultati;
+            Utakmica rezultat = uCRezultati.DataGridRezultati.CurrentRow.DataBoundItem as Utakmica;
             dialogDetaljiOUtakmici = new DialogDetaljiOUtakmici(this,rezultat); 
             dialogDetaljiOUtakmici.ShowDialog();
         }
 
-        private void NapuniListBox(Rezultati rezultat)
+        private void NapuniListBox(Utakmica rezultat)
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
             listaStatistikaIgraca = new BindingList<StatistikaIgraca>();

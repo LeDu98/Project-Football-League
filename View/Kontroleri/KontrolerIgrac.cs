@@ -19,6 +19,8 @@ namespace View.Kontroleri
         private DialogKreirajIgraca dialogKreirajIgraca;
         private DialogDetaljiOIgracu dialogDetaljiOIgracu;
         private BindingList<StatistikaIgraca> listaStatistikaIgraca;
+
+        #region UCIgrac
         internal void InicijalizujUCIgrac(UCIgraci uCIgraci)
         {
             this.uCIgraci = uCIgraci;
@@ -28,38 +30,14 @@ namespace View.Kontroleri
             uCIgraci.DataGridIgraci.Columns[5].HeaderText = "Tim";
         }
 
-        internal void InicijalizujDialogKreirajIgraca(DialogKreirajIgraca dialogKreirajIgraca)
+        private void UcitajIgrace()
         {
-            this.dialogKreirajIgraca = dialogKreirajIgraca;
-            NapuniCbPozicije(dialogKreirajIgraca.CbPozicija);
-            NapuniCbTimovi(dialogKreirajIgraca.CbTim);
-            NapuniCbDrzave(dialogKreirajIgraca.CbDrzava);
-            
-        }
-
-        internal void InicijalizujDialogDetaljiOIgracu(DialogDetaljiOIgracu dialogDetaljiOIgracu, Igrac i)
-        {
-            this.dialogDetaljiOIgracu = dialogDetaljiOIgracu;
-            NapuniCbPozicije(dialogDetaljiOIgracu.CBPozicija);
-            NapuniCbTimovi(dialogDetaljiOIgracu.CBTim);
-            NapuniCbDrzave(dialogDetaljiOIgracu.CBDrzava);
-           
-            
-            dialogDetaljiOIgracu.CBDrzava.Text =i.DrzavaID.NazivDrzave;
-            dialogDetaljiOIgracu.CBPozicija.Text = i.Pozicija;
-            dialogDetaljiOIgracu.CBTim.Text = i.TimID.NazivTima;
-
-            dialogDetaljiOIgracu.LabelGolovi.Text = i.Golovi.ToString();
-            dialogDetaljiOIgracu.TBIme.Text = i.Ime;
-            dialogDetaljiOIgracu.TBPrezime.Text = i.Prezime;
-
-            dialogDetaljiOIgracu.CBDrzava.Enabled = false;
-            dialogDetaljiOIgracu.CBPozicija.Enabled = false;
-            dialogDetaljiOIgracu.CBTim.Enabled = false;
-            
-            dialogDetaljiOIgracu.TBIme.Enabled = false;
-            dialogDetaljiOIgracu.TBPrezime.Enabled = false;
-            dialogDetaljiOIgracu.BtnIzmeni.Enabled = false;
+            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuIgraca);
+            igraci = new BindingList<Igrac>();
+            foreach (object o in lista)
+            {
+                igraci.Add((Igrac)o);
+            }
         }
 
         internal void Filtriraj()
@@ -88,9 +66,132 @@ namespace View.Kontroleri
             return filtriraniIgraci;
         }
 
+        internal void ObrisiIgraca()
+        {
+            var result = MessageBox.Show("Ukoliko potvrdite to znači da će se svi podaci o igraču obrisati, kao i svi podaci o statistikama obrisanog igrača. Da li ste sigurni da želite da obrišete igrača?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            try
+            {
+                Igrac igrac = uCIgraci.DataGridIgraci.CurrentRow.DataBoundItem as Igrac;
+                List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
+                listaStatistikaIgraca = new BindingList<StatistikaIgraca>();
+                foreach (StatistikaIgraca o in listaStatistika)
+                {
+                    if (o.IgracID.IgracID == igrac.IgracID)
+                    {
+                        Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, o);
+                    }
+                }
+                Komunikacija.Komunikacija.Instance.Obrisi(Zajednicki.Operacije.ObrisiIgraca, igrac);
+                igraci.Remove(igrac);
+                MessageBox.Show("Sistem je obrisao igrača!");
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e + "EXCEPTION KOD BRISANJA IGRACA");
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da obrise igrača!");
+            }
+        }
+        #endregion
+
+        #region dialogKreirajIgraca
+        internal void InicijalizujDialogKreirajIgraca(DialogKreirajIgraca dialogKreirajIgraca)
+        {
+            this.dialogKreirajIgraca = dialogKreirajIgraca;
+            NapuniCbPozicije(dialogKreirajIgraca.CbPozicija);
+            NapuniCbTimovi(dialogKreirajIgraca.CbTim);
+            NapuniCbDrzave(dialogKreirajIgraca.CbDrzava);
+            
+        }
+        internal void OtvoriDialogKreirajIgraca()
+        {
+            this.dialogKreirajIgraca = new DialogKreirajIgraca(this);
+            dialogKreirajIgraca.ShowDialog();
+        }
+        internal void DodajIgraca()
+        {
+            if (string.IsNullOrEmpty(dialogKreirajIgraca.TxtIme.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.TxtPrezime.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbPozicija.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbDrzava.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbTim.Text))
+            {
+                MessageBox.Show("Niste uneli vrednosti u sva polja");
+                return;
+            }
+            Igrac i = new Igrac();
+            i.Ime = dialogKreirajIgraca.TxtIme.Text;
+            i.Prezime = dialogKreirajIgraca.TxtPrezime.Text;
+
+
+            i.Pozicija = dialogKreirajIgraca.CbPozicija.SelectedItem.ToString();
+
+            i.TimID = dialogKreirajIgraca.CbTim.SelectedItem as Tim;
+            if (i.TimID == null)
+            {
+                MessageBox.Show("Uneli ste nevalidnu vrednost za tim! Morate odabrati jednu od posojecih opcija.");
+                return;
+            }
+
+
+            i.DrzavaID = dialogKreirajIgraca.CbDrzava.SelectedItem as Drzava;
+            if (i.DrzavaID == null)
+            {
+                MessageBox.Show("Uneli ste nevalidnu vrednost za drzavu! Morate odabrati jednu od postojecih opcija.");
+                return;
+
+            }
+
+
+
+            Igrac pom = (Igrac)Komunikacija.Komunikacija.Instance.Kreiraj(Zajednicki.Operacije.KreirajIgraca, i);
+            if (pom != null)
+            {
+                MessageBox.Show($"Igrač {i.Ime} {i.Prezime} je uspešno kreiran!");
+                igraci.Add(pom);
+            }
+            else
+            {
+                MessageBox.Show("Sistem ne može da zapamti unetog igrača!");
+            }
+            dialogKreirajIgraca.Dispose();
+
+
+        }
+
+
+
+        #endregion
+
+        #region dialogDetaljiOIgracu
+        internal void InicijalizujDialogDetaljiOIgracu(DialogDetaljiOIgracu dialogDetaljiOIgracu, Igrac i)
+        {
+            this.dialogDetaljiOIgracu = dialogDetaljiOIgracu;
+            NapuniCbPozicije(dialogDetaljiOIgracu.CBPozicija);
+            NapuniCbTimovi(dialogDetaljiOIgracu.CBTim);
+            NapuniCbDrzave(dialogDetaljiOIgracu.CBDrzava);
+
+
+            dialogDetaljiOIgracu.CBDrzava.Text = i.DrzavaID.NazivDrzave;
+            dialogDetaljiOIgracu.CBPozicija.Text = i.Pozicija;
+            dialogDetaljiOIgracu.CBTim.Text = i.TimID.NazivTima;
+
+            dialogDetaljiOIgracu.LabelGolovi.Text = i.Golovi.ToString();
+            dialogDetaljiOIgracu.TBIme.Text = i.Ime;
+            dialogDetaljiOIgracu.TBPrezime.Text = i.Prezime;
+
+            dialogDetaljiOIgracu.CBDrzava.Enabled = false;
+            dialogDetaljiOIgracu.CBPozicija.Enabled = false;
+            dialogDetaljiOIgracu.CBTim.Enabled = false;
+
+            dialogDetaljiOIgracu.TBIme.Enabled = false;
+            dialogDetaljiOIgracu.TBPrezime.Enabled = false;
+            dialogDetaljiOIgracu.BtnIzmeni.Enabled = false;
+        }
+
         internal void PromeniPodatkeIgraca(Igrac igrac)
         {
-            if (dialogDetaljiOIgracu.TBIme.Text == igrac.Ime && dialogDetaljiOIgracu.TBPrezime.Text == igrac.Prezime && dialogDetaljiOIgracu.CBDrzava.SelectedItem==igrac.DrzavaID && dialogDetaljiOIgracu.CBPozicija.Text==igrac.Pozicija && dialogDetaljiOIgracu.CBTim.SelectedItem==igrac.TimID)
+            if (dialogDetaljiOIgracu.TBIme.Text == igrac.Ime && dialogDetaljiOIgracu.TBPrezime.Text == igrac.Prezime && dialogDetaljiOIgracu.CBDrzava.SelectedItem == igrac.DrzavaID && dialogDetaljiOIgracu.CBPozicija.Text == igrac.Pozicija && dialogDetaljiOIgracu.CBTim.SelectedItem == igrac.TimID)
             {
                 MessageBox.Show("Podaci su ostali nepromenjeni!");
                 return;
@@ -162,91 +263,12 @@ namespace View.Kontroleri
             }
         }
 
-        internal void ObrisiIgraca()
-        {
-            var result = MessageBox.Show("Ukoliko potvrdite to znači da će se svi podaci o igraču obrisati, kao i svi podaci o statistikama obrisanog igrača. Da li ste sigurni da želite da obrišete igrača?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
-            if (result == DialogResult.No)
-            {
-                return;
-            }
-            try
-            {
-                Igrac igrac = uCIgraci.DataGridIgraci.CurrentRow.DataBoundItem as Igrac;
-                List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
-                listaStatistikaIgraca = new BindingList<StatistikaIgraca>();
-                foreach (StatistikaIgraca o in listaStatistika)
-                {
-                    if (o.IgracID.IgracID == igrac.IgracID)
-                    {
-                        Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, o);
-                    }
-                }
-                Komunikacija.Komunikacija.Instance.Obrisi(Zajednicki.Operacije.ObrisiIgraca, igrac);
-                igraci.Remove(igrac);
-                MessageBox.Show("Sistem je obrisao igrača!");
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e + "EXCEPTION KOD BRISANJA IGRACA");
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da obrise igrača!");
-            }
-        }
-
         internal void OtvoriDialogDetaljiOIgracu()
         {
             Igrac i = uCIgraci.DataGridIgraci.CurrentRow.DataBoundItem as Igrac;
-            this.dialogDetaljiOIgracu = new DialogDetaljiOIgracu(this,i);
+            this.dialogDetaljiOIgracu = new DialogDetaljiOIgracu(this, i);
             dialogDetaljiOIgracu.ShowDialog();
         }
-
-        internal void DodajIgraca()
-        {
-           if(string.IsNullOrEmpty(dialogKreirajIgraca.TxtIme.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.TxtPrezime.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbPozicija.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbDrzava.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbTim.Text))
-            {
-                MessageBox.Show("Niste uneli vrednosti u sva polja");
-                return;
-            }
-            Igrac i = new Igrac();
-            i.Ime = dialogKreirajIgraca.TxtIme.Text;
-            i.Prezime = dialogKreirajIgraca.TxtPrezime.Text;
-
-           
-            i.Pozicija = dialogKreirajIgraca.CbPozicija.SelectedItem.ToString();
-            
-            i.TimID = dialogKreirajIgraca.CbTim.SelectedItem as Tim;
-            if (i.TimID == null)
-            {
-                MessageBox.Show("Uneli ste nevalidnu vrednost za tim! Morate odabrati jednu od posojecih opcija.");
-                return;
-            }
-            
-            
-                i.DrzavaID = dialogKreirajIgraca.CbDrzava.SelectedItem as Drzava;
-            if (i.DrzavaID == null)
-            {
-                MessageBox.Show("Uneli ste nevalidnu vrednost za drzavu! Morate odabrati jednu od postojecih opcija.");
-                return;
-
-            }
-
-            
-
-            Igrac pom = (Igrac)Komunikacija.Komunikacija.Instance.Kreiraj(Zajednicki.Operacije.KreirajIgraca, i);
-            if (pom != null)
-            {
-                MessageBox.Show($"Igrač {i.Ime} {i.Prezime} je uspešno kreiran!");
-                igraci.Add(pom);
-            }
-            else
-            {
-                MessageBox.Show("Sistem ne može da zapamti unetog igrača!");
-            }
-            dialogKreirajIgraca.Dispose();
-           
-
-        }
-
         private void NapuniCbDrzave(ComboBox cbDrzava)
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuDrzava);
@@ -257,12 +279,11 @@ namespace View.Kontroleri
             }
             cbDrzava.SelectedIndex = 0;
         }
-
         private void NapuniCbTimovi(ComboBox cbTim)
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
 
-            foreach(object o in lista)
+            foreach (object o in lista)
             {
                 cbTim.Items.Add(o);
             }
@@ -278,20 +299,7 @@ namespace View.Kontroleri
             cbPozicija.SelectedIndex = 0;
         }
 
-        private void UcitajIgrace()
-        {
-            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuIgraca);
-            igraci = new BindingList<Igrac>();
-            foreach (object o in lista)
-            {
-                igraci.Add((Igrac)o);
-            }
-        }
+        #endregion
 
-        internal void OtvoriDialogKreirajIgraca()
-        {
-            this.dialogKreirajIgraca = new DialogKreirajIgraca(this);
-            dialogKreirajIgraca.ShowDialog();
-        }
     }
 }

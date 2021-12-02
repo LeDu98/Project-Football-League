@@ -46,6 +46,7 @@
     <Compile Include="IgracSO\KreirajIgracaSO.cs" />
     <Compile Include="IgracSO\ObrisiIgracaSO.cs" />
     <Compile Include="IgracSO\VratiIgraceSO.cs" />
+    <Compile Include="IgracSO\VratiListuStrelaca.cs" />
     <Compile Include="StatistikaIgracaSO\KreirajStatistikuIgracaSO.cs" />
     <Compile Include="StatistikaIgracaSO\ObrisiStatistikuIgracaSO.cs" />
     <Compile Include="StatistikaIgracaSO\VratiStatistikeIgracaSO.cs" />

@@ -15,9 +15,10 @@ namespace View.UserControls
     public partial class UCRaspored : UserControl
     {
         private KontrolerRaspored kontrolerRaspored;
-        
+
         public DataGridView DataGridUtakmice { get => dgUtakmice; }
-        public TextBox TxtPretraga { get => txtPretraga; }
+        
+        public ComboBox CBTim { get => cmbTim; }
         public UCRaspored(Kontroleri.KontrolerRaspored kontrolerUtakmice)
         {
             InitializeComponent();
@@ -46,14 +47,16 @@ namespace View.UserControls
 
         }
 
-        private void txtPretraga_TextChanged(object sender, EventArgs e)
-        {
-            kontrolerRaspored.Filtriraj();
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
             kontrolerRaspored.ObrisiUtakmicu();
+        }
+
+        private void cmbTim_TextChanged(object sender, EventArgs e)
+        {
+            kontrolerRaspored.Filtriraj();
         }
     }
 }

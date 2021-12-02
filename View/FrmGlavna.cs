@@ -19,6 +19,7 @@ namespace View
         {
             InitializeComponent();
             this.glavniKontroler = glavniKontroler;
+            glavniKontroler.OtvoriUCGlavna(this);
             
         }
 
@@ -34,10 +35,7 @@ namespace View
             glavniKontroler.OtvoriUCTimovi(this);
         }
 
-        private void tabelaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            glavniKontroler.OtvoriUCTabela(this);
-        }
+       
 
         private void igraciToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -54,6 +52,16 @@ namespace View
         private void rasporedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             glavniKontroler.OtvoriUCUtakmice(this);
+        }
+
+        private void listaStrelacaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            glavniKontroler.OtvoriUCListaStrelaca(this);
+        }
+
+        private void tabelaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            glavniKontroler.OtvoriUCTabela(this);
         }
     }
 }

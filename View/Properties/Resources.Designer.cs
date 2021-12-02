@@ -63,9 +63,9 @@ namespace View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _85386_vardy_england_national_football_player_team_clothing {
+        internal static System.Drawing.Bitmap g1 {
             get {
-                object obj = ResourceManager.GetObject("_85386_vardy_england_national_football_player_team_clothing", resourceCulture);
+                object obj = ResourceManager.GetObject("g1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _85386_vardy_england_national_football_player_team_clothing_400x400 {
+        internal static System.Drawing.Bitmap g2 {
             get {
-                object obj = ResourceManager.GetObject("_85386_vardy_england_national_football_player_team_clothing_400x400", resourceCulture);
+                object obj = ResourceManager.GetObject("g2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,39 +83,9 @@ namespace View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _85386_vardy_england_national_football_player_team_clothing_thumb {
+        internal static System.Drawing.Bitmap g3 {
             get {
-                object obj = ResourceManager.GetObject("_85386_vardy_england_national_football_player_team_clothing_thumb", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap goal128 {
-            get {
-                object obj = ResourceManager.GetObject("goal128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap goal256 {
-            get {
-                object obj = ResourceManager.GetObject("goal256", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap goal512 {
-            get {
-                object obj = ResourceManager.GetObject("goal512", resourceCulture);
+                object obj = ResourceManager.GetObject("g3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

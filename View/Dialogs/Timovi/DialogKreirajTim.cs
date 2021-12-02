@@ -26,6 +26,7 @@ namespace View.Dialogs.Timovi
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             kontrolerTimovi.DodajTim();
+            this.Dispose();
         }
 
         private void DialogKreirajTim_Load(object sender, EventArgs e)

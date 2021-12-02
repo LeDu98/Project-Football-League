@@ -27,6 +27,7 @@ namespace Zajednicki
         VratiListuRezultata,
         VratiListuStatistikaIgraca,
         ObrisiStatistikuIgraca,
-        ObrisiUtakmicu
+        ObrisiUtakmicu,
+        VratiListuStrelaca
     }
 }

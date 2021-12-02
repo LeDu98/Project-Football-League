@@ -32,7 +32,7 @@ namespace View.Kontroleri
             tabelaTimovi = new BindingList<Tabela>();
             foreach(object o in lista)
             {
-                //asafasf
+                
                 tabelaTimovi.Add((Tabela)o);
             }
         }

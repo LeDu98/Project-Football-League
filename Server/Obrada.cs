@@ -135,6 +135,10 @@ namespace Server
                 case Operacije.ObrisiUtakmicu:
                     odgovor.Uspesno = Kontroler.Instance.ObrisiUtakmicu((Utakmica)zahtev.Objekat);
                     break;
+                case Operacije.VratiListuStrelaca:
+                    odgovor.Rezultat = Kontroler.Instance.VratiListuStrelaca();
+                    odgovor.Uspesno = true;
+                    break;
 
 
 

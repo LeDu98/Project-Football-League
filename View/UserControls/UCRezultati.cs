@@ -16,7 +16,7 @@ namespace View.UserControls
     {
         private KontrolerRezultati kontrolerRezultati;
         public DataGridView DataGridRezultati { get => dgRezultati; }
-        public TextBox TxtPretraga { get => txtPretraga; }
+        public ComboBox CBTim { get => cmbTim; }
         public UCRezultati(Kontroleri.KontrolerRezultati kontrolerRezultati)
         {
             InitializeComponent();
@@ -28,12 +28,6 @@ namespace View.UserControls
             kontrolerRezultati.InicijalizujUCRezultate(this);
         }
 
-        
-
-        private void txtPretraga_TextChanged(object sender, EventArgs e)
-        {
-            kontrolerRezultati.Filtriraj();
-        }
 
         private void dgRezultati_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -43,6 +37,11 @@ namespace View.UserControls
         private void btnObrisi_Click(object sender, EventArgs e)
         {
             kontrolerRezultati.ObrisiUtakmicu();
+        }
+
+        private void cmbTim_TextChanged(object sender, EventArgs e)
+        {
+            kontrolerRezultati.Filtriraj();
         }
     }
 }

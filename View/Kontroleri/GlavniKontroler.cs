@@ -24,6 +24,11 @@ namespace View.Kontroleri
             frmGlavna.SetPanel(new UCIgraci(new KontrolerIgrac()));
         }
 
+        internal void OtvoriUCGlavna(FrmGlavna frmGlavna)
+        {
+            frmGlavna.SetPanel(new UCGlavna());
+        }
+
         internal void OtvoriUCUtakmice(FrmGlavna frmGlavna)
         {
             frmGlavna.SetPanel(new UCRaspored(new KontrolerRaspored()));
@@ -32,6 +37,11 @@ namespace View.Kontroleri
         internal void OtvoriUCRezultati(FrmGlavna frmGlavna)
         {
             frmGlavna.SetPanel(new UCRezultati(new KontrolerRezultati()));
+        }
+
+        internal void OtvoriUCListaStrelaca(FrmGlavna frmGlavna)
+        {
+            frmGlavna.SetPanel(new UCListaStrelaca(new KontrolerListaStrelaca()));
         }
     }
 }

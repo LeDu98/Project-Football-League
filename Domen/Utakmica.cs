@@ -13,9 +13,9 @@ namespace Domen
         public int UtakmicaID { get; set; }
         public DateTime DatumIVremeOdigravanja { get; set; }
         public Tim DomacinID { get; set; }
-        [Browsable(false)]
+        
         public int DomacinGolovi { get; set; }
-        [Browsable(false)]
+        
         public int GostGolovi { get; set; }
         public Tim GostID { get; set; }
 

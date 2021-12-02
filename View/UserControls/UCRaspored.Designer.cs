@@ -34,10 +34,10 @@ namespace View.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.dgUtakmice = new System.Windows.Forms.DataGridView();
-            this.txtPretraga = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.cmbTim = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtakmice)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,15 +106,6 @@ namespace View.UserControls
             this.dgUtakmice.TabIndex = 2;
             this.dgUtakmice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgUtakmice_CellDoubleClick);
             // 
-            // txtPretraga
-            // 
-            this.txtPretraga.Font = new System.Drawing.Font("Rockwell", 20F, System.Drawing.FontStyle.Bold);
-            this.txtPretraga.Location = new System.Drawing.Point(226, 101);
-            this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(570, 54);
-            this.txtPretraga.TabIndex = 14;
-            this.txtPretraga.TextChanged += new System.EventHandler(this.txtPretraga_TextChanged);
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -126,7 +117,7 @@ namespace View.UserControls
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(1235, 87);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Pretraga:";
+            this.label2.Text = "Odaberi tim:";
             // 
             // label3
             // 
@@ -156,12 +147,26 @@ namespace View.UserControls
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cmbTim
+            // 
+            this.cmbTim.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbTim.BackColor = System.Drawing.Color.DarkGreen;
+            this.cmbTim.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTim.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cmbTim.FormattingEnabled = true;
+            this.cmbTim.Location = new System.Drawing.Point(303, 94);
+            this.cmbTim.Name = "cmbTim";
+            this.cmbTim.Size = new System.Drawing.Size(532, 57);
+            this.cmbTim.TabIndex = 16;
+            this.cmbTim.TextChanged += new System.EventHandler(this.cmbTim_TextChanged);
+            // 
             // UCRaspored
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbTim);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtPretraga);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgUtakmice);
@@ -171,7 +176,6 @@ namespace View.UserControls
             this.Load += new System.EventHandler(this.UCUtakmice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgUtakmice)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -179,9 +183,9 @@ namespace View.UserControls
 
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.DataGridView dgUtakmice;
-        private System.Windows.Forms.TextBox txtPretraga;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cmbTim;
     }
 }

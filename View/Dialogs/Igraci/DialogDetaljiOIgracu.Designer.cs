@@ -44,6 +44,7 @@ namespace View.Dialogs.Igraci
             this.btnIzmeni = new System.Windows.Forms.Button();
             this.checkIzmeni = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -54,11 +55,11 @@ namespace View.Dialogs.Igraci
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label1.Location = new System.Drawing.Point(86, 145);
+            this.label1.Location = new System.Drawing.Point(86, 161);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(279, 38);
+            this.label1.Size = new System.Drawing.Size(102, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Ime i prezime:";
+            this.label1.Text = "Ime:";
             // 
             // label3
             // 
@@ -68,7 +69,7 @@ namespace View.Dialogs.Igraci
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label3.Location = new System.Drawing.Point(86, 212);
+            this.label3.Location = new System.Drawing.Point(86, 290);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 38);
             this.label3.TabIndex = 2;
@@ -82,7 +83,7 @@ namespace View.Dialogs.Igraci
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label4.Location = new System.Drawing.Point(86, 283);
+            this.label4.Location = new System.Drawing.Point(86, 361);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(155, 38);
             this.label4.TabIndex = 3;
@@ -96,7 +97,7 @@ namespace View.Dialogs.Igraci
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label5.Location = new System.Drawing.Point(86, 352);
+            this.label5.Location = new System.Drawing.Point(86, 430);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 38);
             this.label5.TabIndex = 4;
@@ -110,7 +111,7 @@ namespace View.Dialogs.Igraci
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label6.Location = new System.Drawing.Point(86, 412);
+            this.label6.Location = new System.Drawing.Point(86, 490);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(235, 38);
             this.label6.TabIndex = 5;
@@ -124,7 +125,7 @@ namespace View.Dialogs.Igraci
             this.lblGolovi.AutoSize = true;
             this.lblGolovi.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGolovi.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblGolovi.Location = new System.Drawing.Point(436, 412);
+            this.lblGolovi.Location = new System.Drawing.Point(436, 490);
             this.lblGolovi.Name = "lblGolovi";
             this.lblGolovi.Size = new System.Drawing.Size(126, 38);
             this.lblGolovi.TabIndex = 6;
@@ -139,9 +140,9 @@ namespace View.Dialogs.Igraci
             this.txtIme.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtIme.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtIme.Location = new System.Drawing.Point(442, 145);
+            this.txtIme.Location = new System.Drawing.Point(442, 158);
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(304, 46);
+            this.txtIme.Size = new System.Drawing.Size(628, 46);
             this.txtIme.TabIndex = 7;
             // 
             // txtPrezime
@@ -152,9 +153,9 @@ namespace View.Dialogs.Igraci
             this.txtPrezime.BackColor = System.Drawing.Color.DarkGreen;
             this.txtPrezime.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrezime.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtPrezime.Location = new System.Drawing.Point(753, 145);
+            this.txtPrezime.Location = new System.Drawing.Point(442, 223);
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(318, 46);
+            this.txtPrezime.Size = new System.Drawing.Size(628, 46);
             this.txtPrezime.TabIndex = 8;
             // 
             // cmbPozicija
@@ -167,7 +168,7 @@ namespace View.Dialogs.Igraci
             this.cmbPozicija.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPozicija.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cmbPozicija.FormattingEnabled = true;
-            this.cmbPozicija.Location = new System.Drawing.Point(442, 212);
+            this.cmbPozicija.Location = new System.Drawing.Point(442, 290);
             this.cmbPozicija.Name = "cmbPozicija";
             this.cmbPozicija.Size = new System.Drawing.Size(628, 46);
             this.cmbPozicija.TabIndex = 9;
@@ -182,7 +183,7 @@ namespace View.Dialogs.Igraci
             this.cmbDrzava.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDrzava.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cmbDrzava.FormattingEnabled = true;
-            this.cmbDrzava.Location = new System.Drawing.Point(442, 283);
+            this.cmbDrzava.Location = new System.Drawing.Point(442, 361);
             this.cmbDrzava.Name = "cmbDrzava";
             this.cmbDrzava.Size = new System.Drawing.Size(628, 46);
             this.cmbDrzava.TabIndex = 10;
@@ -197,7 +198,7 @@ namespace View.Dialogs.Igraci
             this.cmbTim.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTim.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cmbTim.FormattingEnabled = true;
-            this.cmbTim.Location = new System.Drawing.Point(442, 352);
+            this.cmbTim.Location = new System.Drawing.Point(442, 430);
             this.cmbTim.Name = "cmbTim";
             this.cmbTim.Size = new System.Drawing.Size(628, 46);
             this.cmbTim.TabIndex = 11;
@@ -241,11 +242,26 @@ namespace View.Dialogs.Igraci
             this.label2.Text = "Detalji o igraču";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label7.Location = new System.Drawing.Point(86, 231);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(175, 38);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Prezime:";
+            // 
             // DialogDetaljiOIgracu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 714);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkIzmeni);
             this.Controls.Add(this.btnIzmeni);
@@ -287,5 +303,6 @@ namespace View.Dialogs.Igraci
         private System.Windows.Forms.ComboBox cmbPozicija;
         private System.Windows.Forms.ComboBox cmbDrzava;
         private System.Windows.Forms.ComboBox cmbTim;
+        private System.Windows.Forms.Label label7;
     }
 }

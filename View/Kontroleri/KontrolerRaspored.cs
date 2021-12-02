@@ -33,9 +33,23 @@ namespace View.Kontroleri
 
             UcitajUtakmice();
             this.uCRaspored.DataGridUtakmice.DataSource = raspored;
+
+            timovi = VratiTimove();
+            uCRaspored.CBTim.Items.Add("Sve utakmice");
+            foreach (Tim t in timovi)
+            {
+              uCRaspored.CBTim.Items.Add(t);
+
+            }
+           uCRaspored.CBTim.SelectedIndex = 0;
+            
+            uCRaspored.CBTim.DropDownStyle = ComboBoxStyle.DropDownList;
+
             uCRaspored.DataGridUtakmice.Columns[0].HeaderText = "Termin utakmice";
             uCRaspored.DataGridUtakmice.Columns[1].HeaderText = "Domaći tim";
-            uCRaspored.DataGridUtakmice.Columns[2].HeaderText = "Gostujući tim";
+            uCRaspored.DataGridUtakmice.Columns[2].Visible = false;
+            uCRaspored.DataGridUtakmice.Columns[3].Visible = false;
+            uCRaspored.DataGridUtakmice.Columns[4].HeaderText = "Gostujući tim";
 
         }
 
@@ -98,7 +112,12 @@ namespace View.Kontroleri
 
         internal void Filtriraj()
         {
-            uCRaspored.DataGridUtakmice.DataSource = FiltrirajPretragu(uCRaspored.TxtPretraga.Text.ToLower());
+            if(uCRaspored.CBTim.Text=="Sve utakmice")
+            {
+                this.uCRaspored.DataGridUtakmice.DataSource = raspored;
+                return;
+            }
+            uCRaspored.DataGridUtakmice.DataSource = FiltrirajPretragu(uCRaspored.CBTim.Text.ToLower());
             uCRaspored.DataGridUtakmice.Refresh();
         }
 

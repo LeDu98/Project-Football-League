@@ -32,6 +32,8 @@ namespace View
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGlavna));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tabelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaStrelacaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.rezultatiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rasporedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,60 +45,92 @@ namespace View
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.BackColor = System.Drawing.Color.DarkGreen;
+            this.menuStrip1.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(3);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tabelaToolStripMenuItem,
             this.toolStripMenuItem1,
             this.timoviToolStripMenuItem,
             this.igraciToolStripMenuItem});
+            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1452, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1454, 42);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tabelaToolStripMenuItem
             // 
+            this.tabelaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tabelaToolStripMenuItem1,
+            this.listaStrelacaToolStripMenuItem});
+            this.tabelaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabelaToolStripMenuItem.Name = "tabelaToolStripMenuItem";
-            this.tabelaToolStripMenuItem.Size = new System.Drawing.Size(77, 29);
+            this.tabelaToolStripMenuItem.Size = new System.Drawing.Size(137, 38);
             this.tabelaToolStripMenuItem.Text = "Tabela";
-            this.tabelaToolStripMenuItem.Click += new System.EventHandler(this.tabelaToolStripMenuItem_Click);
+            // 
+            // tabelaToolStripMenuItem1
+            // 
+            this.tabelaToolStripMenuItem1.BackColor = System.Drawing.Color.DarkGreen;
+            this.tabelaToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tabelaToolStripMenuItem1.Name = "tabelaToolStripMenuItem1";
+            this.tabelaToolStripMenuItem1.Size = new System.Drawing.Size(334, 42);
+            this.tabelaToolStripMenuItem1.Text = "Tabela";
+            this.tabelaToolStripMenuItem1.Click += new System.EventHandler(this.tabelaToolStripMenuItem1_Click);
+            // 
+            // listaStrelacaToolStripMenuItem
+            // 
+            this.listaStrelacaToolStripMenuItem.BackColor = System.Drawing.Color.DarkGreen;
+            this.listaStrelacaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.listaStrelacaToolStripMenuItem.Name = "listaStrelacaToolStripMenuItem";
+            this.listaStrelacaToolStripMenuItem.Size = new System.Drawing.Size(334, 42);
+            this.listaStrelacaToolStripMenuItem.Text = "Lista strelaca";
+            this.listaStrelacaToolStripMenuItem.Click += new System.EventHandler(this.listaStrelacaToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.rezultatiToolStripMenuItem,
             this.rasporedToolStripMenuItem});
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(101, 29);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 38);
             this.toolStripMenuItem1.Text = "Utakmice";
             // 
             // rezultatiToolStripMenuItem
             // 
+            this.rezultatiToolStripMenuItem.BackColor = System.Drawing.Color.DarkGreen;
+            this.rezultatiToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.rezultatiToolStripMenuItem.Name = "rezultatiToolStripMenuItem";
-            this.rezultatiToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
+            this.rezultatiToolStripMenuItem.Size = new System.Drawing.Size(270, 42);
             this.rezultatiToolStripMenuItem.Text = "Rezultati";
             this.rezultatiToolStripMenuItem.Click += new System.EventHandler(this.rezultatiToolStripMenuItem_Click);
             // 
             // rasporedToolStripMenuItem
             // 
+            this.rasporedToolStripMenuItem.BackColor = System.Drawing.Color.DarkGreen;
+            this.rasporedToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.rasporedToolStripMenuItem.Name = "rasporedToolStripMenuItem";
-            this.rasporedToolStripMenuItem.Size = new System.Drawing.Size(190, 34);
+            this.rasporedToolStripMenuItem.Size = new System.Drawing.Size(270, 42);
             this.rasporedToolStripMenuItem.Text = "Raspored";
             this.rasporedToolStripMenuItem.Click += new System.EventHandler(this.rasporedToolStripMenuItem_Click);
             // 
             // timoviToolStripMenuItem
             // 
+            this.timoviToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.timoviToolStripMenuItem.Name = "timoviToolStripMenuItem";
-            this.timoviToolStripMenuItem.Size = new System.Drawing.Size(81, 29);
+            this.timoviToolStripMenuItem.Size = new System.Drawing.Size(137, 38);
             this.timoviToolStripMenuItem.Text = "Timovi";
             this.timoviToolStripMenuItem.Click += new System.EventHandler(this.timoviToolStripMenuItem_Click);
             // 
             // igraciToolStripMenuItem
             // 
+            this.igraciToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.igraciToolStripMenuItem.Name = "igraciToolStripMenuItem";
-            this.igraciToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
+            this.igraciToolStripMenuItem.Size = new System.Drawing.Size(125, 38);
             this.igraciToolStripMenuItem.Text = "Igraci";
             this.igraciToolStripMenuItem.Click += new System.EventHandler(this.igraciToolStripMenuItem_Click);
             // 
@@ -109,7 +143,7 @@ namespace View
             this.panelGlavni.Location = new System.Drawing.Point(0, 38);
             this.panelGlavni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelGlavni.Name = "panelGlavni";
-            this.panelGlavni.Size = new System.Drawing.Size(1452, 1003);
+            this.panelGlavni.Size = new System.Drawing.Size(1454, 1003);
             this.panelGlavni.TabIndex = 1;
             // 
             // FrmGlavna
@@ -117,7 +151,7 @@ namespace View
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1452, 1099);
+            this.ClientSize = new System.Drawing.Size(1454, 1050);
             this.Controls.Add(this.panelGlavni);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -143,5 +177,7 @@ namespace View
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem rezultatiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rasporedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaStrelacaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tabelaToolStripMenuItem1;
     }
 }

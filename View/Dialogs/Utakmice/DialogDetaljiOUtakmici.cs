@@ -16,7 +16,7 @@ namespace View.Dialogs.Utakmice
     {
        
         private KontrolerRezultati kontrolerRezultati;
-        private Rezultati rezultat;
+        private Utakmica rezultat;
 
         public Label LabelDomacin { get => lblDomacin; }
         public Label LabelGost { get => lblGost; }
@@ -26,7 +26,7 @@ namespace View.Dialogs.Utakmice
         public Label LabelDomaciStrelci { get => lblDomaciStrelci; }
         public Label LabelGostStrelci { get => lblGostStrelci; }
         
-        public DialogDetaljiOUtakmici(Kontroleri.KontrolerRezultati kontrolerRezultati, Rezultati rezultat)
+        public DialogDetaljiOUtakmici(Kontroleri.KontrolerRezultati kontrolerRezultati, Utakmica rezultat)
         {
             InitializeComponent();
             

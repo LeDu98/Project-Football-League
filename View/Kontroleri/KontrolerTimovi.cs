@@ -40,7 +40,7 @@ namespace View.Kontroleri
             dialogDetaljiOTimu.TBNazivTima.Text = tim.NazivTima;
             dialogDetaljiOTimu.TBGrad.Text = tim.Grad;
             dialogDetaljiOTimu.TBBojaKluba.Text = tim.BojaKluba;
-            dialogDetaljiOTimu.LabelPozicija.Text = tim.Pozicija.ToString();
+            
             dialogDetaljiOTimu.LabelOdigrane.Text = tim.OdigraneUtakmice.ToString();
             dialogDetaljiOTimu.LabelPobede.Text = tim.Pobede.ToString();
             dialogDetaljiOTimu.LabelNeresene.Text = tim.Neresene.ToString();
@@ -108,6 +108,8 @@ namespace View.Kontroleri
             {
                MessageBox.Show("Uspesno ste kreirali novi tim!");
                 timovi.Add(pomocni);
+                UcitajTimove();
+                this.uCTimovi.DataGridTimovi.DataSource = timovi;
             }
             else
             {

@@ -16,6 +16,9 @@ namespace View.Dialogs.Igraci
     {
         private KontrolerIgrac kontrolerIgrac;
         private Igrac igrac;
+        private KontrolerListaStrelaca kontrolerListaStrelaca;
+        private Igrac i;
+
         public TextBox TBIme { get => txtIme; }
         public TextBox TBPrezime { get => txtPrezime; }
         public ComboBox CBPozicija { get => cmbPozicija; }
@@ -32,6 +35,8 @@ namespace View.Dialogs.Igraci
             this.igrac = i;
             
         }
+
+        
 
         private void checkIzmeni_CheckedChanged(object sender, EventArgs e)
         {

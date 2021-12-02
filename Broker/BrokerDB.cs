@@ -58,6 +58,7 @@ namespace Broker
             SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
             command.CommandText = $"SELECT * from {entity.Tabela} {entity.JoinTabele} {entity.UslovVratiListu} {entity.OrderBy}";
+            Console.WriteLine(command.CommandText);
             SqlDataReader reader = command.ExecuteReader();
             result = entity.VratiListu(reader);
             reader.Close();

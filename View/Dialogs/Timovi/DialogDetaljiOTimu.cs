@@ -20,7 +20,7 @@ namespace View.Dialogs.Timovi
         public TextBox TBNazivTima { get => txtTim; }
         public TextBox TBGrad { get => txtGrad; }
         public TextBox TBBojaKluba { get => txtBojaKluba; }
-        public Label LabelPozicija { get => lblPozicija; }
+        
         public Label LabelOdigrane { get => lblOdigraneUtakmice; }
         public Label LabelPobede { get => lblPobede; }
         public Label LabelNeresene { get => lblNeresene; }

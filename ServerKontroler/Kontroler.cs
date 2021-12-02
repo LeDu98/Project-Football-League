@@ -170,5 +170,12 @@ namespace ServerKontroler
             systemOperation.ExecuteTemplate(utakmica);
             return systemOperation.Uspelo;
         }
+
+        public List<object> VratiListuStrelaca()
+        {
+            SystemOperationsBase systemOperation = new VratiListuStrelaca();
+            systemOperation.ExecuteTemplate(new ListaStrelaca());
+            return systemOperation.ResultList;
+        }
     }
 }
