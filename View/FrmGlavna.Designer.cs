@@ -58,7 +58,7 @@ namespace View
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1454, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(1178, 42);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -143,7 +143,7 @@ namespace View
             this.panelGlavni.Location = new System.Drawing.Point(0, 38);
             this.panelGlavni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelGlavni.Name = "panelGlavni";
-            this.panelGlavni.Size = new System.Drawing.Size(1454, 1003);
+            this.panelGlavni.Size = new System.Drawing.Size(1178, 897);
             this.panelGlavni.TabIndex = 1;
             // 
             // FrmGlavna
@@ -151,7 +151,7 @@ namespace View
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1454, 1050);
+            this.ClientSize = new System.Drawing.Size(1178, 944);
             this.Controls.Add(this.panelGlavni);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
