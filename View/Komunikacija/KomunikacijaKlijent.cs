@@ -26,6 +26,7 @@ namespace View.Komunikacija
 
         public Odgovor PrimiOdgovor()
         {
+            
             Odgovor odgovor = (Odgovor)primanje.Primi();
             if (odgovor.Uspesno)
             {
@@ -33,7 +34,7 @@ namespace View.Komunikacija
             }
             else
             {
-                //throw new SystemOperationException(odgovor.Greska);
+               // throw new SystemOperationException(odgovor.Greska);
                 return odgovor;
             }
         }

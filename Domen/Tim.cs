@@ -51,10 +51,7 @@ namespace Domen
         [Browsable(false)]
         public object UslovVratiListu => "";
 
-        public IEntity VratiEntity(SqlDataReader citac)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

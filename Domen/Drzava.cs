@@ -33,10 +33,7 @@ namespace Domen
             return NazivDrzave;
         }
 
-        public IEntity VratiEntity(SqlDataReader citac)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

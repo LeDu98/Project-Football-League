@@ -18,7 +18,7 @@ namespace View.Kontroleri
         private DialogDetaljiOUtakmici dialogDetaljiOUtakmici;
         private BindingList<Utakmica> utakmice;
         private BindingList<StatistikaIgraca> listaStatistikaIgraca;
-        private BindingList<Tim> timovi;
+       
 
       
 
@@ -27,16 +27,9 @@ namespace View.Kontroleri
             this.uCRezultati = uCRezultati;
             UcitajUtakmice();
             this.uCRezultati.DataGridRezultati.DataSource = utakmice;
-            timovi = VratiTimove();
-            uCRezultati.CBTim.Items.Add("Sve utakmice");
-            foreach (Tim t in timovi)
-            {
-                uCRezultati.CBTim.Items.Add(t);
-
-            }
-            uCRezultati.CBTim.SelectedIndex = 0;
-
-            uCRezultati.CBTim.DropDownStyle = ComboBoxStyle.DropDownList;
+            
+            
+            
             uCRezultati.DataGridRezultati.Columns[0].HeaderText = "Termin utakmice";
             uCRezultati.DataGridRezultati.Columns[1].HeaderText = "Domaći tim";
             uCRezultati.DataGridRezultati.Columns[2].HeaderText = "Golovi";
@@ -45,21 +38,26 @@ namespace View.Kontroleri
             
         }
 
-        private BindingList<Tim> VratiTimove()
+       /* private BindingList<Tim> VratiTimove()
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
             timovi = new BindingList<Tim>();
+            
             foreach (object o in lista)
             {
                 timovi.Add((Tim)o);
             }
             return timovi;
-        }
+        }*/
 
         private void UcitajUtakmice()
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuUtakmica);
             utakmice = new BindingList<Utakmica>();
+            if (lista == null)
+            {
+                return;
+            }
             foreach (Utakmica o in lista)
             {
                 if(o.DomacinGolovi!=-1 && o.GostGolovi  != -1)
@@ -104,12 +102,8 @@ namespace View.Kontroleri
 
         internal void Filtriraj()
         {
-            if (uCRezultati.CBTim.Text == "Sve utakmice")
-            {
-                this.uCRezultati.DataGridRezultati.DataSource = utakmice;
-                return;
-            }
-            uCRezultati.DataGridRezultati.DataSource = FiltrirajPretragu(uCRezultati.CBTim.Text.ToLower());
+          
+            uCRezultati.DataGridRezultati.DataSource = FiltrirajPretragu(uCRezultati.TBPretraga.Text.ToLower());
             uCRezultati.DataGridRezultati.Refresh();
         }
 

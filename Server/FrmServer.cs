@@ -25,15 +25,17 @@ namespace Server
 
         private void FrmServer_Load(object sender, EventArgs e)
         {
-            server = new ServerKlasa();
+            
             btnZaustavi.Enabled = false;
-            server.Pokreni();
+            
         }
 
         private void btnPokreni_Click(object sender, EventArgs e)
         {
             try
             {
+                server = new ServerKlasa();
+                server.Pokreni();
                 Thread nit = new Thread(server.OsluskujMrezu);
                 nit.IsBackground = true;
                 nit.Start();

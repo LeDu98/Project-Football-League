@@ -1,6 +1,7 @@
 ﻿using Domen;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,36 @@ namespace View.Kontroleri
 {
     public class KontrolerPrijavljivanje
     {
+        public BindingList<AdministratorLige> administratoriLige;
+        public FrmLogin frmLogin;
         internal void KonektujSe()
         {
             Komunikacija.Komunikacija.Instance.KonektujSe();
         }
 
-        internal void Prijavljivanje(TextBox txtKorisnickoIme,TextBox txtLozinka,FrmLogin frmLogin)
+        internal void Prijavljivanje(TextBox txtKorisnickoIme, TextBox txtLozinka)
+        {
+            if (!FormeHelpers.TextFieldValidator(new TextBox[] { txtKorisnickoIme, txtLozinka }))
+            {
+                MessageBox.Show("Sva polja su obavezna.");
+                return;
+            }
+           foreach(AdministratorLige al in administratoriLige)
+            {
+                if(al.KorisnickoIme==txtKorisnickoIme.Text && al.Lozinka == txtLozinka.Text)
+                {
+                    GlavniKoordinator.Instance.administratorLige = al;
+                    MessageBox.Show("Dobro dosli: " + al.ToString());
+                    GlavniKoordinator.Instance.OtvoriGlavnuFormu();
+                    return;
+
+                }
+            }
+            MessageBox.Show("Pogresno ime i/ili lozinka");
+            return;
+        }
+
+        /*internal void Prijavljivanje(TextBox txtKorisnickoIme,TextBox txtLozinka)
         {
             if(!FormeHelpers.TextFieldValidator(new TextBox[] { txtKorisnickoIme, txtLozinka }))
             {
@@ -41,11 +66,26 @@ namespace View.Kontroleri
 
                 MessageBox.Show(ex.Message);
             }
+        }*/
+
+        internal void InicijalizujFrmLogin(FrmLogin frmLogin)
+        {
+            this.frmLogin = frmLogin;
+            UcitajAdministratoreLige();
         }
 
-        internal void Prijavljivanje(object txtKorisnickoIme, object txtLozinka, FrmLogin frmLogin)
+        private void UcitajAdministratoreLige()
         {
-            throw new NotImplementedException();
+            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuAdministratoraLige);
+            administratoriLige = new BindingList<AdministratorLige>();
+            if (lista == null)
+            {
+                return;
+            }
+            foreach (object o in lista)
+            {
+                administratoriLige.Add((AdministratorLige)o);
+            }
         }
     }
 }

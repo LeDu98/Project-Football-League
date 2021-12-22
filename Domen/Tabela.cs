@@ -50,10 +50,7 @@ namespace Domen
         [Browsable(false)]
         string IEntity.Tabela => "Tim";
 
-        public IEntity VratiEntity(SqlDataReader citac)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

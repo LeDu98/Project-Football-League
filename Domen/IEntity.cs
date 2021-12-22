@@ -23,6 +23,6 @@ namespace Domen
         object OrderBy { get; }
 
         List<IEntity> VratiListu(SqlDataReader citac);
-        IEntity VratiEntity(SqlDataReader citac);
+        
     }
 }

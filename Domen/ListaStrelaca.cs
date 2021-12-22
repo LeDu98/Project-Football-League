@@ -44,10 +44,7 @@ namespace Domen
             return IgracID + "_" + Ime + " " + Prezime + "_";
         }
 
-        public IEntity VratiEntity(SqlDataReader citac)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

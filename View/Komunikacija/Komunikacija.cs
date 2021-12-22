@@ -45,7 +45,7 @@ namespace View.Komunikacija
             }
         }
 
-        internal AdministratorLige Prijavljivanje(TextBox txtLozinka, TextBox txtKorisnickoIme)
+        /*internal AdministratorLige Prijavljivanje(TextBox txtLozinka, TextBox txtKorisnickoIme)
         {
             Zahtev zahtev = new Zahtev()
             {
@@ -55,7 +55,7 @@ namespace View.Komunikacija
             klijent.PosaljiZahtev(zahtev);
             List<object> pomocna = klijent.PrimiOdgovor().Rezultat;
             return (AdministratorLige)pomocna[0];
-        }
+        }*/
 
         internal List<object> VratiListu(Operacije operacije)
         {

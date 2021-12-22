@@ -17,7 +17,9 @@ namespace View
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             GlavniKoordinator.Instance.OtvoriFormuZaPrijavljivanje();
-            Application.Run();
+            
+                Application.Run();
+           
         }
     }
 }

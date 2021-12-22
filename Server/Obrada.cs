@@ -59,11 +59,6 @@ namespace Server
             List<object> lista;
             switch (zahtev.Operacija)
             {
-                case Operacije.Prijavljivanje:
-                    odgovor.Rezultat = new List<object>();
-                    odgovor.Rezultat.Add(Kontroler.Instance.Prijavljivanje((AdministratorLige)zahtev.Objekat));
-                    odgovor.Uspesno = true;
-                    break;
 
                 case Operacije.VratiTabelu:
                     odgovor.Rezultat = Kontroler.Instance.VratiTabelu();
@@ -137,6 +132,10 @@ namespace Server
                     break;
                 case Operacije.VratiListuStrelaca:
                     odgovor.Rezultat = Kontroler.Instance.VratiListuStrelaca();
+                    odgovor.Uspesno = true;
+                    break;
+                case Operacije.VratiListuAdministratoraLige:
+                    odgovor.Rezultat = Kontroler.Instance.VratiListuAdministratoraLige();
                     odgovor.Uspesno = true;
                     break;
 

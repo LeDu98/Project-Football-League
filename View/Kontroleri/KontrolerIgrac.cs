@@ -34,6 +34,10 @@ namespace View.Kontroleri
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuIgraca);
             igraci = new BindingList<Igrac>();
+            if (lista == null)
+            {
+                return;
+            }
             foreach (object o in lista)
             {
                 igraci.Add((Igrac)o);
@@ -272,7 +276,10 @@ namespace View.Kontroleri
         private void NapuniCbDrzave(ComboBox cbDrzava)
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuDrzava);
-
+            if (lista == null)
+            {
+                return;
+            }
             foreach (object o in lista)
             {
                 cbDrzava.Items.Add(o);
@@ -282,7 +289,10 @@ namespace View.Kontroleri
         private void NapuniCbTimovi(ComboBox cbTim)
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
-
+            if (lista == null)
+            {
+                return;
+            }
             foreach (object o in lista)
             {
                 cbTim.Items.Add(o);

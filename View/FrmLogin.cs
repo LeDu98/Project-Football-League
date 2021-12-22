@@ -28,7 +28,8 @@ namespace View
             try
             {
                 kontrolerPrijavljivanje.KonektujSe();
-                kontrolerPrijavljivanje.Prijavljivanje(txtKorisnickoIme, txtLozinka, this);
+                kontrolerPrijavljivanje.InicijalizujFrmLogin(this);
+                kontrolerPrijavljivanje.Prijavljivanje(txtKorisnickoIme, txtLozinka);
                 txtKorisnickoIme.ForeColor = Color.Black;
                 txtLozinka.ForeColor = Color.Black;
             }
@@ -42,7 +43,7 @@ namespace View
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

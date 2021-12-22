@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministratorLigeSO\VratiAdministratoreLigeSO.cs" />
     <Compile Include="DrzavaSO\VratiDrzaveSO.cs" />
     <Compile Include="IgracSO\IzmeniIgracaSO.cs" />
     <Compile Include="IgracSO\KreirajIgracaSO.cs" />

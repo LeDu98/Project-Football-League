@@ -18,7 +18,7 @@ namespace View.UserControls
 
         public DataGridView DataGridUtakmice { get => dgUtakmice; }
         
-        public ComboBox CBTim { get => cmbTim; }
+        public TextBox TBPretraga { get => txtPretraga; }
         public UCRaspored(Kontroleri.KontrolerRaspored kontrolerUtakmice)
         {
             InitializeComponent();
@@ -54,7 +54,9 @@ namespace View.UserControls
             kontrolerRaspored.ObrisiUtakmicu();
         }
 
-        private void cmbTim_TextChanged(object sender, EventArgs e)
+        
+
+        private void txtPretraga_TextChanged(object sender, EventArgs e)
         {
             kontrolerRaspored.Filtriraj();
         }

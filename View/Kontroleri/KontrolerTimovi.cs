@@ -84,6 +84,10 @@ namespace View.Kontroleri
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
             timovi = new BindingList<Tim>();
+            if (lista == null)
+            {
+                return;
+            }
             foreach (object o in lista)
             {
                 timovi.Add((Tim)o);

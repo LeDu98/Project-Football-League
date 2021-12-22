@@ -41,10 +41,7 @@ namespace Domen
             return DomacinID.NazivTima + ":" + GostID.NazivTima + "REz: " + DomacinGolovi+":"+ GostGolovi ;
         }
 
-        public IEntity VratiEntity(SqlDataReader citac)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

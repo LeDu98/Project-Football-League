@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SystemOperations;
+using SystemOperations.AdministratorLigeSO;
 using SystemOperations.DrzavaSO;
 using SystemOperations.IgracSO;
 using SystemOperations.StatistikaIgracaSO;
@@ -21,7 +22,7 @@ namespace ServerKontroler
         private static Kontroler instance;
         private Kontroler()
         {
-            this.repositoryAdministratorLige = new RepositoryAdministratorLige();
+            
             this.repository = new GenericRepository();
         }
         public static Kontroler Instance
@@ -36,13 +37,9 @@ namespace ServerKontroler
             }
         }
 
-        private IRepositoryAdministratorLige repositoryAdministratorLige;
+        
         private IRepositoryGeneric repository;
-        public AdministratorLige administratorLige { get; set; }
-        public AdministratorLige Prijavljivanje(AdministratorLige administrator)
-        {
-            return repositoryAdministratorLige.Prijavljivanje(administrator);
-        }
+        
 
         public List<object> VratiTabelu()
         {
@@ -175,6 +172,13 @@ namespace ServerKontroler
         {
             SystemOperationsBase systemOperation = new VratiListuStrelaca();
             systemOperation.ExecuteTemplate(new ListaStrelaca());
+            return systemOperation.ResultList;
+        }
+
+        public List<object> VratiListuAdministratoraLige()
+        {
+            SystemOperationsBase systemOperation = new VratiAdministratoreLigeSO();
+            systemOperation.ExecuteTemplate(new AdministratorLige());
             return systemOperation.ResultList;
         }
     }

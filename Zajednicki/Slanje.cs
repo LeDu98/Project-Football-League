@@ -23,7 +23,16 @@ namespace Zajednicki
 
         public void Posalji(object message)
         {
-            formater.Serialize(tok, message);
+            try
+            {
+                formater.Serialize(tok, message);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+                Console.WriteLine("Heloo worlde");
+            }
         }
     }
 }

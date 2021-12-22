@@ -25,8 +25,8 @@ namespace View.Kontroleri
             UcitajListuStrelaca();
             this.uCListaStrelaca.DataGridListaStrelaca.DataSource = listaStrelaca;
 
-            uCListaStrelaca.DataGridListaStrelaca.Columns[4].HeaderText = "Tim";
-            uCListaStrelaca.DataGridListaStrelaca.Columns[5].HeaderText = "Država";
+            uCListaStrelaca.DataGridListaStrelaca.Columns[4].HeaderText = "Država";
+            uCListaStrelaca.DataGridListaStrelaca.Columns[5].HeaderText = "Tim";
         }
 
         private void UcitajListuStrelaca()

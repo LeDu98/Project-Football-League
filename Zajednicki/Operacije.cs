@@ -28,6 +28,7 @@ namespace Zajednicki
         VratiListuStatistikaIgraca,
         ObrisiStatistikuIgraca,
         ObrisiUtakmicu,
-        VratiListuStrelaca
+        VratiListuStrelaca,
+        VratiListuAdministratoraLige
     }
 }
