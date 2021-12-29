@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SystemOperations.TimoviSO
 {
-    public class VratiTimoveSO : SystemOperationsBase
+    public class UcitajListuTimovaSO : SystemOperationsBase
     {
         protected override void ExecuteOperation(IEntity entity)
         {

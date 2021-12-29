@@ -99,5 +99,14 @@
   <ItemGroup>
     <None Include="Resources\sport_football_1517.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20200805182639.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map_loader.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

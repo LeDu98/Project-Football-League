@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SystemOperations.UtakmicaSO
 {
-    public class KreirajUtakmicuSO : SystemOperationsBase
+    public class ZapamtiUtakmicuSO : SystemOperationsBase
     {
         protected override void ExecuteOperation(IEntity entity)
         {

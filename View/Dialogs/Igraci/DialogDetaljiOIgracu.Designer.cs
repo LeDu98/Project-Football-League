@@ -207,7 +207,7 @@ namespace View.Dialogs.Igraci
             // 
             this.btnIzmeni.BackColor = System.Drawing.Color.DarkGreen;
             this.btnIzmeni.Font = new System.Drawing.Font("Verdana", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIzmeni.Location = new System.Drawing.Point(93, 558);
+            this.btnIzmeni.Location = new System.Drawing.Point(93, 574);
             this.btnIzmeni.Name = "btnIzmeni";
             this.btnIzmeni.Size = new System.Drawing.Size(310, 128);
             this.btnIzmeni.TabIndex = 12;
@@ -220,7 +220,7 @@ namespace View.Dialogs.Igraci
             this.checkIzmeni.AutoSize = true;
             this.checkIzmeni.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkIzmeni.ForeColor = System.Drawing.Color.DarkGreen;
-            this.checkIzmeni.Location = new System.Drawing.Point(93, 525);
+            this.checkIzmeni.Location = new System.Drawing.Point(92, 539);
             this.checkIzmeni.Name = "checkIzmeni";
             this.checkIzmeni.Size = new System.Drawing.Size(311, 29);
             this.checkIzmeni.TabIndex = 13;

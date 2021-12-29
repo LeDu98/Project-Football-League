@@ -61,12 +61,32 @@ namespace Server.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _20200805182639 {
+            get {
+                object obj = ResourceManager.GetObject("_20200805182639", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon ikonica {
             get {
                 object obj = ResourceManager.GetObject("ikonica", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap map_loader {
+            get {
+                object obj = ResourceManager.GetObject("map_loader", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

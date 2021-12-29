@@ -27,6 +27,10 @@ namespace Domen
         public int Porazi { get; set; }
         [Browsable(false)]
         public int Bodovi { get; set; }
+        public BindingList<Igrac> ListaIgraca { get; set; }
+        public BindingList<StatistikaIgraca> statistikaIgracas { get; set; }
+        public BindingList<Utakmica> ListaUtakmica { get; set; }
+
         [Browsable(false)]
         
 
@@ -43,7 +47,7 @@ namespace Domen
         [Browsable(false)]
         public object UpdateVrednosti => $"NazivTima = '{NazivTima}', Grad = '{Grad}', BojaKluba = '{BojaKluba}', Pobede={Pobede}, Neresene={Neresene}, Porazi={Porazi}, Bodovi={Bodovi} ";
         [Browsable(false)]
-        public object UslovIzmeni => $"TimID = {TimID}";
+        public object Uslov => $"TimID = {TimID}";
         [Browsable(false)]
         public object OrderBy => $"order by NazivTima";
         [Browsable(false)]
@@ -74,6 +78,30 @@ namespace Domen
 
                     
                 });
+            }
+            return result;
+        }
+
+        public IEntity VratiEntity(SqlDataReader citac)
+        {
+            IEntity result = new Tim();
+            while (citac.Read())
+            {
+                result = new Tim()
+                {
+                    TimID = (int)citac["TimId"],
+                    NazivTima=(string)citac["NazivTima"],
+                    Grad=(string)citac["Grad"],
+                    BojaKluba=(string)citac["BojaKluba"],
+                    Pobede=(int)citac["Pobede"],
+                    Neresene=(int)citac["neresene"],
+                    Porazi=(int)citac["porazi"],
+                    Bodovi=(int)citac["bodovi"],
+                    OdigraneUtakmice = (int)citac["Pobede"] + (int)citac["neresene"] + (int)citac["porazi"],
+
+
+                    
+                };
             }
             return result;
         }

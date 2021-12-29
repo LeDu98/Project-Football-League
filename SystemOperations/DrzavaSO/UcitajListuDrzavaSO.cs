@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SystemOperations.DrzavaSO
 {
-    public class VratiDrzaveSO : SystemOperationsBase
+    public class UcitajListuDrzavaSO : SystemOperationsBase
     {
         protected override void ExecuteOperation(IEntity entity)
         {

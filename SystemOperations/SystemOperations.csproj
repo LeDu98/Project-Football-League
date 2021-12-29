@@ -42,11 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministratorLigeSO\VratiAdministratoreLigeSO.cs" />
-    <Compile Include="DrzavaSO\VratiDrzaveSO.cs" />
+    <Compile Include="DrzavaSO\UcitajListuDrzavaSO.cs" />
     <Compile Include="IgracSO\IzmeniIgracaSO.cs" />
-    <Compile Include="IgracSO\KreirajIgracaSO.cs" />
+    <Compile Include="IgracSO\UcitajIgracaSO.cs" />
+    <Compile Include="IgracSO\ZapamtiIgracaSO.cs" />
     <Compile Include="IgracSO\ObrisiIgracaSO.cs" />
-    <Compile Include="IgracSO\VratiIgraceSO.cs" />
+    <Compile Include="IgracSO\UcitajListuIgraca.cs" />
     <Compile Include="IgracSO\VratiListuStrelaca.cs" />
     <Compile Include="StatistikaIgracaSO\KreirajStatistikuIgracaSO.cs" />
     <Compile Include="StatistikaIgracaSO\ObrisiStatistikuIgracaSO.cs" />
@@ -55,14 +56,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabelaSO\VratiTabeluSO.cs" />
     <Compile Include="TimoviSO\IzmeniTimSO.cs" />
-    <Compile Include="TimoviSO\KreirajTimSO.cs" />
+    <Compile Include="TimoviSO\UcitajTimSO.cs" />
+    <Compile Include="TimoviSO\ZapamtiTimSO.cs" />
     <Compile Include="TimoviSO\ObrisiTimSO.cs" />
-    <Compile Include="TimoviSO\VratiTimoveSO.cs" />
+    <Compile Include="TimoviSO\UcitajListuTimovaSO.cs" />
     <Compile Include="UtakmicaSO\IzmeniUtakmicuSO.cs" />
-    <Compile Include="UtakmicaSO\KreirajUtakmicuSO.cs" />
+    <Compile Include="UtakmicaSO\ZapamtiUtakmicuSO.cs" />
     <Compile Include="UtakmicaSO\ObrisiUtakmicuSO.cs" />
-    <Compile Include="UtakmicaSO\VratiRezultateSO.cs" />
-    <Compile Include="UtakmicaSO\VratiUtakmiceSO.cs" />
+    <Compile Include="UtakmicaSO\UcitajListuUtakmicaSO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domen\Domen.csproj">

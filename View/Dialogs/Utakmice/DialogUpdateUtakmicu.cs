@@ -65,7 +65,7 @@ namespace View.Dialogs.Utakmice
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
                 kontrolerRaspored.SacuvajRezultatUtakmice(raspored);
-                this.Dispose();
+               
         }
     }
 }

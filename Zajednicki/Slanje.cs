@@ -24,8 +24,11 @@ namespace Zajednicki
         public void Posalji(object message)
         {
             try
-            {
+            {if(soket != null)
+                {
                 formater.Serialize(tok, message);
+
+                }
             }
             catch (Exception ex)
             {

@@ -134,6 +134,11 @@ namespace View.Kontroleri
         internal void ObradaSignalaGostStrelac(Utakmica raspored)
         {
             Utakmica u = raspored;
+            if (dialogUpdateUtakmicu.DataGridGost.RowCount == 0)
+            {
+                MessageBox.Show("Gostujući tim nema igrače! Molimo vas da prvo kreirate igrače tima.");
+                return;
+            }
             Igrac i = dialogUpdateUtakmicu.DataGridGost.CurrentRow.DataBoundItem as Igrac;
 
             foreach (StatistikaIgraca s in listaStatistikaIgraca)
@@ -175,6 +180,11 @@ namespace View.Kontroleri
         internal void ObradaSignalaDomacinStrelac(Utakmica raspored)
         {
             Utakmica u = raspored;
+            if (dialogUpdateUtakmicu.DataGridDomaci.RowCount == 0)
+            {
+                MessageBox.Show("Domaci tim nema igrače! Molimo vas da prvo kreirate igrače tima.");
+                return;
+            }
             Igrac i = dialogUpdateUtakmicu.DataGridDomaci.CurrentRow.DataBoundItem as Igrac;
 
             foreach (StatistikaIgraca s in listaStatistikaIgraca)
@@ -220,6 +230,7 @@ namespace View.Kontroleri
             raspored.DomacinGolovi = (int)dialogUpdateUtakmicu.NumericDomacin.Value;
             raspored.GostGolovi = (int)dialogUpdateUtakmicu.NumericGost.Value;
 
+            dialogUpdateUtakmicu.BtnSacuvaj.Enabled = true;
             dialogUpdateUtakmicu.BtnDomacinStrelac.Enabled = true;
             dialogUpdateUtakmicu.BtnGostStrelac.Enabled = true;
 
@@ -268,6 +279,7 @@ namespace View.Kontroleri
             dialogUpdateUtakmicu.DataGridGost.Columns[4].Visible = false;
             dialogUpdateUtakmicu.DataGridGost.Columns[5].Visible = false;
 
+            dialogUpdateUtakmicu.BtnSacuvaj.Enabled = false;
             strelacDomaci = 1;
             strelacGost = 1;
         }
@@ -304,7 +316,7 @@ namespace View.Kontroleri
             return igraci;
         }
 
-        internal void UpdateUtakmicu(Utakmica utakmica)
+      /*  internal void UpdateUtakmicu(Utakmica utakmica)
         {
             var result = MessageBox.Show("Da li ste sigurni da želite da sačuvate ovaj rezultat?", "Sačuvaj", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
@@ -322,7 +334,7 @@ namespace View.Kontroleri
                 Console.WriteLine(e + "EXCEPTION KOD Izmene Utakmice");
                MessageBox.Show("Sistem ne moze da izmeni podatke o utakmici");
             }
-        }
+        }*/
 
         internal BindingList<Tim> VratiTimove()
         {
@@ -337,6 +349,11 @@ namespace View.Kontroleri
 
         internal void OtvoriDialogUpdateUtakmicu()
         {
+            if (uCRaspored.DataGridUtakmice.RowCount == 0)
+            {
+                MessageBox.Show("Sistem ne moze da ucita utakmicu!");
+                return;
+            }
             Utakmica raspored = uCRaspored.DataGridUtakmice.CurrentRow.DataBoundItem as Utakmica;
             dialogUpdateUtakmicu = new DialogUpdateUtakmicu(this,raspored);
             dialogUpdateUtakmicu.ShowDialog();
@@ -383,7 +400,7 @@ namespace View.Kontroleri
             }
         }
 
-        internal void KreirajStatistikeIgraca(BindingList<StatistikaIgraca> listaStatistikaIgraca)
+      /*  internal void KreirajStatistikeIgraca(BindingList<StatistikaIgraca> listaStatistikaIgraca)
         {
             StatistikaIgraca pom = new StatistikaIgraca();
             foreach(StatistikaIgraca si in listaStatistikaIgraca)
@@ -395,9 +412,9 @@ namespace View.Kontroleri
                     return;
                 }
             }
-        }
+        }*/
 
-        internal void UpdateIgraca(BindingList<StatistikaIgraca> listaStatistikaIgraca)
+       /* internal void UpdateIgraca(BindingList<StatistikaIgraca> listaStatistikaIgraca)
         {
             try
             {
@@ -415,9 +432,9 @@ namespace View.Kontroleri
                 Console.WriteLine(e + "EXCEPTION KOD Izmene IGRACA");
                 MessageBox.Show("Sistem ne moze da izmeni podatke o igracima");
             }
-        }
+        }*/
 
-        internal void UpdateTim(Utakmica utakmica)
+        /*internal void UpdateTim(Utakmica utakmica)
         {
             try
             {
@@ -465,7 +482,7 @@ namespace View.Kontroleri
                 Console.WriteLine(e + "EXCEPTION KOD Izmene TIMA");
                 MessageBox.Show("Sistem ne moze da izmeni podatke o timu");
             }
-        }
+        }*/
 
         internal void SacuvajRezultatUtakmice(Utakmica utakmica)
         {
@@ -474,12 +491,27 @@ namespace View.Kontroleri
             {
                 return;
             }
+            if(domacinGolovi!=0 || gostGolovi != 0)
+            {
+                MessageBox.Show("Niste uneli strelce za sve golove! Sistem ne moze izmeniti utakmicu.");
+                return;
+            }
             try
             {
-                Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniUtakmicu, utakmica);
-                KreirajStatistikeIgraca(listaStatistikaIgraca);
-                UpdateIgraca(listaStatistikaIgraca);
-                UpdateTim(utakmica);
+                Utakmica u = new Utakmica()
+                {
+                    UtakmicaID = utakmica.UtakmicaID,
+                    DatumIVremeOdigravanja = utakmica.DatumIVremeOdigravanja,
+                    DomacinGolovi = utakmica.DomacinGolovi,
+                    GostGolovi = utakmica.GostGolovi,
+                    DomacinID = utakmica.DomacinID,
+                    GostID = utakmica.GostID,
+                    ListaStatistikaIgraca=listaStatistikaIgraca,
+                };
+                Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniUtakmicu, u);
+                //KreirajStatistikeIgraca(listaStatistikaIgraca);
+               // UpdateIgraca(listaStatistikaIgraca);
+                //UpdateTim(utakmica);
                 MessageBox.Show("Sistem je uspešno izmenio podatke o utakmici!");
             }
             catch (Exception e)
@@ -490,6 +522,8 @@ namespace View.Kontroleri
             }
             UcitajUtakmice();
             this.uCRaspored.DataGridUtakmice.DataSource = raspored;
+            uCRaspored.TBPretraga.Text = "";
+            dialogUpdateUtakmicu.Dispose();
         }
     }
 }

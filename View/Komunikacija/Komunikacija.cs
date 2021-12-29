@@ -63,6 +63,7 @@ namespace View.Komunikacija
             {
                 Operacija = operacije,
             };
+            
             klijent.PosaljiZahtev(zahtev);
             return klijent.PrimiOdgovor().Rezultat;
         }
@@ -99,6 +100,16 @@ namespace View.Komunikacija
             };
             klijent.PosaljiZahtev(zahtev);
             return klijent.PrimiOdgovor().Uspesno;
+        }
+        internal List<Object> VratiObjekat(Operacije operacije, Object obj)
+        {
+            Zahtev zahtev = new Zahtev()
+            {
+                Operacija = operacije,
+                Objekat = obj
+            };
+            klijent.PosaljiZahtev(zahtev);
+            return klijent.PrimiOdgovor().Rezultat;
         }
     }
 }

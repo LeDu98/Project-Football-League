@@ -18,8 +18,9 @@ namespace Domen
         
         public int GostGolovi { get; set; }
         public Tim GostID { get; set; }
+        public BindingList<StatistikaIgraca> ListaStatistikaIgraca { get; set; }
 
-    
+
         [Browsable(false)]
         public string IdName => "UtakmicaID";
         [Browsable(false)]
@@ -31,7 +32,7 @@ namespace Domen
         [Browsable(false)]
         public object UpdateVrednosti => $"DomacinGolovi = {DomacinGolovi}, GostGolovi = {GostGolovi}";
         [Browsable(false)]
-        public object UslovIzmeni => $"utakmicaID = {UtakmicaID}";
+        public object Uslov => $"utakmicaID = {UtakmicaID}";
         [Browsable(false)]
         public object OrderBy => "order by datumIVremeOdigravanja ASC";
         [Browsable(false)]
@@ -41,7 +42,10 @@ namespace Domen
             return DomacinID.NazivTima + ":" + GostID.NazivTima + "REz: " + DomacinGolovi+":"+ GostGolovi ;
         }
 
-       
+        public IEntity VratiEntity(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {
@@ -86,9 +90,6 @@ namespace Domen
             return result;
         }
 
-        public static implicit operator Utakmica(Rezultati v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -49,6 +49,7 @@ namespace Server
             {
 
                 Console.WriteLine(" Doslo je do prekida veze.");
+
             }
         }
 
@@ -116,10 +117,7 @@ namespace Server
                 case Operacije.IzmeniIgraca:
                     odgovor.Uspesno = Kontroler.Instance.UpdateIgraca((Igrac)zahtev.Objekat);
                     break;
-                case Operacije.VratiListuRezultata:
-                    odgovor.Rezultat = Kontroler.Instance.VratiRezultate();
-                    odgovor.Uspesno = true;
-                    break;
+             
                 case Operacije.VratiListuStatistikaIgraca:
                     odgovor.Rezultat = Kontroler.Instance.VratiStatistikeIgraca();
                     odgovor.Uspesno = true;
@@ -138,7 +136,12 @@ namespace Server
                     odgovor.Rezultat = Kontroler.Instance.VratiListuAdministratoraLige();
                     odgovor.Uspesno = true;
                     break;
-
+                case Operacije.VratiObjekatTim:
+                    odgovor.Rezultat = Kontroler.Instance.VratiTim((Tim)zahtev.Objekat);
+                    break;
+                case Operacije.VratiObjekatIgrac:
+                    odgovor.Rezultat = Kontroler.Instance.VratiIgraca((Igrac)zahtev.Objekat);
+                    break;
 
 
             }

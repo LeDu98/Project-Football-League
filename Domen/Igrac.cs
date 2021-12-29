@@ -20,6 +20,8 @@ namespace Domen
         public Drzava DrzavaID { get; set; }
        
         public Tim TimID { get; set; }
+        [Browsable(false)]
+        public BindingList<StatistikaIgraca> ListaStatistika { get; set; }
 
 
         [Browsable(false)]
@@ -33,7 +35,7 @@ namespace Domen
         [Browsable(false)]
         public object UpdateVrednosti => $"Ime='{Ime}',Prezime='{Prezime}',Pozicija='{Pozicija}', Golovi={Golovi}, DrzavaId={DrzavaID.DrzavaID}, TimId={TimID.TimID} ";
         [Browsable(false)]
-        public object UslovIzmeni => $"IgracId={IgracID}";
+        public object Uslov => $"IgracId={IgracID}";
         [Browsable(false)]
         public object OrderBy => "";
         [Browsable(false)]
@@ -43,7 +45,35 @@ namespace Domen
             return IgracID + "_" + Ime + " " + Prezime + "_";
         }
 
-       
+        public IEntity VratiEntity(SqlDataReader citac)
+        {
+            IEntity result = new Igrac();
+            while (citac.Read())
+            {
+                result = new Igrac()
+                {
+                    IgracID = (int)citac["IgracID"],
+                    Ime = (string)citac["Ime"],
+                    Prezime = (string)citac["Prezime"],
+                    Pozicija = (string)citac["Pozicija"],
+                    Golovi = (int)citac["Golovi"],
+                    TimID = new Tim()
+                    {
+                        TimID = (int)citac["TimID"],
+                        NazivTima = (string)citac["NazivTima"],
+
+                    },
+
+                    DrzavaID = new Drzava()
+                    {
+                        DrzavaID = (int)citac["DrzavaId"],
+                        NazivDrzave = (string)citac["NazivDrzave"],
+                    },
+
+                };
+            }
+            return result;
+        }
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

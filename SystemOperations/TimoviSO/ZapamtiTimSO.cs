@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SystemOperations.TimoviSO
 {
-    public class KreirajTimSO : SystemOperationsBase
+    public class ZapamtiTimSO : SystemOperationsBase
     {
         protected override void ExecuteOperation(IEntity entity)
         {

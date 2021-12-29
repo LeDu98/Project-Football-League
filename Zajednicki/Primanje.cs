@@ -23,7 +23,15 @@ namespace Zajednicki
 
         public object Primi()
         {
-            return formater.Deserialize(tok);
+            try
+            {
+                return formater.Deserialize(tok);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return formater;
+            }
         }
     }
 }

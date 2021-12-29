@@ -16,6 +16,7 @@ namespace Server
 
         public ServerKlasa()
         {
+            
             serverskiSoket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             klijentskiSoketi = new List<Socket>();
 
@@ -48,6 +49,7 @@ namespace Server
                 Console.WriteLine(ex);
                 System.Windows.Forms.MessageBox.Show("Kraj rada.");
 
+                
                 //OVDE TREBA UBITI SVE KLIJENTE
             }
             catch(Exception ex)

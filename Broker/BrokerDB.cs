@@ -89,7 +89,7 @@ namespace Broker
            SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
             command.CommandText = $"UPDATE {entity.Tabela} SET {entity.UpdateVrednosti}" +
-                $"WHERE {entity.UslovIzmeni}";
+                $"WHERE {entity.Uslov}";
             Console.WriteLine(command.CommandText);
             if (command.ExecuteNonQuery() != 1)
             {
@@ -102,7 +102,7 @@ namespace Broker
         {
             SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
-            command.CommandText = $"DELETE from {entity.Tabela} Where {entity.UslovIzmeni}";
+            command.CommandText = $"DELETE from {entity.Tabela} Where {entity.Uslov}";
             Console.WriteLine(command.CommandText);
            
                 if (command.ExecuteNonQuery() != 1)
@@ -118,7 +118,16 @@ namespace Broker
 
         public IEntity VratiEntity(IEntity entity)
         {
-            throw new NotImplementedException();
+            IEntity result;
+            SqlCommand command = connection.CreateCommand();
+            command.Transaction = transaction;
+            command.CommandText = $"SELECT * from {entity.Tabela} {entity.JoinTabele} Where {entity.Uslov}";
+            Console.WriteLine(command.CommandText);
+            SqlDataReader reader = command.ExecuteReader();
+            result = entity.VratiEntity(reader);
+            reader.Close();
+
+            return result;
         }
 
         public void Rollback()

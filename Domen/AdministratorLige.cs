@@ -26,7 +26,7 @@ namespace Domen
 
         public object UpdateVrednosti => "";
 
-        public object UslovIzmeni => "";
+        public object Uslov => "";
 
         public object UslovVratiListu => "";
 
@@ -37,7 +37,10 @@ namespace Domen
             return KorisnickoIme;
         }
 
-       
+        public IEntity VratiEntity(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

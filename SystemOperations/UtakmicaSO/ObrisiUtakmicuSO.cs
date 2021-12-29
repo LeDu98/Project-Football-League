@@ -11,6 +11,57 @@ namespace SystemOperations.UtakmicaSO
     {
         protected override void ExecuteOperation(IEntity entity)
         {
+            Utakmica utakmica = entity as Utakmica;
+            if (utakmica.ListaStatistikaIgraca != null)
+            {
+                foreach (StatistikaIgraca si in utakmica.ListaStatistikaIgraca)
+                {
+                    Igrac igrac = new Igrac();
+                    igrac = si.IgracID;
+                    igrac = repository.VratiEntity(igrac) as Igrac;
+                    igrac.Golovi -= si.Golovi;
+                    bool obrisanaStatistika = repository.Obrisi(si);
+                    bool IzmenjenIgrac = repository.Izmeni(igrac);
+                }
+                Tim domacin = utakmica.DomacinID;
+                Tim gost = utakmica.GostID;
+                bool izmenaDomacina;
+                bool izmenaGosta;
+                if (utakmica.DomacinGolovi > utakmica.GostGolovi)
+                {
+                    domacin.Pobede -= 1;
+                    domacin.Bodovi -= 3;
+                    gost.Porazi -= 1;
+                    izmenaDomacina = repository.Izmeni(domacin);
+                    izmenaGosta = repository.Izmeni(gost);
+                }
+                if (utakmica.DomacinGolovi == utakmica.GostGolovi)
+                {
+                    domacin.Neresene -= 1;
+                    domacin.Bodovi -= 1;
+                    gost.Neresene -= 1;
+                    gost.Bodovi -= 1;
+                    izmenaDomacina = repository.Izmeni(domacin);
+                    izmenaGosta = repository.Izmeni(gost);
+                }
+                if (utakmica.DomacinGolovi < utakmica.GostGolovi)
+                {
+                    domacin.Porazi -= 1;
+
+                    gost.Pobede -= 1;
+                    gost.Bodovi -= 3;
+                    izmenaDomacina = repository.Izmeni(domacin);
+                    izmenaGosta = repository.Izmeni(gost);
+                }
+
+            }
+           
+
+
+
+
+
+
             Uspelo = repository.Obrisi(entity);
         }
     }

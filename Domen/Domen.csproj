@@ -44,7 +44,6 @@
     <Compile Include="AdministratorLige.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="ListaStrelaca.cs" />
-    <Compile Include="Rezultati.cs" />
     <Compile Include="StatistikaIgraca.cs" />
     <Compile Include="Drzava.cs" />
     <Compile Include="Igrac.cs" />

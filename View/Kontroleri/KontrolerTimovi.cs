@@ -19,6 +19,11 @@ namespace View.Kontroleri
         private BindingList<Tim> timovi;
         private BindingList<Igrac> igraci;
         private BindingList<Igrac> igraciBrisanje;
+
+        private BindingList<StatistikaIgraca> listaStatistikaBrisanje;
+        private BindingList<Igrac> listaIgracaBrisanje;
+        private BindingList<Utakmica> listaUtakmicaBrisanje;
+
         
         
         
@@ -101,6 +106,21 @@ namespace View.Kontroleri
                 MessageBox.Show("Niste uneli vrednosti u sva polja!");
                 return;
             }
+            if (dialogKreirajTim.TxtNaziv.Text.Length < 3)
+            {
+                MessageBox.Show("Naziv tima mora sadrzati minimum 3 karaktera");
+                return;
+            }
+            if (dialogKreirajTim.TxtBojaKluba.Text.Length < 3)
+            {
+                MessageBox.Show("Boja tima mora sadrzati minimum 3 karaktera");
+                return;
+            }
+            if(dialogKreirajTim.TxtBojaKluba.Text.Any<char>(char.IsDigit) || dialogKreirajTim.TxtGrad.Text.Any<char>(char.IsDigit))
+            {
+                MessageBox.Show("Polja grad i boja kluba ne mogu sadrzati numericke vrednosti");
+                    return;
+            }
             Tim tim = new Tim();
             tim.NazivTima = dialogKreirajTim.TxtNaziv.Text;
             tim.Grad = dialogKreirajTim.TxtGrad.Text;
@@ -149,6 +169,21 @@ namespace View.Kontroleri
                 MessageBox.Show("Sva polja su obavezna");
                 return;
             }
+            if (dialogDetaljiOTimu.TBNazivTima.Text.Length < 3)
+            {
+                MessageBox.Show("Naziv tima mora sadrzati minimum 3 karaktera");
+                return;
+            }
+            if (dialogDetaljiOTimu.TBBojaKluba.Text.Length < 3)
+            {
+                MessageBox.Show("Boja tima mora sadrzati minimum 3 karaktera");
+                return;
+            }
+            if (dialogDetaljiOTimu.TBBojaKluba.Text.Any<char>(char.IsDigit) || dialogDetaljiOTimu.TBGrad.Text.Any<char>(char.IsDigit))
+            {
+                MessageBox.Show("Polja grad i boja kluba ne mogu sadrzati numericke vrednosti");
+                return;
+            }
             tim.NazivTima = dialogDetaljiOTimu.TBNazivTima.Text;
             tim.BojaKluba = dialogDetaljiOTimu.TBBojaKluba.Text;
             tim.Grad = dialogDetaljiOTimu.TBGrad.Text;
@@ -177,10 +212,27 @@ namespace View.Kontroleri
 
         internal void OtvoriDialogDetaljiOTimu()
         {
-            Tim tim = uCTimovi.DataGridTimovi.CurrentRow.DataBoundItem as Tim;
-            this.dialogDetaljiOTimu = new DialogDetaljiOTimu(this,tim);
-            this.dialogDetaljiOTimu.ShowDialog();
+            
+                if (uCTimovi.DataGridTimovi.RowCount == 0)
+                {
+                    MessageBox.Show("Sistem ne moze da ucita tim");
+                    return;
+                }
+                Tim tim = uCTimovi.DataGridTimovi.CurrentRow.DataBoundItem as Tim;
+                tim = (Tim)Komunikacija.Komunikacija.Instance.VratiObjekat(Operacije.VratiObjekatTim, (object)tim)[0];
+                if (tim.TimID == 0)
+                {
+                    MessageBox.Show("Sistem ne može da učita tim");
+                    return;
+                }
+                this.dialogDetaljiOTimu = new DialogDetaljiOTimu(this, tim);
+                this.dialogDetaljiOTimu.ShowDialog();
+            
+            
+            
         }
+
+        
 
         internal void ObrisiTim()
         {
@@ -191,95 +243,54 @@ namespace View.Kontroleri
             }
             try
             {
+                if (uCTimovi.DataGridTimovi.RowCount == 0)
+                {
+                    MessageBox.Show("Sistem ne moze da obrise tim");
+                    return;
+                }
                 Tim tim = uCTimovi.DataGridTimovi.CurrentRow.DataBoundItem as Tim;
                 List<object> listaUtakmica = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuUtakmica);
                 List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
                 List<object> listaTimova = Komunikacija.Komunikacija.Instance.VratiListu(Operacije.VratiListuTimova);
 
-                
-                foreach(Tim tim1 in listaTimova)
+                listaIgracaBrisanje = new BindingList<Igrac>();
+                listaUtakmicaBrisanje = new BindingList<Utakmica>();
+                listaStatistikaBrisanje = new BindingList<StatistikaIgraca>();
+
+                foreach(Utakmica u in listaUtakmica)
                 {
-                    foreach (Utakmica u in listaUtakmica)
+                    if(u.DomacinID.TimID==tim.TimID || u.GostID.TimID == tim.TimID)
                     {
-
-                        if ((u.DomacinID.TimID == tim.TimID || u.GostID.TimID == tim.TimID) && (tim1.TimID==u.DomacinID.TimID || tim1.TimID==u.GostID.TimID))
+                        listaUtakmicaBrisanje.Add(u);
+                        foreach(StatistikaIgraca si in listaStatistika)
                         {
-                            foreach (StatistikaIgraca si in listaStatistika)
+                            if (si.UtakmicaID.UtakmicaID == u.UtakmicaID)
                             {
-                                if (si.UtakmicaID.UtakmicaID == u.UtakmicaID)
+                                listaStatistikaBrisanje.Add(si);
+                                if (si.IgracID.TimID.TimID != tim.TimID)
                                 {
-                                    Igrac i = new Igrac();
-                                    i = si.IgracID;
-                                    i.Golovi -= si.Golovi;
-                                    Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, si);
-                                    Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniIgraca, i);
-
-
+                                    listaIgracaBrisanje.Add(si.IgracID);
                                 }
                             }
-                            if (tim1.TimID == u.DomacinID.TimID)
-                            {
-                                if (u.DomacinGolovi != -1 && u.GostGolovi != -1)
-                                {
-                                    if (u.DomacinGolovi == u.GostGolovi)
-                                    {
-                                        tim1.Neresene -= 1;
-                                        tim1.Bodovi -= 1;
-                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
-                                    }
-                                    if (u.DomacinGolovi > u.GostGolovi)
-                                    {
-                                        tim1.Pobede -= 1;
-                                        tim1.Bodovi -= 3;
-                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
-                                    }
-                                    if (u.DomacinGolovi < u.GostGolovi)
-                                    {
-                                        tim1.Porazi -= 1;
-                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
-                                    }
-   
-                                }
-                            }
-                            if (tim1.TimID == u.GostID.TimID)
-                            {
-                                if (u.DomacinGolovi != -1 && u.GostGolovi != -1)
-                                {
-                                    if (u.DomacinGolovi == u.GostGolovi)
-                                    {
-                                        tim1.Neresene -= 1;
-                                        tim1.Bodovi -= 1;
-                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim,tim1);
-                                    }
-                                    if (u.DomacinGolovi < u.GostGolovi)
-                                    {
-                                        tim1.Pobede -= 1;
-                                        tim1.Bodovi -= 3;
-                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
-                                    }
-                                    if (u.DomacinGolovi > u.GostGolovi)
-                                    {
-                                        tim1.Porazi -= 1;
-                                        Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim1);
-                                    }
-                                   
-                                }
-                            }
-                            Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiUtakmicu, u);
                         }
                     }
                 }
                 
 
-                
-                igraciBrisanje = new BindingList<Igrac>();
-                igraciBrisanje = VratiListuIgracaTima(tim);
-                    
-               foreach(Igrac i in igraci)
-                {
-                  Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiIgraca, i);
-                }
-                
+
+                           igraciBrisanje = new BindingList<Igrac>();
+                             igraciBrisanje = VratiListuIgracaTima(tim);
+
+                            foreach(Igrac i in igraciBrisanje)
+                             {
+                    listaIgracaBrisanje.Add(i);
+                             }
+                            
+
+                            tim.ListaIgraca = listaIgracaBrisanje;
+                tim.statistikaIgracas = listaStatistikaBrisanje;
+                tim.ListaUtakmica = listaUtakmicaBrisanje;
+
                 Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiTim, tim);
                 timovi.Remove(tim);
                 System.Windows.Forms.MessageBox.Show("Sistem je obrisao tim");

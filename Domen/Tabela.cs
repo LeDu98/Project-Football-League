@@ -39,7 +39,7 @@ namespace Domen
         [Browsable(false)]
         public object UpdateVrednosti => $"NazivTima = '{Naziv}', Grad = '{Grad}', BojaKluba = '{BojaKluba}', Pobede = {Pobede}, Neresene = {Neresene}, Porazi = {Porazi}, Bodovi={Bodovi}";
         [Browsable(false)]
-        public object UslovIzmeni => $"TimID = {TimID}";
+        public object Uslov => $"TimID = {TimID}";
         [Browsable(false)]
         public object OrderBy => $"order by Bodovi DESC";
         [Browsable(false)]
@@ -50,7 +50,10 @@ namespace Domen
         [Browsable(false)]
         string IEntity.Tabela => "Tim";
 
-        
+        public IEntity VratiEntity(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

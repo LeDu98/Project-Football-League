@@ -25,7 +25,7 @@ namespace Domen
 
         public object UpdateVrednosti => $"Golovi={Golovi}";
 
-        public object UslovIzmeni => $"IgracID={IgracID.IgracID} and UtakmicaId={UtakmicaID.UtakmicaID}";
+        public object Uslov => $"IgracID={IgracID.IgracID} and UtakmicaId={UtakmicaID.UtakmicaID}";
 
         public object UslovVratiListu => "";
 
@@ -36,7 +36,10 @@ namespace Domen
             return IgracID.Ime + " " + IgracID.Prezime + " x " + Golovi;
         }
 
-        
+        public IEntity VratiEntity(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

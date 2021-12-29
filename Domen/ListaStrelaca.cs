@@ -34,7 +34,7 @@ namespace Domen
         [Browsable(false)]
         public object UpdateVrednosti => $"Ime='{Ime}',Prezime='{Prezime}',Pozicija='{Pozicija}', Golovi={Golovi}, DrzavaId={DrzavaID.DrzavaID}, TimId={TimID.TimID} ";
         [Browsable(false)]
-        public object UslovIzmeni => $"IgracId={IgracID}";
+        public object Uslov => $"IgracId={IgracID}";
         [Browsable(false)]
         public object OrderBy => " order by golovi desc";
         [Browsable(false)]
@@ -44,7 +44,10 @@ namespace Domen
             return IgracID + "_" + Ime + " " + Prezime + "_";
         }
 
-       
+        public IEntity VratiEntity(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {

@@ -27,6 +27,8 @@ namespace Server
         {
             
             btnZaustavi.Enabled = false;
+            pictureBox1.Visible = false;
+            label2.Visible = false;
             
         }
 
@@ -41,6 +43,8 @@ namespace Server
                 nit.Start();
                 btnPokreni.Enabled = false;
                 btnZaustavi.Enabled = true;
+                pictureBox1.Visible = true;
+                label2.Visible = true;
 
                 System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
                 timer.Interval = 500;
@@ -67,6 +71,8 @@ namespace Server
             server.ZaustaviServer();
             btnPokreni.Enabled = true;
             btnZaustavi.Enabled = false;
+            pictureBox1.Visible = false;
+            label2.Visible = false;
 
         }
     }

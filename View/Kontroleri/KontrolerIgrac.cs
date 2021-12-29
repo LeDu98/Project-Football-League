@@ -79,16 +79,25 @@ namespace View.Kontroleri
             }
             try
             {
+                if (uCIgraci.DataGridIgraci.RowCount == 0)
+                {
+                    MessageBox.Show("Sistem ne moze da obrise igraca");
+                    return;
+                }
                 Igrac igrac = uCIgraci.DataGridIgraci.CurrentRow.DataBoundItem as Igrac;
                 List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
                 listaStatistikaIgraca = new BindingList<StatistikaIgraca>();
+
+
                 foreach (StatistikaIgraca o in listaStatistika)
                 {
                     if (o.IgracID.IgracID == igrac.IgracID)
                     {
-                        Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, o);
+
+                        listaStatistikaIgraca.Add(o);
                     }
                 }
+                igrac.ListaStatistika = listaStatistikaIgraca;
                 Komunikacija.Komunikacija.Instance.Obrisi(Zajednicki.Operacije.ObrisiIgraca, igrac);
                 igraci.Remove(igrac);
                 MessageBox.Show("Sistem je obrisao igrača!");
@@ -121,6 +130,10 @@ namespace View.Kontroleri
             if (string.IsNullOrEmpty(dialogKreirajIgraca.TxtIme.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.TxtPrezime.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbPozicija.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbDrzava.Text) || string.IsNullOrEmpty(dialogKreirajIgraca.CbTim.Text))
             {
                 MessageBox.Show("Niste uneli vrednosti u sva polja");
+                return;
+            }
+            if(dialogKreirajIgraca.TxtIme.Text.Any<char>(char.IsDigit) || dialogKreirajIgraca.TxtPrezime.Text.Any<char>(char.IsDigit)){
+                MessageBox.Show("Polja ime i prezime ne mogu sadrzati numericke vrednosti");
                 return;
             }
             Igrac i = new Igrac();
@@ -195,14 +208,19 @@ namespace View.Kontroleri
 
         internal void PromeniPodatkeIgraca(Igrac igrac)
         {
-            if (dialogDetaljiOIgracu.TBIme.Text == igrac.Ime && dialogDetaljiOIgracu.TBPrezime.Text == igrac.Prezime && dialogDetaljiOIgracu.CBDrzava.SelectedItem == igrac.DrzavaID && dialogDetaljiOIgracu.CBPozicija.Text == igrac.Pozicija && dialogDetaljiOIgracu.CBTim.SelectedItem == igrac.TimID)
+            if (dialogDetaljiOIgracu.TBIme.Text == igrac.Ime && dialogDetaljiOIgracu.TBPrezime.Text == igrac.Prezime && dialogDetaljiOIgracu.CBDrzava.Text == igrac.DrzavaID.NazivDrzave && dialogDetaljiOIgracu.CBPozicija.Text == igrac.Pozicija && dialogDetaljiOIgracu.CBTim.Text == igrac.TimID.NazivTima)
             {
-                MessageBox.Show("Podaci su ostali nepromenjeni!");
+                MessageBox.Show("Sistem nije izmenio podatke jer nije izvršena nikakva promena nad njima!");
                 return;
             }
             if (string.IsNullOrEmpty(dialogDetaljiOIgracu.TBIme.Text) || string.IsNullOrEmpty(dialogDetaljiOIgracu.TBPrezime.Text) || string.IsNullOrEmpty(dialogDetaljiOIgracu.CBPozicija.Text))
             {
                 MessageBox.Show("Sva polja su obavezna");
+                return;
+            }
+            if (dialogDetaljiOIgracu.TBIme.Text.Any<char>(char.IsDigit) || dialogDetaljiOIgracu.TBPrezime.Text.Any<char>(char.IsDigit))
+            {
+                MessageBox.Show("Polja ime i prezime ne mogu sadrzati numericke vrednosti");
                 return;
             }
             igrac.TimID = dialogDetaljiOIgracu.CBTim.SelectedItem as Tim;
@@ -221,7 +239,7 @@ namespace View.Kontroleri
             igrac.Prezime = dialogDetaljiOIgracu.TBPrezime.Text;
             igrac.Pozicija = dialogDetaljiOIgracu.CBPozicija.Text;
 
-            var result = MessageBox.Show("Da li ste sigurni da želite da sačuvate promenjene podatke o timu?", "Sačuvaj", System.Windows.Forms.MessageBoxButtons.YesNo);
+            var result = MessageBox.Show("Da li ste sigurni da želite da sačuvate promenjene podatke o igraču?", "Sačuvaj", System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 return;
@@ -230,13 +248,13 @@ namespace View.Kontroleri
             try
             {
                 Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniIgraca, igrac);
-                System.Windows.Forms.MessageBox.Show("Sistem je izmenio podatke o timu!");
+                System.Windows.Forms.MessageBox.Show("Sistem je izmenio podatke o igraču!");
             }
             catch (Exception e)
             {
 
-                Console.WriteLine(e + "EXCEPTION KOD Izmene TIMA");
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da izmeni podatke o timu");
+                Console.WriteLine(e + "EXCEPTION KOD Izmene igrača");
+                System.Windows.Forms.MessageBox.Show("Sistem ne moze da izmeni podatke o igraču");
             }
             dialogDetaljiOIgracu.Dispose();
             UcitajIgrace();
@@ -269,8 +287,19 @@ namespace View.Kontroleri
 
         internal void OtvoriDialogDetaljiOIgracu()
         {
-            Igrac i = uCIgraci.DataGridIgraci.CurrentRow.DataBoundItem as Igrac;
-            this.dialogDetaljiOIgracu = new DialogDetaljiOIgracu(this, i);
+            if (uCIgraci.DataGridIgraci.RowCount == 0)
+            {
+                MessageBox.Show("Sistem ne moze da ucita igraca");
+                return;
+            }
+            Igrac igrac = uCIgraci.DataGridIgraci.CurrentRow.DataBoundItem as Igrac;
+            igrac = (Igrac)Komunikacija.Komunikacija.Instance.VratiObjekat(Operacije.VratiObjekatIgrac, (object)igrac)[0];
+            if (igrac.IgracID == 0)
+            {
+                MessageBox.Show("Sistem ne može da učita igrača");
+                return;
+            }
+            this.dialogDetaljiOIgracu = new DialogDetaljiOIgracu(this, igrac);
             dialogDetaljiOIgracu.ShowDialog();
         }
         private void NapuniCbDrzave(ComboBox cbDrzava)

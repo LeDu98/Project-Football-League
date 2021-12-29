@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,12 @@ namespace View
     public partial class FrmGlavna : Form
     {
         private readonly GlavniKontroler glavniKontroler;
+        
         public FrmGlavna(Kontroleri.GlavniKontroler glavniKontroler)
         {
             InitializeComponent();
             this.glavniKontroler = glavniKontroler;
+           
             glavniKontroler.OtvoriUCGlavna(this);
             
         }

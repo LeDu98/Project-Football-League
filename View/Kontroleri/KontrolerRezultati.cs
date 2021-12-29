@@ -78,6 +78,7 @@ namespace View.Kontroleri
             try
             {
                 Utakmica utakmica = uCRezultati.DataGridRezultati.CurrentRow.DataBoundItem as Utakmica;
+                listaStatistikaIgraca = new BindingList<StatistikaIgraca>();
 
                 List<object> listaStatistika = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuStatistikaIgraca);
 
@@ -85,9 +86,10 @@ namespace View.Kontroleri
                 {
                     if (si.UtakmicaID.UtakmicaID == utakmica.UtakmicaID)
                     {
-                        Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiStatistikuIgraca, si);
+                        listaStatistikaIgraca.Add(si);
                     }
                 }
+                utakmica.ListaStatistikaIgraca = listaStatistikaIgraca;
                 Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiUtakmicu, utakmica);
                 utakmice.Remove(utakmica);
                 System.Windows.Forms.MessageBox.Show("Sistem je obrisao utakmicu");

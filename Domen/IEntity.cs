@@ -18,11 +18,12 @@ namespace Domen
 
         object UpdateVrednosti { get; }
 
-        object UslovIzmeni { get; }
+        object Uslov { get; }
         object UslovVratiListu { get; }
         object OrderBy { get; }
 
         List<IEntity> VratiListu(SqlDataReader citac);
-        
+        IEntity VratiEntity(SqlDataReader reader);
+
     }
 }

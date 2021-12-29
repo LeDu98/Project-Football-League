@@ -22,7 +22,7 @@ namespace Domen
 
         public object UpdateVrednosti => $"NazivDrzave='{NazivDrzave}'";
 
-        public object UslovIzmeni => "";
+        public object Uslov => "";
 
         public object OrderBy => "";
 
@@ -33,7 +33,10 @@ namespace Domen
             return NazivDrzave;
         }
 
-       
+        public IEntity VratiEntity(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<IEntity> VratiListu(SqlDataReader citac)
         {
