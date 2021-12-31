@@ -20,6 +20,8 @@ namespace View.Kontroleri
         private DialogDetaljiOIgracu dialogDetaljiOIgracu;
         private BindingList<StatistikaIgraca> listaStatistikaIgraca;
 
+        private BindingList<Igrac> filtriraniIgraci;
+
         #region UCIgrac
         internal void InicijalizujUCIgrac(UCIgraci uCIgraci)
         {
@@ -52,20 +54,27 @@ namespace View.Kontroleri
 
         private BindingList<Igrac> FiltrirajPretragu(string tekstPretrage)
         {
-            BindingList<Igrac> filtriraniIgraci = new BindingList<Igrac>();
-            foreach (Igrac i in igraci)
+
+            Igrac igrac = new Igrac();
+            igrac.Ime = tekstPretrage;
+            igrac.Prezime = tekstPretrage;
+            filtriraniIgraci = new BindingList<Igrac>();
+            try
             {
-                string stringIgraci = i.Ime + " " + i.Prezime;
-                stringIgraci = stringIgraci.ToLower();
-                if (stringIgraci.Contains(tekstPretrage))
+                List<object> pretrazeniTimovi = Komunikacija.Komunikacija.Instance.Pretrazi(Operacije.PretragaIgraca, igrac);
+                foreach (Igrac i in pretrazeniTimovi)
                 {
                     filtriraniIgraci.Add(i);
-
                 }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Sistem ne moze da nadje igrače po zadatoj vrednosti!");
             }
             if (filtriraniIgraci.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da nađe igrače po zadatoj vrednosti!");
+                MessageBox.Show("Sistem ne moze da nadje igrače po zadatoj vrednosti!");
             }
             return filtriraniIgraci;
         }

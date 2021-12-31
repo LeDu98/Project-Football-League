@@ -20,7 +20,8 @@ namespace Domen
         public Tim GostID { get; set; }
         public BindingList<StatistikaIgraca> ListaStatistikaIgraca { get; set; }
 
-
+        [Browsable(false)]
+        public string Pretraga { get; set; }
         [Browsable(false)]
         public string IdName => "UtakmicaID";
         [Browsable(false)]
@@ -36,15 +37,52 @@ namespace Domen
         [Browsable(false)]
         public object OrderBy => "order by datumIVremeOdigravanja ASC";
         [Browsable(false)]
-        public object UslovVratiListu => "";
+        public object UslovVratiListu => $"where lower(d.nazivTima) like '%{Pretraga}%' or lower(g.nazivTima) like '%{Pretraga}%'";
         public override string ToString()
         {
             return DomacinID.NazivTima + ":" + GostID.NazivTima + "REz: " + DomacinGolovi+":"+ GostGolovi ;
         }
 
-        public IEntity VratiEntity(SqlDataReader reader)
+        public IEntity VratiEntity(SqlDataReader citac)
         {
-            throw new NotImplementedException();
+            IEntity result = new Utakmica();
+            while (citac.Read())
+            {
+                result = new Utakmica()
+                {
+                    UtakmicaID = (int)citac["utakmicaID"],
+                    DatumIVremeOdigravanja = (DateTime)citac["DatumIVremeOdigravanja"],
+                    DomacinGolovi = (int)citac["DomacinGolovi"],
+                    GostGolovi = (int)citac["GostGolovi"],
+                    DomacinID = new Tim()
+                    {
+                        TimID = (int)citac["timId"],
+                        NazivTima = (string)citac["NazivTima"],
+                        Grad = (string)citac["Grad"],
+                        BojaKluba = (string)citac["BojaKluba"],
+                        Pobede = (int)citac["Pobede"],
+                        Neresene = (int)citac["neresene"],
+                        Porazi = (int)citac["porazi"],
+                        Bodovi = (int)citac["bodovi"],
+
+                    },
+                    GostID = new Tim()
+                    {
+                        TimID = citac.GetInt32(14),
+                        NazivTima = citac.GetString(15),
+                        Grad = citac.GetString(16),
+                        BojaKluba = citac.GetString(17),
+                        Pobede = citac.GetInt32(18),
+                        Neresene = citac.GetInt32(19),
+                        Porazi = citac.GetInt32(20),
+                        Bodovi = citac.GetInt32(21),
+
+                    },
+
+
+                };
+            }
+            return result;
         }
 
         public List<IEntity> VratiListu(SqlDataReader citac)

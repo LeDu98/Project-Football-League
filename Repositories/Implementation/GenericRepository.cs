@@ -65,5 +65,10 @@ namespace Repositories.Implementation
         {
             return broker.VratiID(entity);
         }
+
+        public List<IEntity> Pretrazi(IEntity entity)
+        {
+            return broker.Pretraga(entity);
+        }
     }
 }

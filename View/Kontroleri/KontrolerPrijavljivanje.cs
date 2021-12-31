@@ -26,19 +26,22 @@ namespace View.Kontroleri
                 MessageBox.Show("Sva polja su obavezna.");
                 return;
             }
-           foreach(AdministratorLige al in administratoriLige)
+            AdministratorLige al = new AdministratorLige();
+            al.KorisnickoIme = txtKorisnickoIme.Text;
+            al.Lozinka = txtLozinka.Text;
+            al = (AdministratorLige)Komunikacija.Komunikacija.Instance.VratiObjekat(Zajednicki.Operacije.Prijavljivanje, (object)al)[0];
+            if (al.AdministratorLigeID == 0)
             {
-                if(al.KorisnickoIme==txtKorisnickoIme.Text && al.Lozinka == txtLozinka.Text)
-                {
-                    GlavniKoordinator.Instance.administratorLige = al;
-                    MessageBox.Show("Dobro dosli: " + al.ToString());
-                    GlavniKoordinator.Instance.OtvoriGlavnuFormu();
-                    return;
-
-                }
+                MessageBox.Show("Pogresno ime i/ili lozinka");
+                return;
             }
-            MessageBox.Show("Pogresno ime i/ili lozinka");
-            return;
+            
+            GlavniKoordinator.Instance.administratorLige = al;
+            MessageBox.Show("Dobro dosli: " + al.ToString());
+            GlavniKoordinator.Instance.OtvoriGlavnuFormu();
+            
+     
+            
         }
 
         /*internal void Prijavljivanje(TextBox txtKorisnickoIme,TextBox txtLozinka)
@@ -71,10 +74,10 @@ namespace View.Kontroleri
         internal void InicijalizujFrmLogin(FrmLogin frmLogin)
         {
             this.frmLogin = frmLogin;
-            UcitajAdministratoreLige();
+            
         }
 
-        private void UcitajAdministratoreLige()
+        /*private void UcitajAdministratoreLige()
         {
             List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuAdministratoraLige);
             administratoriLige = new BindingList<AdministratorLige>();
@@ -86,6 +89,6 @@ namespace View.Kontroleri
             {
                 administratoriLige.Add((AdministratorLige)o);
             }
-        }
+        }*/
     }
 }

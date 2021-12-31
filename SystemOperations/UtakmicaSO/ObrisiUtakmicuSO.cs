@@ -1,6 +1,7 @@
 ﻿using Domen;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,16 +13,22 @@ namespace SystemOperations.UtakmicaSO
         protected override void ExecuteOperation(IEntity entity)
         {
             Utakmica utakmica = entity as Utakmica;
-            if (utakmica.ListaStatistikaIgraca != null)
+            List<object> listaStatistikaIgraca= repository.VratiListu(new StatistikaIgraca()).Cast<object>().ToList();
+            if (listaStatistikaIgraca != null)
             {
-                foreach (StatistikaIgraca si in utakmica.ListaStatistikaIgraca)
+
+                foreach (StatistikaIgraca si in listaStatistikaIgraca)
                 {
+                    if (si.UtakmicaID.UtakmicaID == utakmica.UtakmicaID)
+                    {
                     Igrac igrac = new Igrac();
                     igrac = si.IgracID;
                     igrac = repository.VratiEntity(igrac) as Igrac;
                     igrac.Golovi -= si.Golovi;
                     bool obrisanaStatistika = repository.Obrisi(si);
                     bool IzmenjenIgrac = repository.Izmeni(igrac);
+
+                    }
                 }
                 Tim domacin = utakmica.DomacinID;
                 Tim gost = utakmica.GostID;

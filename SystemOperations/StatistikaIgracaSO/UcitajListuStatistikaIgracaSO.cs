@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SystemOperations.AdministratorLigeSO
+namespace SystemOperations.StatistikaIgracaSO
 {
-    public class VratiAdministratoreLigeSO : SystemOperationsBase
+    public class UcitajListuStatistikaIgracaSO : SystemOperationsBase
     {
         protected override void ExecuteOperation(IEntity entity)
         {
             try
             {
-                ResultList = repository.VratiListu(new AdministratorLige()).Cast<object>().ToList();
+                ResultList = repository.VratiListu(new StatistikaIgraca()).Cast<object>().ToList();
             }
             catch (Exception ex)
             {

@@ -39,7 +39,7 @@ namespace Domen
         [Browsable(false)]
         public object OrderBy => "";
         [Browsable(false)]
-        public object UslovVratiListu => "";
+        public object UslovVratiListu => $"where lower(concat(ime,prezime)) like '%{Ime}%' or lower(concat(prezime,ime)) like '%{Ime}%'";
         public override string ToString()
         {
             return IgracID + "_" + Ime + " " + Prezime + "_";

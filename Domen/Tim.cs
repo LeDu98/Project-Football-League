@@ -53,7 +53,7 @@ namespace Domen
         [Browsable(false)]
         public string IdName => "TimID";
         [Browsable(false)]
-        public object UslovVratiListu => "";
+        public object UslovVratiListu => $"where lower(NazivTima) like '%{NazivTima}%'";
 
        
 

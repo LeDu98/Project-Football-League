@@ -13,6 +13,7 @@ namespace Repositories
 
 
         List<IEntity> VratiListu(IEntity entity);
+        List<IEntity> Pretrazi(IEntity entity);
 
         IEntity VratiEntity(IEntity entity);
         bool Izmeni(IEntity entity);

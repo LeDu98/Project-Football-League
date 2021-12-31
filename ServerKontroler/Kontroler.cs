@@ -62,6 +62,13 @@ namespace ServerKontroler
             return systemOperation.Result;
         }
 
+        public List<object> Prijavljivanje(AdministratorLige objekat)
+        {
+            SystemOperationsBase systemOperation = new PrijavljivanjeSO();
+            systemOperation.ExecuteTemplate(objekat);
+            return systemOperation.ResultList;
+        }
+
         public bool ObrisiTim(Tim tim)
         {
             SystemOperationsBase systemOperation = new ObrisiTimSO();
@@ -128,12 +135,7 @@ namespace ServerKontroler
 
       
 
-        public object KreirajStatistiku(StatistikaIgraca statistikaIgraca)
-        {
-            SystemOperationsBase systemOperation = new KreirajStatistikuIgracaSO();
-            systemOperation.ExecuteTemplate(statistikaIgraca);
-            return systemOperation.Result;
-        }
+       
 
         public bool UpdateIgraca(Igrac igrac)
         {
@@ -144,18 +146,12 @@ namespace ServerKontroler
 
         public List<object> VratiStatistikeIgraca()
         {
-            SystemOperationsBase systemOperation = new VratiStatistikeIgracaSO();
+            SystemOperationsBase systemOperation = new UcitajListuStatistikaIgracaSO();
             systemOperation.ExecuteTemplate(new StatistikaIgraca());
             return systemOperation.ResultList;
         }
 
-        public bool ObrisiStatistikuIgraca(StatistikaIgraca si)
-        {
-            SystemOperationsBase systemOperation = new ObrisiStatistikuIgracaSO();
-            systemOperation.ExecuteTemplate(si);
-            return systemOperation.Uspelo;
-        }
-
+        
         public bool ObrisiUtakmicu(Utakmica utakmica)
         {
             SystemOperationsBase systemOperation = new ObrisiUtakmicuSO();
@@ -172,7 +168,7 @@ namespace ServerKontroler
 
         public List<object> VratiListuAdministratoraLige()
         {
-            SystemOperationsBase systemOperation = new VratiAdministratoreLigeSO();
+            SystemOperationsBase systemOperation = new PrijavljivanjeSO();
             systemOperation.ExecuteTemplate(new AdministratorLige());
             return systemOperation.ResultList;
         }
@@ -180,6 +176,34 @@ namespace ServerKontroler
         public List<object> VratiIgraca(Igrac objekat)
         {
             SystemOperationsBase systemOperation = new UcitajIgracaSO();
+            systemOperation.ExecuteTemplate(objekat);
+            return systemOperation.ResultList;
+        }
+
+        public List<object> VratiUtakmicu(Utakmica objekat)
+        {
+            SystemOperationsBase systemOperation = new UcitajIgracaSO();
+            systemOperation.ExecuteTemplate(objekat);
+            return systemOperation.ResultList;
+        }
+
+        public List<object> VratiPronadjeneTimove(Tim objekat)
+        {
+            SystemOperationsBase systemOperation = new PretraziTimoveSO();
+            systemOperation.ExecuteTemplate(objekat);
+            return systemOperation.ResultList;
+        }
+
+        public List<object> VratiPronadjeneIgrace(Igrac objekat)
+        {
+            SystemOperationsBase systemOperation = new PretraziIgraceSO();
+            systemOperation.ExecuteTemplate(objekat);
+            return systemOperation.ResultList;
+        }
+
+        public List<object> VratiPronadjeneUtakmice(Utakmica objekat)
+        {
+            SystemOperationsBase systemOperation = new PretraziUtakmiceSO();
             systemOperation.ExecuteTemplate(objekat);
             return systemOperation.ResultList;
         }

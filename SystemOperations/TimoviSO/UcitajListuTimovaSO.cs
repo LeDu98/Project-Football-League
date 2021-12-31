@@ -11,15 +11,20 @@ namespace SystemOperations.TimoviSO
     {
         protected override void ExecuteOperation(IEntity entity)
         {
-            try
+            
             {
-                ResultList = repository.VratiListu(new Tim()).Cast<object>().ToList();
-            }
-            catch (Exception ex )
-            {
+                try
+                {
+                    ResultList = repository.VratiListu(new Tim()).Cast<object>().ToList();
+                }
+                catch (Exception ex)
+                {
 
-                Console.WriteLine(ex);
+                    Console.WriteLine(ex);
+                }
             }
+            
+            
         }
     }
 }

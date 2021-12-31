@@ -23,6 +23,9 @@ namespace View.Kontroleri
         private BindingList<Igrac> domaciIgraci;
         private BindingList<Igrac> gostujuciIgraci;
         private BindingList<StatistikaIgraca> listaStatistikaIgraca;
+
+        private BindingList<Utakmica> filtriraneUtakmice;
+
         private int domacinGolovi;
         private int gostGolovi;
         private int strelacDomaci = 1;
@@ -111,24 +114,33 @@ namespace View.Kontroleri
 
         private BindingList<Utakmica> FiltrirajPretragu(string tekstPretrage)
         {
-            BindingList<Utakmica> filtriranRaspored = new BindingList<Utakmica>();
-            foreach (Utakmica r in raspored)
+            Utakmica utakmica = new Utakmica();
+            utakmica.Pretraga = tekstPretrage;
+            
+            filtriraneUtakmice = new BindingList<Utakmica>();
+            try
             {
-                string domacin = r.DomacinID.NazivTima;
-                string gost = r.GostID.NazivTima;
-                domacin = domacin.ToLower();
-                gost = gost.ToLower();
-                if (domacin.Contains(tekstPretrage) || gost.Contains(tekstPretrage))
+                List<object> pretrazeneUtakmice = Komunikacija.Komunikacija.Instance.Pretrazi(Operacije.PretragaUtakmica, utakmica);
+                foreach (Utakmica u in pretrazeneUtakmice)
                 {
-                    filtriranRaspored.Add(r);
+                    if (u.DomacinGolovi == -1 && u.GostGolovi == -1)
+                    {
+                        filtriraneUtakmice.Add(u);
 
+                    }
                 }
             }
-            if (filtriranRaspored.Count == 0)
+            catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show("Sistem ne može da nađe utakmice po zadatoj vrednosti!");
+
+                MessageBox.Show("Sistem ne moze da nadje timove po zadatoj vrednosti!");
             }
-            return filtriranRaspored;
+            if (filtriraneUtakmice.Count == 0)
+            {
+                MessageBox.Show("Sistem ne moze da nadje timove po zadatoj vrednosti!");
+
+            }
+            return filtriraneUtakmice;
         }
 
         internal void ObradaSignalaGostStrelac(Utakmica raspored)
@@ -355,6 +367,12 @@ namespace View.Kontroleri
                 return;
             }
             Utakmica raspored = uCRaspored.DataGridUtakmice.CurrentRow.DataBoundItem as Utakmica;
+            raspored = (Utakmica)Komunikacija.Komunikacija.Instance.VratiObjekat(Operacije.VratiObjekatUtakmica, (object)raspored)[0];
+            if (raspored.UtakmicaID == 0)
+            {
+                MessageBox.Show("Sistem ne moze da ucita utakmicu!");
+                return;
+            }
             dialogUpdateUtakmicu = new DialogUpdateUtakmicu(this,raspored);
             dialogUpdateUtakmicu.ShowDialog();
         }

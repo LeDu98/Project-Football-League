@@ -31,6 +31,10 @@ namespace Zajednicki
         VratiListuStrelaca,
         VratiListuAdministratoraLige,
         VratiObjekatTim,
-        VratiObjekatIgrac
+        VratiObjekatIgrac,
+        PretragaTimova,
+        PretragaIgraca,
+        PretragaUtakmica,
+        VratiObjekatUtakmica
     }
 }

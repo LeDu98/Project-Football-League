@@ -68,6 +68,18 @@ namespace View.Komunikacija
             return klijent.PrimiOdgovor().Rezultat;
         }
 
+        internal List<object> Pretrazi(Operacije operacije, object obj)
+        {
+            Zahtev zahtev = new Zahtev()
+            {
+                Operacija = operacije,
+                Objekat=obj
+            };
+
+            klijent.PosaljiZahtev(zahtev);
+            return klijent.PrimiOdgovor().Rezultat;
+        }
+
         internal object Kreiraj(Operacije operacije, Object obj, List<object> list=null)
         {
             Zahtev zahtev = new Zahtev()

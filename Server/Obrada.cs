@@ -60,7 +60,9 @@ namespace Server
             List<object> lista;
             switch (zahtev.Operacija)
             {
-
+                case Operacije.Prijavljivanje:
+                    odgovor.Rezultat = Kontroler.Instance.Prijavljivanje((AdministratorLige)zahtev.Objekat);
+                    break;
                 case Operacije.VratiTabelu:
                     odgovor.Rezultat = Kontroler.Instance.VratiTabelu();
                     odgovor.Uspesno = true;
@@ -109,11 +111,7 @@ namespace Server
                 case Operacije.IzmeniUtakmicu:
                     odgovor.Uspesno = Kontroler.Instance.UpdateUtakmice((Utakmica)zahtev.Objekat);
                     break;
-                case Operacije.KreirajStatistikeIgraca:
-                    lista = new List<object>();
-                    lista.Add(Kontroler.Instance.KreirajStatistiku((StatistikaIgraca)zahtev.Objekat));
-                    odgovor.Rezultat = lista;
-                    break;
+                
                 case Operacije.IzmeniIgraca:
                     odgovor.Uspesno = Kontroler.Instance.UpdateIgraca((Igrac)zahtev.Objekat);
                     break;
@@ -122,18 +120,12 @@ namespace Server
                     odgovor.Rezultat = Kontroler.Instance.VratiStatistikeIgraca();
                     odgovor.Uspesno = true;
                     break;
-                case Operacije.ObrisiStatistikuIgraca:
-                    odgovor.Uspesno = Kontroler.Instance.ObrisiStatistikuIgraca((StatistikaIgraca)zahtev.Objekat);
-                    break;
+                
                 case Operacije.ObrisiUtakmicu:
                     odgovor.Uspesno = Kontroler.Instance.ObrisiUtakmicu((Utakmica)zahtev.Objekat);
                     break;
                 case Operacije.VratiListuStrelaca:
                     odgovor.Rezultat = Kontroler.Instance.VratiListuStrelaca();
-                    odgovor.Uspesno = true;
-                    break;
-                case Operacije.VratiListuAdministratoraLige:
-                    odgovor.Rezultat = Kontroler.Instance.VratiListuAdministratoraLige();
                     odgovor.Uspesno = true;
                     break;
                 case Operacije.VratiObjekatTim:
@@ -142,6 +134,22 @@ namespace Server
                 case Operacije.VratiObjekatIgrac:
                     odgovor.Rezultat = Kontroler.Instance.VratiIgraca((Igrac)zahtev.Objekat);
                     break;
+                case Operacije.VratiObjekatUtakmica:
+                    odgovor.Rezultat = Kontroler.Instance.VratiUtakmicu((Utakmica)zahtev.Objekat);
+                    break;
+                case Operacije.PretragaTimova:
+                    odgovor.Rezultat = Kontroler.Instance.VratiPronadjeneTimove((Tim)zahtev.Objekat);
+                    odgovor.Uspesno = true;
+                    break;
+                case Operacije.PretragaIgraca:
+                    odgovor.Rezultat = Kontroler.Instance.VratiPronadjeneIgrace((Igrac)zahtev.Objekat);
+                    odgovor.Uspesno = true;
+                    break;
+                case Operacije.PretragaUtakmica:
+                    odgovor.Rezultat = Kontroler.Instance.VratiPronadjeneUtakmice((Utakmica)zahtev.Objekat);
+                    odgovor.Uspesno = true;
+                    break;
+                   
 
 
             }

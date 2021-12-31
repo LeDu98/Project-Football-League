@@ -52,12 +52,28 @@ namespace Broker
             return entity;
         }
 
-        public List<IEntity> vratiListu(IEntity entity)
+        public List<IEntity> Pretraga(IEntity entity)
         {
             List<IEntity> result;
             SqlCommand command = connection.CreateCommand();
             command.Transaction = transaction;
             command.CommandText = $"SELECT * from {entity.Tabela} {entity.JoinTabele} {entity.UslovVratiListu} {entity.OrderBy}";
+            Console.WriteLine(command.CommandText);
+            SqlDataReader reader = command.ExecuteReader();
+            result = entity.VratiListu(reader);
+            reader.Close();
+
+            Console.WriteLine(result);
+
+            return result;
+        }
+
+        public List<IEntity> vratiListu(IEntity entity)
+        {
+            List<IEntity> result;
+            SqlCommand command = connection.CreateCommand();
+            command.Transaction = transaction;
+            command.CommandText = $"SELECT * from {entity.Tabela} {entity.JoinTabele} {entity.OrderBy}";
             Console.WriteLine(command.CommandText);
             SqlDataReader reader = command.ExecuteReader();
             result = entity.VratiListu(reader);

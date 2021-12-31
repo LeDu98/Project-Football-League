@@ -24,10 +24,15 @@ namespace View.Kontroleri
         private BindingList<Igrac> listaIgracaBrisanje;
         private BindingList<Utakmica> listaUtakmicaBrisanje;
 
+        private BindingList<Tim> filtriraniTimovi;
+
         
-        
-        
-       
+
+
+
+
+
+
         private DialogKreirajTim dialogKreirajTim;
         private DialogDetaljiOTimu dialogDetaljiOTimu;
         internal void InicijalizujUCTimovi(UCTimovi uCTimovi)
@@ -198,6 +203,7 @@ namespace View.Kontroleri
             {
                 Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, tim);
                 System.Windows.Forms.MessageBox.Show("Sistem je izmenio podatke o timu!");
+
             }
             catch (Exception e)
             {
@@ -207,6 +213,7 @@ namespace View.Kontroleri
             }
             dialogDetaljiOTimu.Dispose();
             UcitajTimove();
+            uCTimovi.TxtPretraga.Text = "";
             this.uCTimovi.DataGridTimovi.DataSource = timovi;
         }
 
@@ -301,6 +308,9 @@ namespace View.Kontroleri
                 Console.WriteLine(e+"EXCEPTION KOD BRISANJA TIMA");
                 System.Windows.Forms.MessageBox.Show("Sistem ne moze da obrise tim");
             }
+            UcitajTimove();
+            uCTimovi.TxtPretraga.Text = "";
+            this.uCTimovi.DataGridTimovi.DataSource = timovi;
         }
 
        
@@ -320,20 +330,27 @@ namespace View.Kontroleri
 
         private BindingList<Tim> FiltrirajPretragu(string tekstPretrage)
         {
-            BindingList<Tim> filtriraniTimovi = new BindingList<Tim>();
-            foreach(Tim t in timovi)
+
+            Tim tim = new Tim();
+            tim.NazivTima = tekstPretrage;
+            filtriraniTimovi = new BindingList<Tim>();
+            try
             {
-                string stringTimovi = t.NazivTima;
-                stringTimovi = stringTimovi.ToLower();
-                if (stringTimovi.Contains(tekstPretrage))
+                List<object> pretrazeniTimovi = Komunikacija.Komunikacija.Instance.Pretrazi(Operacije.PretragaTimova, tim);
+                foreach (Tim t in pretrazeniTimovi)
                 {
                     filtriraniTimovi.Add(t);
-
                 }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Sistem ne moze da nadje timove po zadatoj vrednosti!");
             }
             if (filtriraniTimovi.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show("Sistem ne moze da nadje timove po zadatoj vrednosti!");
+                MessageBox.Show("Sistem ne moze da nadje timove po zadatoj vrednosti!");
+
             }
                 return filtriraniTimovi;
         }
