@@ -22,6 +22,10 @@ namespace Domen
         public Tim TimID { get; set; }
         [Browsable(false)]
         public BindingList<StatistikaIgraca> ListaStatistika { get; set; }
+        public override string ToString()
+        {
+            return IgracID + "_" + Ime + " " + Prezime + "_";
+        }
 
 
         [Browsable(false)]
@@ -40,10 +44,7 @@ namespace Domen
         public object OrderBy => "";
         [Browsable(false)]
         public object UslovVratiListu => $"where lower(concat(ime,prezime)) like '%{Ime}%' or lower(concat(prezime,ime)) like '%{Ime}%'";
-        public override string ToString()
-        {
-            return IgracID + "_" + Ime + " " + Prezime + "_";
-        }
+        
 
         public IEntity VratiEntity(SqlDataReader citac)
         {

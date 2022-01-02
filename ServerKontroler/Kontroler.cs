@@ -166,12 +166,6 @@ namespace ServerKontroler
             return systemOperation.ResultList;
         }
 
-        public List<object> VratiListuAdministratoraLige()
-        {
-            SystemOperationsBase systemOperation = new PrijavljivanjeSO();
-            systemOperation.ExecuteTemplate(new AdministratorLige());
-            return systemOperation.ResultList;
-        }
 
         public List<object> VratiIgraca(Igrac objekat)
         {

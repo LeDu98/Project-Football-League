@@ -13,7 +13,12 @@ namespace Domen
         public Utakmica UtakmicaID { get; set; }
         public Igrac IgracID { get; set; }
         public int Golovi { get; set; }
-        public string Prikaz => $"{IgracID.Ime} {IgracID.Prezime} : {Golovi}";
+
+        public override string ToString()
+        {
+            return IgracID.Ime + " " + IgracID.Prezime + " x " + Golovi;
+        }
+        
 
 
         public string IdName => "UtakmicaID";
@@ -31,10 +36,7 @@ namespace Domen
 
         public object OrderBy => "";
 
-        public override string ToString()
-        {
-            return IgracID.Ime + " " + IgracID.Prezime + " x " + Golovi;
-        }
+       
 
         public IEntity VratiEntity(SqlDataReader reader)
         {

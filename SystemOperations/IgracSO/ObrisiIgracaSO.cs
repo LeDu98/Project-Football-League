@@ -13,10 +13,24 @@ namespace SystemOperations.IgracSO
         protected override void ExecuteOperation(IEntity entity)
         {
             Igrac igrac = entity as Igrac;
-
-            foreach(StatistikaIgraca si in igrac.ListaStatistika)
+            List<object> listaStatistika = new List<object>();
+            try
             {
+                listaStatistika = repository.VratiListu(new StatistikaIgraca()).Cast<object>().ToList();
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+            }
+
+            foreach (StatistikaIgraca si in listaStatistika)
+            {
+                if (si.IgracID.IgracID == igrac.IgracID)
+                {
                 bool obrisanaStatistika = repository.Obrisi(si);
+
+                }
             }
 
             Uspelo = repository.Obrisi(entity);

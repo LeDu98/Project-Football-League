@@ -37,6 +37,7 @@ namespace View.UserControls
         private void btnObrisi_Click(object sender, EventArgs e)
         {
             kontrolerRezultati.ObrisiUtakmicu();
+
         }
 
        

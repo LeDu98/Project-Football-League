@@ -19,6 +19,10 @@ namespace Domen
         public int GostGolovi { get; set; }
         public Tim GostID { get; set; }
         public BindingList<StatistikaIgraca> ListaStatistikaIgraca { get; set; }
+        public override string ToString()
+        {
+            return DomacinID.NazivTima + ":" + GostID.NazivTima + "rezultat: " + DomacinGolovi + ":" + GostGolovi;
+        }
 
         [Browsable(false)]
         public string Pretraga { get; set; }
@@ -38,10 +42,7 @@ namespace Domen
         public object OrderBy => "order by datumIVremeOdigravanja ASC";
         [Browsable(false)]
         public object UslovVratiListu => $"where lower(d.nazivTima) like '%{Pretraga}%' or lower(g.nazivTima) like '%{Pretraga}%'";
-        public override string ToString()
-        {
-            return DomacinID.NazivTima + ":" + GostID.NazivTima + "REz: " + DomacinGolovi+":"+ GostGolovi ;
-        }
+       
 
         public IEntity VratiEntity(SqlDataReader citac)
         {

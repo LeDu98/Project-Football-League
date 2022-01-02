@@ -31,13 +31,13 @@ namespace Domen
         public BindingList<StatistikaIgraca> statistikaIgracas { get; set; }
         public BindingList<Utakmica> ListaUtakmica { get; set; }
 
-        [Browsable(false)]
-        
-
         public override string ToString()
         {
             return NazivTima;
         }
+
+
+
         [Browsable(false)]
         public string Tabela => "Tim";
         [Browsable(false)]

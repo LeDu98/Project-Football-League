@@ -83,6 +83,8 @@ namespace View.Kontroleri
                 Komunikacija.Komunikacija.Instance.Obrisi(Operacije.ObrisiUtakmicu, utakmica);
                 utakmice.Remove(utakmica);
                 System.Windows.Forms.MessageBox.Show("Sistem je obrisao utakmicu");
+                UcitajUtakmice();
+                this.uCRezultati.DataGridRezultati.DataSource = utakmice;
             }
             catch (Exception e)
             {

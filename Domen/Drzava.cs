@@ -12,6 +12,11 @@ namespace Domen
         public int DrzavaID { get; set; }
         public string NazivDrzave { get; set; }
 
+        public override string ToString()
+        {
+            return NazivDrzave;
+        }
+
         public string IdName => "DrzavaID";
 
         public string Tabela => "Drzava";
@@ -28,10 +33,7 @@ namespace Domen
 
         public object UslovVratiListu => "";
 
-        public override string ToString()
-        {
-            return NazivDrzave;
-        }
+       
 
         public IEntity VratiEntity(SqlDataReader reader)
         {
