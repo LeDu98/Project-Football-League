@@ -33,7 +33,7 @@ namespace Server
             {
 
                 serverskiSoket.Listen(5);
-                bool kraj = false;
+                
                 while (true)
                 {
                     Socket klijent = serverskiSoket.Accept();
@@ -50,7 +50,7 @@ namespace Server
                 System.Windows.Forms.MessageBox.Show("Kraj rada.");
 
                 
-                //OVDE TREBA UBITI SVE KLIJENTE
+                
             }
             catch(Exception ex)
             {
@@ -66,6 +66,7 @@ namespace Server
             foreach (Socket s in klijentskiSoketi)
             {
                 s.Close();
+
             }
             serverskiSoket.Close();
         }

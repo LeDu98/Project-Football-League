@@ -20,10 +20,10 @@ namespace ServerKontroler
     public class Kontroler
     {
         private static Kontroler instance;
+        private IRepositoryGeneric repository;
         private Kontroler()
         {
-            
-            this.repository = new GenericRepository();
+           this.repository = new GenericRepository();
         }
         public static Kontroler Instance
         {
@@ -36,10 +36,6 @@ namespace ServerKontroler
                     return instance;
             }
         }
-
-        
-        private IRepositoryGeneric repository;
-        
 
         public List<object> VratiTabelu()
         {
@@ -54,14 +50,13 @@ namespace ServerKontroler
             systemOperation.ExecuteTemplate(new Tim());
             return systemOperation.ResultList;
         }
-
         public object KreirajTim(Tim tim)
         {
             SystemOperationsBase systemOperation = new ZapamtiTimSO();
             systemOperation.ExecuteTemplate(tim);
             return systemOperation.Result;
         }
-
+        
         public List<object> Prijavljivanje(AdministratorLige objekat)
         {
             SystemOperationsBase systemOperation = new PrijavljivanjeSO();
@@ -132,11 +127,6 @@ namespace ServerKontroler
             systemOperation.ExecuteTemplate(utakmica);
             return systemOperation.Uspelo;
         }
-
-      
-
-       
-
         public bool UpdateIgraca(Igrac igrac)
         {
             SystemOperationsBase systemOperation = new IzmeniIgracaSO();
@@ -208,5 +198,10 @@ namespace ServerKontroler
             systemOperation.ExecuteTemplate(objekat);
             return systemOperation.ResultList;
         }
+      
+
+       
+
+
     }
 }

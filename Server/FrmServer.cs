@@ -45,11 +45,6 @@ namespace Server
                 btnZaustavi.Enabled = true;
                 pictureBox1.Visible = true;
                 label2.Visible = true;
-
-                System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-                timer.Interval = 500;
-                timer.Tick += Timer_Tick;
-                timer.Start();
             }
             catch (SocketException ex)
             {
@@ -60,12 +55,6 @@ namespace Server
 
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-           /* pictureUcitavanje.Image.RotateFlip(RotateFlipType.Rotate90FlipX);
-            pictureUcitavanje.Invalidate();
-        */}
-
         private void btnZaustavi_Click(object sender, EventArgs e)
         {
             server.ZaustaviServer();
@@ -74,6 +63,13 @@ namespace Server
             pictureBox1.Visible = false;
             label2.Visible = false;
 
+        }
+
+        private void FrmServer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.ExitThread();
+            Application.Exit();
+            
         }
     }
 }

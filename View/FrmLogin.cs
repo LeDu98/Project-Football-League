@@ -37,6 +37,8 @@ namespace View
             {
 
                 MessageBox.Show("Greska pri povezivanju sa serverom");
+                Application.ExitThread();
+                Application.Exit();
             }
 
         }

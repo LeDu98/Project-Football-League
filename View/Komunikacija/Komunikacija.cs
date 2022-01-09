@@ -32,6 +32,7 @@ namespace View.Komunikacija
 
         private Komunikacija()
         {
+            
             soket = new Socket(AddressFamily.InterNetwork,SocketType.Stream, ProtocolType.Tcp);
 
         }
@@ -45,17 +46,6 @@ namespace View.Komunikacija
             }
         }
 
-        /*internal AdministratorLige Prijavljivanje(TextBox txtLozinka, TextBox txtKorisnickoIme)
-        {
-            Zahtev zahtev = new Zahtev()
-            {
-                Operacija = Operacije.Prijavljivanje,
-                Objekat = new AdministratorLige() { KorisnickoIme = txtKorisnickoIme.Text, Lozinka = txtLozinka.Text }
-            };
-            klijent.PosaljiZahtev(zahtev);
-            List<object> pomocna = klijent.PrimiOdgovor().Rezultat;
-            return (AdministratorLige)pomocna[0];
-        }*/
 
         internal List<object> VratiListu(Operacije operacije)
         {

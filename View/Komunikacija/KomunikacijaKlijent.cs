@@ -21,7 +21,8 @@ namespace View.Komunikacija
         }
         public void PosaljiZahtev(Zahtev zahtev)
         {
-            slanje.Posalji(zahtev);
+            
+          slanje.Posalji(zahtev);
         }
 
         public Odgovor PrimiOdgovor()
@@ -34,7 +35,7 @@ namespace View.Komunikacija
             }
             else
             {
-               // throw new SystemOperationException(odgovor.Greska);
+               
                 return odgovor;
             }
         }

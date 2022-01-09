@@ -44,32 +44,7 @@ namespace View.Kontroleri
             
         }
 
-        /*internal void Prijavljivanje(TextBox txtKorisnickoIme,TextBox txtLozinka)
-        {
-            if(!FormeHelpers.TextFieldValidator(new TextBox[] { txtKorisnickoIme, txtLozinka }))
-            {
-                MessageBox.Show("Sva polja su obavezna.");
-                return;
-            }
-
-            try
-            {
-                AdministratorLige administratorLige = Komunikacija.Komunikacija.Instance.Prijavljivanje(txtLozinka, txtKorisnickoIme);
-                if (administratorLige == null)
-                {
-                    MessageBox.Show("Pogresno ime i/ili lozinka");
-                    return;
-                }
-                GlavniKoordinator.Instance.administratorLige = administratorLige;
-                MessageBox.Show("Dobro dosli: " + administratorLige.ToString());
-                GlavniKoordinator.Instance.OtvoriGlavnuFormu();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-        }*/
+        
 
         internal void InicijalizujFrmLogin(FrmLogin frmLogin)
         {
@@ -77,18 +52,6 @@ namespace View.Kontroleri
             
         }
 
-        /*private void UcitajAdministratoreLige()
-        {
-            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuAdministratoraLige);
-            administratoriLige = new BindingList<AdministratorLige>();
-            if (lista == null)
-            {
-                return;
-            }
-            foreach (object o in lista)
-            {
-                administratoriLige.Add((AdministratorLige)o);
-            }
-        }*/
+        
     }
 }

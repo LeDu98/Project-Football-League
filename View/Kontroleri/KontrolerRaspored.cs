@@ -30,6 +30,8 @@ namespace View.Kontroleri
         private int gostGolovi;
         private int strelacDomaci = 1;
         private int strelacGost = 1;
+
+        #region UCRaspored
         internal void InicijalizujUCRaspored(UCRaspored uCRaspored)
         {
             this.uCRaspored = uCRaspored;
@@ -47,32 +49,6 @@ namespace View.Kontroleri
             uCRaspored.DataGridUtakmice.Columns[4].HeaderText = "Gostujući tim";
 
         }
-
-        internal void InicijalizujDialogKreirajUtakmicu(DialogKreirajUtakmicu dialogKreirajUtakmicu)
-        {
-            this.dialogKreirajUtakmicu = dialogKreirajUtakmicu;
-            timovi = VratiTimove();
-
-            foreach (Tim t in timovi)
-            {
-                dialogKreirajUtakmicu.CbDomacin.Items.Add(t);
-
-            }
-            foreach (Tim t2 in timovi)
-            {
-                dialogKreirajUtakmicu.CbGost.Items.Add(t2);
-            }
-            dialogKreirajUtakmicu.CbDomacin.SelectedIndex = 0;
-            dialogKreirajUtakmicu.CbGost.SelectedIndex = 1;
-            dialogKreirajUtakmicu.CbDomacin.DropDownStyle = ComboBoxStyle.DropDownList;
-            dialogKreirajUtakmicu.CbGost.DropDownStyle = ComboBoxStyle.DropDownList;
-            
-            dialogKreirajUtakmicu.DatumIVreme.Format = DateTimePickerFormat.Custom;
-            dialogKreirajUtakmicu.DatumIVreme.CustomFormat = "dd.MM.yyyy. HH:mm";
-
-            
-        }
-
         internal void ObrisiUtakmicu()
         {
             var result = System.Windows.Forms.MessageBox.Show("Ukoliko potvrdite, pored obrisane utakmice će se obrisati i sve statistike igrača na utakmici. Da li ste sigurni da želite da obrišete utakmicu?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
@@ -104,7 +80,6 @@ namespace View.Kontroleri
                 System.Windows.Forms.MessageBox.Show("Sistem ne moze da obrise utakmicu");
             }
         }
-
         internal void Filtriraj()
         {
             
@@ -142,6 +117,106 @@ namespace View.Kontroleri
             }
             return filtriraneUtakmice;
         }
+        private void UcitajUtakmice()
+        {
+            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuUtakmica);
+            raspored = new BindingList<Utakmica>();
+            if (lista == null)
+            {
+                return;
+            }
+            foreach (Utakmica o in lista)
+            {
+                if (o.DomacinGolovi == -1 && o.GostGolovi == -1)
+                {
+                    raspored.Add(o);
+
+                }
+            }
+        }
+
+
+        #endregion
+
+        #region DialogKreirajUtakmicu
+        internal void InicijalizujDialogKreirajUtakmicu(DialogKreirajUtakmicu dialogKreirajUtakmicu)
+        {
+            this.dialogKreirajUtakmicu = dialogKreirajUtakmicu;
+            timovi = VratiTimove();
+
+            foreach (Tim t in timovi)
+            {
+                dialogKreirajUtakmicu.CbDomacin.Items.Add(t);
+
+            }
+            foreach (Tim t2 in timovi)
+            {
+                dialogKreirajUtakmicu.CbGost.Items.Add(t2);
+            }
+            dialogKreirajUtakmicu.CbDomacin.SelectedIndex = 0;
+            dialogKreirajUtakmicu.CbGost.SelectedIndex = 1;
+            dialogKreirajUtakmicu.CbDomacin.DropDownStyle = ComboBoxStyle.DropDownList;
+            dialogKreirajUtakmicu.CbGost.DropDownStyle = ComboBoxStyle.DropDownList;
+            
+            dialogKreirajUtakmicu.DatumIVreme.Format = DateTimePickerFormat.Custom;
+            dialogKreirajUtakmicu.DatumIVreme.CustomFormat = "dd.MM.yyyy. HH:mm";
+
+            
+        }
+        internal BindingList<Tim> VratiTimove()
+        {
+            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
+            timovi = new BindingList<Tim>();
+            foreach (object o in lista)
+            {
+                timovi.Add((Tim)o);
+            }
+            return timovi;
+        }
+        internal void OtvoriDialogKreirajUtakmicu()
+        {
+            dialogKreirajUtakmicu = new DialogKreirajUtakmicu(this);
+            dialogKreirajUtakmicu.ShowDialog();
+        }
+        internal void KreirajUtakmicu()
+        {
+            Tim domacin = dialogKreirajUtakmicu.CbDomacin.SelectedItem as Tim;
+            Tim gost = dialogKreirajUtakmicu.CbGost.SelectedItem as Tim;
+            if (domacin == null || gost == null)
+            {
+                MessageBox.Show("Niste selektovali validne vrednosti!");
+                return;
+            }
+            if (domacin == gost)
+            {
+                MessageBox.Show("Ne mozete selektovati dva ista tima");
+                return;
+            }
+
+
+            Utakmica u = new Utakmica()
+            {
+                DomacinID = domacin,
+                GostID = gost,
+                DatumIVremeOdigravanja = dialogKreirajUtakmicu.DatumIVreme.Value
+
+            };
+            Utakmica pomocna = (Utakmica)Komunikacija.Komunikacija.Instance.Kreiraj(Zajednicki.Operacije.KreirajUtakmicu, u);
+            if (pomocna != null)
+            {
+                MessageBox.Show("Sistem je zapamtio novu utakmicu!");
+                raspored.Add(u);
+            }
+            else
+            {
+                MessageBox.Show("Sistem ne moze da zapamti novu utakmicu!");
+            }
+        }
+
+        #endregion
+
+
+        #region DialogUpdateUtakmice
 
         internal void ObradaSignalaGostStrelac(Utakmica raspored)
         {
@@ -296,23 +371,7 @@ namespace View.Kontroleri
             strelacGost = 1;
         }
 
-        private void UcitajUtakmice()
-        {
-            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuUtakmica);
-            raspored = new BindingList<Utakmica>();
-            if (lista == null)
-            {
-                return;
-            }
-            foreach (Utakmica o in lista)
-            {
-                if(o.DomacinGolovi==-1 && o.GostGolovi == -1)
-                {
-                raspored.Add(o);
-
-                }
-            }
-        }
+       
 
         internal BindingList<Igrac> vratiIgraceTima(Tim tim)
         {
@@ -328,36 +387,9 @@ namespace View.Kontroleri
             return igraci;
         }
 
-      /*  internal void UpdateUtakmicu(Utakmica utakmica)
-        {
-            var result = MessageBox.Show("Da li ste sigurni da želite da sačuvate ovaj rezultat?", "Sačuvaj", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No)
-            {
-                return;
-            }
-            try
-            {
-                Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniUtakmicu, utakmica);
-                MessageBox.Show("Sistem je uspešno izmenio podatke o utakmici!");
-            }
-            catch (Exception e)
-            {
+      
 
-                Console.WriteLine(e + "EXCEPTION KOD Izmene Utakmice");
-               MessageBox.Show("Sistem ne moze da izmeni podatke o utakmici");
-            }
-        }*/
-
-        internal BindingList<Tim> VratiTimove()
-        {
-            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
-            timovi = new BindingList<Tim>();
-            foreach (object o in lista)
-            {
-                timovi.Add((Tim)o);
-            }
-            return timovi;
-        }
+        
 
         internal void OtvoriDialogUpdateUtakmicu()
         {
@@ -377,130 +409,11 @@ namespace View.Kontroleri
             dialogUpdateUtakmicu.ShowDialog();
         }
 
-        internal void OtvoriDialogKreirajUtakmicu()
-        {
-            dialogKreirajUtakmicu = new DialogKreirajUtakmicu(this);
-            dialogKreirajUtakmicu.ShowDialog();
-        }
+        
 
-        internal void KreirajUtakmicu()
-        {
-            Tim domacin = dialogKreirajUtakmicu.CbDomacin.SelectedItem as Tim;
-            Tim gost= dialogKreirajUtakmicu.CbGost.SelectedItem as Tim;
-            if (domacin == null || gost == null)
-            {
-                MessageBox.Show("Niste selektovali validne vrednosti!");
-                return;
-            }
-            if (domacin == gost)
-            {
-                MessageBox.Show("Ne mozete selektovati dva ista tima");
-                return;
-            }
+       
 
-            
-            Utakmica u = new Utakmica()
-            {
-                DomacinID = domacin,
-                GostID = gost,
-                DatumIVremeOdigravanja = dialogKreirajUtakmicu.DatumIVreme.Value
-                
-            };
-            Utakmica pomocna = (Utakmica)Komunikacija.Komunikacija.Instance.Kreiraj(Zajednicki.Operacije.KreirajUtakmicu, u);
-            if (pomocna != null)
-            {
-                MessageBox.Show("Sistem je zapamtio novu utakmicu!");
-                raspored.Add(u);
-            }
-            else
-            {
-                MessageBox.Show("Sistem ne moze da zapamti novu utakmicu!");
-            }
-        }
-
-      /*  internal void KreirajStatistikeIgraca(BindingList<StatistikaIgraca> listaStatistikaIgraca)
-        {
-            StatistikaIgraca pom = new StatistikaIgraca();
-            foreach(StatistikaIgraca si in listaStatistikaIgraca)
-            {
-                pom = (StatistikaIgraca)Komunikacija.Komunikacija.Instance.Kreiraj(Operacije.KreirajStatistikeIgraca, si);
-                if (pom == null)
-                {
-                    MessageBox.Show("Doslo je do greske prilikom cuvanja statistika");
-                    return;
-                }
-            }
-        }*/
-
-       /* internal void UpdateIgraca(BindingList<StatistikaIgraca> listaStatistikaIgraca)
-        {
-            try
-            {
-                foreach(StatistikaIgraca si in listaStatistikaIgraca)
-                {
-                    Igrac i = si.IgracID;
-                    i.Golovi += si.Golovi;
-                Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniIgraca, i);
-                }
-                
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e + "EXCEPTION KOD Izmene IGRACA");
-                MessageBox.Show("Sistem ne moze da izmeni podatke o igracima");
-            }
-        }*/
-
-        /*internal void UpdateTim(Utakmica utakmica)
-        {
-            try
-            {
-                Tim domacin = utakmica.DomacinID;
-                Tim gost = utakmica.GostID;
-                if (utakmica.DomacinGolovi > utakmica.GostGolovi)
-                {
-                    domacin.Bodovi += 3;
-
-                    domacin.Pobede += 1;
-                    gost.Porazi += 1;
-
-                    Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, domacin);
-                    Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, gost);
-                    return;
-                }
-                if (utakmica.DomacinGolovi == utakmica.GostGolovi)
-                {
-                    domacin.Bodovi += 1;
-                    gost.Bodovi += 1;
-                    domacin.Neresene += 1;
-                    gost.Neresene += 1;
-
-                    Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, domacin);
-                    Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, gost);
-                    return;
-                }
-                if(utakmica.DomacinGolovi<utakmica.GostGolovi)
-                {
-                    gost.Bodovi += 3;
-
-                    gost.Pobede += 1;
-                    domacin.Porazi += 1;
-
-                    Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, domacin);
-                    Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniTim, gost);
-                    return;
-                }
-
-                
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e + "EXCEPTION KOD Izmene TIMA");
-                MessageBox.Show("Sistem ne moze da izmeni podatke o timu");
-            }
-        }*/
+      
 
         internal void SacuvajRezultatUtakmice(Utakmica utakmica)
         {
@@ -543,5 +456,6 @@ namespace View.Kontroleri
             uCRaspored.TBPretraga.Text = "";
             dialogUpdateUtakmicu.Dispose();
         }
+        #endregion
     }
 }

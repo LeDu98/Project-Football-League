@@ -66,5 +66,11 @@ namespace View
         {
             glavniKontroler.OtvoriUCTabela(this);
         }
+
+        private void FrmGlavna_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.ExitThread();
+            Application.Exit();
+        }
     }
 }
