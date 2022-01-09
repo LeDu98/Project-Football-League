@@ -45,7 +45,7 @@ namespace View.UserControls
             this.label1.BackColor = System.Drawing.Color.DarkGreen;
             this.label1.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(0, 2);
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1226, 95);
@@ -114,7 +114,6 @@ namespace View.UserControls
             this.dgListaStrelaca.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgListaStrelaca.Size = new System.Drawing.Size(1222, 840);
             this.dgListaStrelaca.TabIndex = 2;
-           
             // 
             // UCListaStrelaca
             // 

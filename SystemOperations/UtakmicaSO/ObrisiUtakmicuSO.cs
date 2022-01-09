@@ -13,6 +13,11 @@ namespace SystemOperations.UtakmicaSO
         protected override void ExecuteOperation(IEntity entity)
         {
             Utakmica utakmica = entity as Utakmica;
+            if(utakmica.DomacinGolovi==-1 && utakmica.GostGolovi == -1)
+            {
+                Uspelo = repository.Obrisi(entity);
+                return;
+            }
             List<object> listaStatistikaIgraca= repository.VratiListu(new StatistikaIgraca()).Cast<object>().ToList();
             if (listaStatistikaIgraca != null)
             {
@@ -62,12 +67,7 @@ namespace SystemOperations.UtakmicaSO
                 }
 
             }
-           
-
-
-
-
-
+          
 
             Uspelo = repository.Obrisi(entity);
         }

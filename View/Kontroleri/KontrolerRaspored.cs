@@ -51,7 +51,7 @@ namespace View.Kontroleri
         }
         internal void ObrisiUtakmicu()
         {
-            var result = System.Windows.Forms.MessageBox.Show("Ukoliko potvrdite, pored obrisane utakmice će se obrisati i sve statistike igrača na utakmici. Da li ste sigurni da želite da obrišete utakmicu?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
+            var result = System.Windows.Forms.MessageBox.Show("Da li ste sigurni da želite da obrišete utakmicu?", "Obriši", System.Windows.Forms.MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.No)
             {
                 return;

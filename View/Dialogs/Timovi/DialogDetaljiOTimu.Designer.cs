@@ -99,6 +99,7 @@ namespace View.Dialogs.Timovi
             this.dgIgraci.Location = new System.Drawing.Point(6, 435);
             this.dgIgraci.MultiSelect = false;
             this.dgIgraci.Name = "dgIgraci";
+            this.dgIgraci.ReadOnly = true;
             this.dgIgraci.RowHeadersVisible = false;
             this.dgIgraci.RowHeadersWidth = 80;
             this.dgIgraci.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -113,7 +114,7 @@ namespace View.Dialogs.Timovi
             this.lblBodovi.AutoSize = true;
             this.lblBodovi.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBodovi.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblBodovi.Location = new System.Drawing.Point(789, 354);
+            this.lblBodovi.Location = new System.Drawing.Point(806, 354);
             this.lblBodovi.Name = "lblBodovi";
             this.lblBodovi.Size = new System.Drawing.Size(89, 26);
             this.lblBodovi.TabIndex = 18;
@@ -125,7 +126,7 @@ namespace View.Dialogs.Timovi
             this.lblPorazi.AutoSize = true;
             this.lblPorazi.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPorazi.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblPorazi.Location = new System.Drawing.Point(693, 354);
+            this.lblPorazi.Location = new System.Drawing.Point(711, 354);
             this.lblPorazi.Name = "lblPorazi";
             this.lblPorazi.Size = new System.Drawing.Size(89, 26);
             this.lblPorazi.TabIndex = 17;
@@ -137,7 +138,7 @@ namespace View.Dialogs.Timovi
             this.lblPobede.AutoSize = true;
             this.lblPobede.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPobede.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblPobede.Location = new System.Drawing.Point(455, 354);
+            this.lblPobede.Location = new System.Drawing.Point(478, 354);
             this.lblPobede.Name = "lblPobede";
             this.lblPobede.Size = new System.Drawing.Size(89, 26);
             this.lblPobede.TabIndex = 16;
@@ -149,7 +150,7 @@ namespace View.Dialogs.Timovi
             this.lblNeresene.AutoSize = true;
             this.lblNeresene.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNeresene.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblNeresene.Location = new System.Drawing.Point(557, 354);
+            this.lblNeresene.Location = new System.Drawing.Point(589, 354);
             this.lblNeresene.Name = "lblNeresene";
             this.lblNeresene.Size = new System.Drawing.Size(89, 26);
             this.lblNeresene.TabIndex = 15;
@@ -380,7 +381,7 @@ namespace View.Dialogs.Timovi
             this.Controls.Add(this.lblNeresene);
             this.Controls.Add(this.lblOdigraneUtakmice);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(798, 668);
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "DialogDetaljiOTimu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalji o timu - Fudbalska liga";

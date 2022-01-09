@@ -75,7 +75,7 @@ namespace View.Dialogs.Utakmice
             this.lblDatum.AutoSize = true;
             this.lblDatum.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatum.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblDatum.Location = new System.Drawing.Point(442, 102);
+            this.lblDatum.Location = new System.Drawing.Point(386, 102);
             this.lblDatum.Name = "lblDatum";
             this.lblDatum.Size = new System.Drawing.Size(126, 38);
             this.lblDatum.TabIndex = 1;
@@ -282,9 +282,10 @@ namespace View.Dialogs.Utakmice
             this.lblGostStrelac.AutoSize = true;
             this.lblGostStrelac.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGostStrelac.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblGostStrelac.Location = new System.Drawing.Point(669, 716);
+            this.lblGostStrelac.Location = new System.Drawing.Point(647, 716);
+            this.lblGostStrelac.MinimumSize = new System.Drawing.Size(1000, 600);
             this.lblGostStrelac.Name = "lblGostStrelac";
-            this.lblGostStrelac.Size = new System.Drawing.Size(72, 22);
+            this.lblGostStrelac.Size = new System.Drawing.Size(1000, 600);
             this.lblGostStrelac.TabIndex = 11;
             this.lblGostStrelac.Text = "label1";
             // 
@@ -322,7 +323,7 @@ namespace View.Dialogs.Utakmice
             this.Controls.Add(this.lblDomacin);
             this.Controls.Add(this.label11);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(798, 668);
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "DialogUpdateUtakmicu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Unesite rezultat utakmice - Fudbalska liga";

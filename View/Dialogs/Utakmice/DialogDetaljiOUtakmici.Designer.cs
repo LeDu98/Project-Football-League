@@ -126,7 +126,7 @@ namespace View.Dialogs.Utakmice
             this.lblGostStrelci.ForeColor = System.Drawing.Color.DarkGreen;
             this.lblGostStrelci.Location = new System.Drawing.Point(177, 396);
             this.lblGostStrelci.Name = "lblGostStrelci";
-            this.lblGostStrelci.Size = new System.Drawing.Size(51, 57);
+            this.lblGostStrelci.Size = new System.Drawing.Size(34, 38);
             this.lblGostStrelci.TabIndex = 7;
             this.lblGostStrelci.Text = "(";
             // 
@@ -167,7 +167,7 @@ namespace View.Dialogs.Utakmice
             this.Controls.Add(this.lblGost);
             this.Controls.Add(this.lblDomacin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(798, 668);
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "DialogDetaljiOUtakmici";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalji o utakmici - Fudbalska liga";

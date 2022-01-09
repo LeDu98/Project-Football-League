@@ -46,10 +46,9 @@ namespace View.Dialogs.Timovi
             this.txtNaziv.BackColor = System.Drawing.Color.DarkGreen;
             this.txtNaziv.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNaziv.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtNaziv.Location = new System.Drawing.Point(321, 114);
-            this.txtNaziv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNaziv.Location = new System.Drawing.Point(482, 175);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(206, 37);
+            this.txtNaziv.Size = new System.Drawing.Size(307, 51);
             this.txtNaziv.TabIndex = 0;
             // 
             // txtGrad
@@ -58,10 +57,9 @@ namespace View.Dialogs.Timovi
             this.txtGrad.BackColor = System.Drawing.Color.DarkGreen;
             this.txtGrad.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrad.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtGrad.Location = new System.Drawing.Point(321, 178);
-            this.txtGrad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGrad.Location = new System.Drawing.Point(482, 274);
             this.txtGrad.Name = "txtGrad";
-            this.txtGrad.Size = new System.Drawing.Size(206, 37);
+            this.txtGrad.Size = new System.Drawing.Size(307, 51);
             this.txtGrad.TabIndex = 1;
             // 
             // txtBojaKluba
@@ -70,10 +68,9 @@ namespace View.Dialogs.Timovi
             this.txtBojaKluba.BackColor = System.Drawing.Color.DarkGreen;
             this.txtBojaKluba.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBojaKluba.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtBojaKluba.Location = new System.Drawing.Point(321, 248);
-            this.txtBojaKluba.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBojaKluba.Location = new System.Drawing.Point(482, 382);
             this.txtBojaKluba.Name = "txtBojaKluba";
-            this.txtBojaKluba.Size = new System.Drawing.Size(206, 37);
+            this.txtBojaKluba.Size = new System.Drawing.Size(307, 51);
             this.txtBojaKluba.TabIndex = 2;
             // 
             // label1
@@ -83,10 +80,9 @@ namespace View.Dialogs.Timovi
             this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label1.Location = new System.Drawing.Point(152, 122);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(228, 188);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 29);
+            this.label1.Size = new System.Drawing.Size(246, 44);
             this.label1.TabIndex = 5;
             this.label1.Text = "Naziv tima:";
             // 
@@ -97,10 +93,9 @@ namespace View.Dialogs.Timovi
             this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label2.Location = new System.Drawing.Point(152, 186);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(228, 286);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 29);
+            this.label2.Size = new System.Drawing.Size(130, 44);
             this.label2.TabIndex = 6;
             this.label2.Text = "Grad:";
             // 
@@ -111,10 +106,9 @@ namespace View.Dialogs.Timovi
             this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label3.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label3.Location = new System.Drawing.Point(152, 256);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(228, 394);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(165, 29);
+            this.label3.Size = new System.Drawing.Size(248, 44);
             this.label3.TabIndex = 7;
             this.label3.Text = "Boja kluba:";
             // 
@@ -124,10 +118,9 @@ namespace View.Dialogs.Timovi
             this.btnDodaj.BackColor = System.Drawing.Color.DarkGreen;
             this.btnDodaj.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDodaj.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDodaj.Location = new System.Drawing.Point(321, 327);
-            this.btnDodaj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDodaj.Location = new System.Drawing.Point(482, 503);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(206, 73);
+            this.btnDodaj.Size = new System.Drawing.Size(309, 112);
             this.btnDodaj.TabIndex = 12;
             this.btnDodaj.Text = "Dodaj tim";
             this.btnDodaj.UseVisualStyleBackColor = false;
@@ -140,20 +133,19 @@ namespace View.Dialogs.Timovi
             this.label11.BackColor = System.Drawing.Color.DarkGreen;
             this.label11.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(0, -3);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(0, -5);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(780, 62);
+            this.label11.Size = new System.Drawing.Size(1170, 95);
             this.label11.TabIndex = 36;
             this.label11.Text = "Dodaj novi tim";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // DialogKreirajTim
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(777, 481);
+            this.ClientSize = new System.Drawing.Size(1166, 740);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.label3);
@@ -163,8 +155,7 @@ namespace View.Dialogs.Timovi
             this.Controls.Add(this.txtGrad);
             this.Controls.Add(this.txtNaziv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MinimumSize = new System.Drawing.Size(539, 454);
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "DialogKreirajTim";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Dodaj novi tim - Fudbalska liga";

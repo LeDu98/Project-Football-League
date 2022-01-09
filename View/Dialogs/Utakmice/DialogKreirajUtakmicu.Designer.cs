@@ -47,10 +47,9 @@ namespace View.Dialogs.Utakmice
             this.cmbDomacin.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDomacin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cmbDomacin.FormattingEnabled = true;
-            this.cmbDomacin.Location = new System.Drawing.Point(55, 173);
-            this.cmbDomacin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbDomacin.Location = new System.Drawing.Point(52, 266);
             this.cmbDomacin.Name = "cmbDomacin";
-            this.cmbDomacin.Size = new System.Drawing.Size(256, 40);
+            this.cmbDomacin.Size = new System.Drawing.Size(480, 57);
             this.cmbDomacin.TabIndex = 0;
             // 
             // cmbGost
@@ -60,10 +59,9 @@ namespace View.Dialogs.Utakmice
             this.cmbGost.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGost.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cmbGost.FormattingEnabled = true;
-            this.cmbGost.Location = new System.Drawing.Point(488, 173);
-            this.cmbGost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbGost.Location = new System.Drawing.Point(632, 266);
             this.cmbGost.Name = "cmbGost";
-            this.cmbGost.Size = new System.Drawing.Size(256, 40);
+            this.cmbGost.Size = new System.Drawing.Size(480, 57);
             this.cmbGost.TabIndex = 1;
             // 
             // label1
@@ -72,10 +70,9 @@ namespace View.Dialogs.Utakmice
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label1.Location = new System.Drawing.Point(110, 125);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(135, 192);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 32);
+            this.label1.Size = new System.Drawing.Size(249, 49);
             this.label1.TabIndex = 2;
             this.label1.Text = "DOMAĆIN";
             // 
@@ -85,10 +82,9 @@ namespace View.Dialogs.Utakmice
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label2.Location = new System.Drawing.Point(543, 125);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(766, 192);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 32);
+            this.label2.Size = new System.Drawing.Size(147, 49);
             this.label2.TabIndex = 3;
             this.label2.Text = "GOST";
             // 
@@ -98,10 +94,9 @@ namespace View.Dialogs.Utakmice
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label3.Location = new System.Drawing.Point(186, 241);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(279, 371);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(431, 32);
+            this.label3.Size = new System.Drawing.Size(654, 49);
             this.label3.TabIndex = 4;
             this.label3.Text = "DATUM I VREME UTAKMICE";
             // 
@@ -116,10 +111,9 @@ namespace View.Dialogs.Utakmice
             this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.dateTimePicker1.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(192, 288);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(288, 443);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(425, 40);
+            this.dateTimePicker1.Size = new System.Drawing.Size(636, 57);
             this.dateTimePicker1.TabIndex = 5;
             // 
             // btnKreiraj
@@ -128,10 +122,9 @@ namespace View.Dialogs.Utakmice
             this.btnKreiraj.BackColor = System.Drawing.Color.DarkGreen;
             this.btnKreiraj.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKreiraj.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnKreiraj.Location = new System.Drawing.Point(242, 355);
-            this.btnKreiraj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnKreiraj.Location = new System.Drawing.Point(363, 546);
             this.btnKreiraj.Name = "btnKreiraj";
-            this.btnKreiraj.Size = new System.Drawing.Size(291, 74);
+            this.btnKreiraj.Size = new System.Drawing.Size(436, 114);
             this.btnKreiraj.TabIndex = 6;
             this.btnKreiraj.Text = "Kreiraj utakmicu";
             this.btnKreiraj.UseVisualStyleBackColor = false;
@@ -145,19 +138,18 @@ namespace View.Dialogs.Utakmice
             this.label11.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label11.Location = new System.Drawing.Point(0, 0);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(780, 62);
+            this.label11.Size = new System.Drawing.Size(1170, 95);
             this.label11.TabIndex = 36;
             this.label11.Text = "Kreiraj novu utakmicu";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // DialogKreirajUtakmicu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(777, 481);
+            this.ClientSize = new System.Drawing.Size(1166, 740);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnKreiraj);
             this.Controls.Add(this.dateTimePicker1);
@@ -167,8 +159,7 @@ namespace View.Dialogs.Utakmice
             this.Controls.Add(this.cmbGost);
             this.Controls.Add(this.cmbDomacin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MinimumSize = new System.Drawing.Size(539, 454);
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "DialogKreirajUtakmicu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Kreiraj novu utakmicu - Fudbalska liga";

@@ -260,7 +260,7 @@ namespace View.Dialogs.Igraci
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 714);
+            this.ClientSize = new System.Drawing.Size(1164, 744);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkIzmeni);
@@ -278,6 +278,7 @@ namespace View.Dialogs.Igraci
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "DialogDetaljiOIgracu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalji o igraču - Fudbalska liga";

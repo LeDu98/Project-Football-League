@@ -31,7 +31,7 @@ namespace View.Kontroleri
             
             
             
-            uCRezultati.DataGridRezultati.Columns[0].HeaderText = "Termin utakmice";
+            uCRezultati.DataGridRezultati.Columns[0].HeaderText = "Termin";
             uCRezultati.DataGridRezultati.Columns[1].HeaderText = "Domaći tim";
             uCRezultati.DataGridRezultati.Columns[2].HeaderText = "Golovi";
             uCRezultati.DataGridRezultati.Columns[3].HeaderText = "Golovi";
@@ -135,6 +135,11 @@ namespace View.Kontroleri
 
         internal void OtvoriDialogDetaljiOUtakmici()
         {
+            if (uCRezultati.DataGridRezultati.RowCount == 0)
+            {
+                MessageBox.Show("Sistem ne moze da ucita utakmicu");
+                return;
+            }
             Utakmica rezultat = uCRezultati.DataGridRezultati.CurrentRow.DataBoundItem as Utakmica;
             rezultat=(Utakmica)Komunikacija.Komunikacija.Instance.VratiObjekat(Operacije.VratiObjekatUtakmica, (object)rezultat)[0];
             if (rezultat.UtakmicaID == 0)

@@ -233,6 +233,7 @@ namespace View.Dialogs.Igraci
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "DialogKreirajIgraca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DialogKreirajIgraca";
