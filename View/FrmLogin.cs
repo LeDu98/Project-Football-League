@@ -30,8 +30,7 @@ namespace View
                 kontrolerPrijavljivanje.KonektujSe();
                 kontrolerPrijavljivanje.InicijalizujFrmLogin(this);
                 kontrolerPrijavljivanje.Prijavljivanje(txtKorisnickoIme, txtLozinka);
-                txtKorisnickoIme.ForeColor = Color.Black;
-                txtLozinka.ForeColor = Color.Black;
+                
             }
             catch (Exception)
             {

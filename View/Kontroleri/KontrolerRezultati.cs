@@ -39,17 +39,7 @@ namespace View.Kontroleri
             
         }
 
-       /* private BindingList<Tim> VratiTimove()
-        {
-            List<object> lista = Komunikacija.Komunikacija.Instance.VratiListu(Zajednicki.Operacije.VratiListuTimova);
-            timovi = new BindingList<Tim>();
-            
-            foreach (object o in lista)
-            {
-                timovi.Add((Tim)o);
-            }
-            return timovi;
-        }*/
+      
 
         private void UcitajUtakmice()
         {
