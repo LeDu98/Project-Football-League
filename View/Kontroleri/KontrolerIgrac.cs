@@ -258,6 +258,7 @@ namespace View.Kontroleri
             {
                 Komunikacija.Komunikacija.Instance.Update(Operacije.IzmeniIgraca, igrac);
                 System.Windows.Forms.MessageBox.Show("Sistem je izmenio podatke o igraču!");
+                uCIgraci.TxtPretraga.Text = "";
             }
             catch (Exception e)
             {

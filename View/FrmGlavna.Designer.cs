@@ -143,7 +143,7 @@ namespace View
             this.panelGlavni.Location = new System.Drawing.Point(0, 38);
             this.panelGlavni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelGlavni.Name = "panelGlavni";
-            this.panelGlavni.Size = new System.Drawing.Size(1188, 687);
+            this.panelGlavni.Size = new System.Drawing.Size(1192, 687);
             this.panelGlavni.TabIndex = 1;
             // 
             // FrmGlavna

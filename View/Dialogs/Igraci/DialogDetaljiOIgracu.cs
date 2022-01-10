@@ -16,8 +16,8 @@ namespace View.Dialogs.Igraci
     {
         private KontrolerIgrac kontrolerIgrac;
         private Igrac igrac;
-        private KontrolerListaStrelaca kontrolerListaStrelaca;
-        private Igrac i;
+
+      
 
         public TextBox TBIme { get => txtIme; }
         public TextBox TBPrezime { get => txtPrezime; }
@@ -27,6 +27,7 @@ namespace View.Dialogs.Igraci
         public Label LabelGolovi { get => lblGolovi; }
         public CheckBox CheckIzmeni { get => checkIzmeni; }
         public Button BtnIzmeni { get => btnIzmeni; }
+        
 
         public DialogDetaljiOIgracu(Kontroleri.KontrolerIgrac kontrolerIgrac, Domen.Igrac i)
         {
